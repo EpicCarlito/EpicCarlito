@@ -14,7 +14,6 @@ export default function Home() {
       </div>
       <p>Hello, I am EpicCarlito (my online persona)!</p>
     </div>
-    <img className="absolute bottom-0 z-[-1] w-full" src={Pattern}></img>
     </div>
   )
 }
