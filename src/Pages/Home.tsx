@@ -12,7 +12,7 @@ export default function Home() {
         <p className="flex flex-row-reverse text-sm">he/him</p>
       </div>
       <p>Hello, I am EpicCarlito (my online persona)!</p>
-      <img src={Pattern} className="absolute bottom-0 z-[-1] w-screen h-25vw"></img>
+      <img className="absolute bottom-0 z-[-1] w-full" src={Pattern}></img>
     </div>
   )
 }
