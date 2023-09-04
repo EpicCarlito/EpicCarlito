@@ -1,5 +1,4 @@
 import Profile from "../assets/EpicCarlito.svg"
-import Pattern from "../assets/MainPattern.svg"
 
 export default function Home() {
   return (
