@@ -5,9 +5,9 @@ import NavBar from "../Components/Navbar"
 
 export default function Home() {
   return (
-    <div className="h-full">
+    <div className="h-screen">
       <NavBar />
-    <div className="flex flex-col items-center justify-center h-[150vw] md:h-screen gap-4">
+    <div className="h-screen m-full flex flex-col items-center justify-center md:h-screen gap-4"> 
         <img src={Profile} height={100} width={100} className="rounded-full"></img>
         <div className="flex justify-center items-center gap-1">
             <h1 className="text-3xl font-comfortaa">
@@ -22,3 +22,5 @@ export default function Home() {
 </div>
   )
 }
+
+// Fix with h-[150vw]
