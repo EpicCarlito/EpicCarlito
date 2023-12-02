@@ -10,3 +10,12 @@ body {
   background-color: #1c1c1e;
   color: white;
 }
+
+@keyframes wave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
