@@ -32,7 +32,7 @@ export default function animatedWaves() {
     <>
       {animatedWave("#ffd769", "4")}
       {animatedWave("#b9b0a2", "6")}
-      {animatedWave("#7289da", "8", "reverse")}
+      {animatedWave("#7289da", "4", "reverse")}
     </>
   );
 }
