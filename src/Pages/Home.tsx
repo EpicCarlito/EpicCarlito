@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import oldProfile from "../assets/oldEpicCarlito.svg"
 import santaProfile from "../assets/santaEpicCarlito.svg"
 import newProfile from "../assets/newEpicCarlito.svg"
@@ -34,8 +34,7 @@ export default function Home() {
       <div className='text-3xl'>{text}</div>
         <div className="animate-spin">
           <img src={santaProfile} height={100} width={100} className="rounded-full"></img>
-        </div>
-        
+        </div> 
       </div>
     )
   }
