@@ -31,7 +31,7 @@ export default function animatedWaves() {
   return (
     <>
       {animatedWave("#ffd769", "4")}
-      {animatedWave("#b9b0a2", "6")}
+      {animatedWave("#b9b0a2", "6.5")}
       {animatedWave("#7289da", "4", "reverse")}
     </>
   );
