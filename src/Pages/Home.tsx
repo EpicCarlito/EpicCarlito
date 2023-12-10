@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import oldProfile from "../assets/oldEpicCarlito.svg"
 import santaProfile from "../assets/santaEpicCarlito.svg"
 import newProfile from "../assets/newEpicCarlito.svg"
@@ -7,8 +8,38 @@ import githubIcon from "../assets/githubIcon.svg"
 import NavBar from "../Components/Navbar"
 import AnimatedWaves from "../Components/animatedWaves"
 
-
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [text, setText] = useState('Loading.');
+  const textArray = ["Loading.", "Loading..", "Loading..."];
+  let currentTextIndex = 0;
+
+  useEffect(() => {
+    window.addEventListener("load", () => setIsLoading(false));
+    return () => window.removeEventListener("load", () => setIsLoading(false));
+  }, []);
+ 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      currentTextIndex = (currentTextIndex + 1) % textArray.length;
+      setText(textArray[currentTextIndex]);
+    }, 100);
+ 
+    return () => clearInterval(interval);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className='h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1'> 
+      <div className='text-3xl'>{text}</div>
+        <div className="animate-spin">
+          <img src={santaProfile} height={100} width={100} className="rounded-full"></img>
+        </div>
+        
+      </div>
+    )
+  }
+
   return (
     <div className="h-full">
       <NavBar />
@@ -39,5 +70,3 @@ export default function Home() {
     </div>
   )
 }
-
-// Fix with h-[150vw]
