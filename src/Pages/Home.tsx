@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         <div className="text-center">
         <p>Hello, I am James (BxSci '27)</p>
-        <p>I code with typescript, so now you know (<a href="https://www.16personalities.com/esfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ESFJ-A</a> / <a href="https://www.16personalities.com/isfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ISFJ-T</a>).</p>
+        <p>My personality types: <a href="https://www.16personalities.com/esfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ESFJ-A</a> / <a href="https://www.16personalities.com/isfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ISFJ-T</a>.</p>
       </div>
     </div>
   </div>
