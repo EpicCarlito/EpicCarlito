@@ -18,5 +18,3 @@ export default function NavBar() {
       </div>
     )
   }
-
-// Check what page the navbar is on so it can decide whether to have the home button or not
