@@ -47,26 +47,27 @@ export default function Home() {
     <NavBar />
     <AnimatedWaves />
     <div className="flex flex-row justify-center absolute top-3 right-3 gap-[0.5rem]">
-      <a href="https://discord.com/users/546133861751586816"><img src={discordIcon} height={35} width={35} className="hover:-translate-y-1 duration-200"></img></a>
-      <a href="https://www.instagram.com/epiccarlito"><img src={instagramIcon} height={35} width={35} className="hover:-translate-y-1 duration-200"></img></a>
-      <a href="https://github.com/EpicCarlito"><img src={githubIcon} height={35} width={35} className="hover:-translate-y-1 duration-200"></img></a>
+      <a href="https://discord.com/users/546133861751586816"><img src={discordIcon} className="hover:-translate-y-1 duration-200 h-[7vw] w-full md:h-[5vw] md:w-full lg:h-[3vw] lg:w-full"></img></a>
+      <a href="https://www.instagram.com/epiccarlito"><img src={instagramIcon} className="hover:-translate-y-1 duration-200 h-[7vw] w-full md:h-[5vw] md:w-full lg:h-[3vw] lg:w-full"></img></a>
+      <a href="https://github.com/EpicCarlito"><img src={githubIcon} className="hover:-translate-y-1 duration-200 h-[7vw] w-full md:h-[5vw] md:w-full lg:h-[3vw] lg:w-full"></img></a>
     </div>
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center h-[20rem] gap-1">
       <div className="flex justify-center items-center gap-[0.5rem] mb-1">
-        <img src={oldProfile} height={100} width={100} className="rounded-full"></img>
-        <img src={santaProfile} height={100} width={100} className="rounded-full"></img>
-        <img src={newProfile} height={100} width={100} className="rounded-full "></img>
+        <img src={oldProfile} height={100} width={100} className="rounded-full h-[15vw] w-full md:h-[7vw] md:w-full"></img>
+        <img src={santaProfile} height={100} width={100} className="rounded-full h-[15vw] w-full md:h-[7vw] md:w-full"></img>
+        <img src={newProfile} height={100} width={100} className="rounded-full h-[15vw] w-full md:h-[7vw] md:w-full"></img>
       </div>
-      <p className="text-sm">(PFPs created by L.)</p>
-        <div className="flex justify-center items-center gap-1">
-          <h1 className="text-3xl font-comfortaa ">
+      <p className="text-[3vw] md:text-[1.1vw]">(PFPs created by L.)</p>
+        <div className="flex justify-center items-center h-[2.75vw] md:h-[2vw] gap-1">
+          <h1 className="text-[8vw] md:text-[2.5vw] font-comfortaa">
             EpicCarlito
           </h1>
-        <p className="flex flex-row-reverse text-sm">he/him</p>
+        <p className="flex flex-row-reverse text-[4vw] md:text-[1vw]">he/him</p>
         </div>
-        <div className="text-center">
-        <p>Hello, I am James (BxSci '27)</p>
-        <p>My personality types: <a href="https://www.16personalities.com/esfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ESFJ-A</a> / <a href="https://www.16personalities.com/isfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ISFJ-T</a>.</p>
+        <div className="text-center text-[3vw] md:text-[1.5vw]">
+          <p>Hello, I am James (BxSci '27)</p>
+          <p>Student, Programmer and Graphic Designer</p>
+          <p>Personality types: <a href="https://www.16personalities.com/esfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ESFJ-A</a> / <a href="https://www.16personalities.com/isfj-personality" className="underline decoration-2 decoration-[#ffd769] hover:decoration-sky-500">ISFJ-T</a>.</p>
       </div>
     </div>
   </div>
