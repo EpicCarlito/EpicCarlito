@@ -7,6 +7,7 @@ import instagramIcon from "../assets/instagramIcon.svg"
 import githubIcon from "../assets/githubIcon.svg"
 import NavBar from "../Components/Navbar"
 import AnimatedWaves from "../Components/animatedWaves"
+import PlayingNow from "../Components/NowPlaying"
 
 export default function Home() {
  const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +44,8 @@ export default function Home() {
  }
 
  return (
-  <div className="h-full">
+  <div>
+    <PlayingNow />
     <NavBar />
     <AnimatedWaves />
     <div className="flex flex-row justify-center absolute top-3 right-3 gap-[0.5rem]">

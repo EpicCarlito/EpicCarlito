@@ -9,6 +9,7 @@
 body {
   background-color: #1c1c1e;
   color: white;
+  min-height: 100%;
 }
 
 @keyframes wave {

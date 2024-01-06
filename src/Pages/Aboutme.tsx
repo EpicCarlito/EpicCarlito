@@ -4,7 +4,7 @@ import NavBar from "../Components/Navbar"
 export default function Error() {
 
     return (
-      <div className="h-full">
+      <div>
         <NavBar />
         <div className="absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
         <img src={epicCarlito} height={100} width={100} className="rounded-full"></img>
