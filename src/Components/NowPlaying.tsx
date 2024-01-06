@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Buffer } from 'buffer';
 import axios from 'axios';
 import qs from 'qs';
 

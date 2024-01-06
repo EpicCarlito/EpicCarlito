@@ -3,6 +3,7 @@ import Error from './Pages/Error.tsx'
 import Projects from "./Pages/Projects.tsx"
 import Aboutme from "./Pages/Aboutme.tsx"
 import './index.css'
+import Construction from "./Pages/Construction.tsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
