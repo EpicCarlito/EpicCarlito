@@ -24,7 +24,6 @@ export default function Error() {
           <div className="flex flex-col">
             <h1 className="text-center text-[6vw] md:text-[3vw]">Dislikes:</h1>
             <ul className="text-center text-[3vw] md:text-[1.5vw]">
-              <li>m o n d a y s</li>
               <li>egotistical people</li>
               <li>bugs (in code)</li>
             </ul>
@@ -37,7 +36,7 @@ export default function Error() {
               <li>Chess</li>
               <li>Graphic Design</li>
               <li>Reading</li>
-              <li>Exercise</li>
+              <li>Running</li>
             </ul>
           </div>
           </div>
