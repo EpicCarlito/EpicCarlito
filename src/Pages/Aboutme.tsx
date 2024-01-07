@@ -1,4 +1,4 @@
-import epicCarlito from "../assets/newEpicCarlito.svg"
+import epicCarlito from "../assets/oldEpicCarlito.svg"
 import NavBar from "../Components/Navbar"
 
 export default function Error() {
