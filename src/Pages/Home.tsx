@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import oldProfile from "../assets/oldEpicCarlito.svg"
+import santaProfile from "../assets/santaEpicCarlito.svg"
 import discordIcon from "../assets/discordIcon.svg"
 import instagramIcon from "../assets/instagramIcon.svg"
 import githubIcon from "../assets/githubIcon.svg"
@@ -53,7 +54,6 @@ export default function Home() {
       <div className="flex justify-center items-center gap-[0.5rem] mb-1">
         <img src={oldProfile} height={100} width={100} className="rounded-full"></img>
         <img src={santaProfile} height={100} width={100} className="rounded-full"></img>
-        <img src={newProfile} height={100} width={100} className="rounded-full "></img>
       </div>
       <p className="text-sm">(PFPs created by L.)</p>
         <div className="flex justify-center items-center gap-1">
