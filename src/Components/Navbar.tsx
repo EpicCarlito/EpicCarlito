@@ -28,5 +28,3 @@ export default function NavBar() {
         </div>
     )
   }
-
-  // Adjust div if not on home page

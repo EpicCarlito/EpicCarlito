@@ -9,14 +9,14 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "SBSDB",
-      description: "A discord bot that checks email of students to get verified and a messaging system for allowing visitors!",
+      name: "Atom Bot",
+      description: "A discord bot that checks email of students to get verified and a message verification system for allowing visitors!",
       type: "typescript",
       date: "June 2023 - Now"
     },
     {
       name: "EmailChecker",
-      description: "A simple way to check if an email exists!",
+      description: "A simple way to check if an email exists! Created to be used for the Atom Bot project to check emails",
       github: "https://github.com/EpicCarlito/EmailChecker",
       type: "typescript",
       date: "July 2023 - August 2023"
