@@ -10,7 +10,7 @@ export default function Projects() {
   const projects = [
     {
       name: "Atom Bot",
-      description: "A discord bot that checks email of students to get verified and a message verification system for allowing visitors.",
+      description: "A discord bot that checks the email of students to get verified and messaging verification system for allowing visitors.",
       type: "typescript",
       date: "June 2023 - Now"
     },
@@ -23,7 +23,7 @@ export default function Projects() {
     },
     {
       name: "The Hops Bot",
-      description: "A discord bot that would announce weekly newsletter releases and a nickname system for each user by using a database.",
+      description: "A discord bot that would announce weekly newsletter releases and a nickname system for users by using a database.",
       type: "typescript",
       date: "October 2022 - May 2023"
     }
