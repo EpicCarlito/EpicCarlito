@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 import lockedIcon from "../assets/Locked.svg"
-import typeScript from "../assets/Typescript.svg"
 import gitHub from "../assets/githubIcon.svg"
+import typeScript from "../assets/Typescript.svg"
 import java from "../assets/javaIcon.svg"
+import javaScript from "../assets/javascript.svg"
 import NavBar from "../Components/Navbar"
 
 export default function Projects() {
@@ -24,13 +25,14 @@ export default function Projects() {
     {
       name: "The Hops Bot",
       description: "A discord bot that would announce weekly newsletter releases and a nickname system for users by using a database.",
-      type: "typescript",
+      type: "javaScript",
       date: "October 2022 - May 2023"
     }
   ];
 
   const language: { [key: string]: string } = {
     typescript: typeScript,
+    javascript: javaScript,
     java: java
   };
 
