@@ -25,7 +25,7 @@ export default function Projects() {
     {
       name: "The Hops Bot",
       description: "A discord bot that would announce weekly newsletter releases and a nickname system for users by using a database.",
-      type: "javaScript",
+      type: "javascript",
       date: "October 2022 - May 2023"
     }
   ];
