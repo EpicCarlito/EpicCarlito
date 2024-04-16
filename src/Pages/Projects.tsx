@@ -10,6 +10,13 @@ export default function Projects() {
 
   const projects = [
     {
+      name: "TicTacToe",
+      description: "A basic tictactoe game using JavaFX. Created to improve my knownledge of Java and learn JavaFX library.",
+      github: "https://github.com/EpicCarlito/TicTacToe",
+      type: "java",
+      date: "April 2024"
+    },
+    {
       name: "Atom Bot",
       description: "A discord bot that checks the email of students to get verified and messaging verification system for allowing visitors.",
       type: "typescript",
@@ -53,7 +60,7 @@ export default function Projects() {
             <p>{project.date}</p>
           </div>
           {project.github ? (   
-            <div className="flex flex-row items-center gap-[0.5rem] hover:-translate-y-1 duration-200">
+            <div className="flex flex-row items-center gap-[0.5rem] hover:-translate-y-0.5 duration-200">
               <Link to={project.github} className="flex flex-row items-center gap-[0.5rem]">
                 <img src={gitHub} className="h-[2rem]"></img>
                 <div>Source Code</div>
