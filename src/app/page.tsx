@@ -1,59 +1,31 @@
 import Image from "next/image";
-import Link from "next/link";
 import EpicCarlito from "../../public/epiccarlito.svg";
-import discord from "../../public/social/discord.svg";
-import instagram from "../../public/social/instagram.svg";
-import github from "../../public/social/github.svg";
+import Socials from "../components/socials";
+import AnimatedWaves from "@/components/animatedWaves";
 
 export default function Home() {
   return (
     <>
-    <div className="absolute z-[-1] w-screen h-full md:p-4 bg-zinc-900">
-        <div className="w-screen h-full bg-zinc-700 max-w-full">
-          <div>
-            <div className="flex flex-col">
-              <Image
-                src={EpicCarlito}
-                alt=""
-                height={250}
-                width={250}
-                className="rounded-full"
-              ></Image>
-              <p className="text-3xl font-comfortaa">
-                EpicCarlito<sub className="text-sm">he/him</sub>
-              </p>
-              <div className="flex flex-col">
-                <Link href="https://discord.com/users/546133861751586816">
-                  <Image
-                    src={discord}
-                    alt=""
-                    height={35}
-                    width={35}
-                    className="hover:-translate-y-1 duration-200"
-                  ></Image>
-                </Link>
-                <Link href="https://www.instagram.com/epiccarlito">
-                  <Image
-                    src={instagram}
-                    alt=""
-                    height={35}
-                    width={35}
-                    className="hover:-translate-y-1 duration-200"
-                  ></Image>
-                </Link>
-                <Link href="https://github.com/EpicCarlito">
-                  <Image
-                    src={github}
-                    alt=""
-                    height={35}
-                    width={35}
-                    className="hover:-translate-y-1 duration-200"
-                  ></Image>
-                </Link>
+      <div className="h-full">
+        <AnimatedWaves />
+        <div className="absolute z-[-1] w-screen h-full p-2 md:p-4">
+          <div className="h-full bg-zinc-700 max-w-full p-10">
+            <div className="absolute flex flex-col">
+              <div className="flex flex-col mb-2 items-center">
+                <Image
+                  src={EpicCarlito}
+                  alt=""
+                  className="h-auto w-[6rem] md:w-[10rem] rounded-full mb-1"
+                />
+                <p className="text-3xl font-comfortaa justify-center">
+                  EpicCarlito<sub className="text-sm">he/him</sub>
+                </p>
               </div>
+              <Socials />
             </div>
           </div>
         </div>
+
       </div>
     </>
   );
