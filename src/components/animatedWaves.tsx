@@ -15,7 +15,7 @@ function AnimatedWave(props: props) {
       <path
         d="M0 42.9533C178.148 -12.5894 287.4 -13.7474 500 42.9533C682.727 88.1203 798.763 97.7368 1000 42.9533V125.861H0V42.9533Z"
         fill={props.color}
-        className="w-[1000px] h-[126px]"
+        className="w-[980px] h-[126px]"
       />
     </svg>
   );
@@ -28,11 +28,11 @@ function AnimatedWave(props: props) {
       initial={
         props.reverse
           ? { backgroundPositionX: "0px" }
-          : { backgroundPositionX: "1000px" }
+          : { backgroundPositionX: "768px" }
       }
       animate={
         props.reverse
-          ? { backgroundPositionX: "1000px" }
+          ? { backgroundPositionX: "768px" }
           : { backgroundPositionX: "0px" }
       }
       transition={{
@@ -41,7 +41,7 @@ function AnimatedWave(props: props) {
         repeatType: "loop",
         duration: props.delay,
       }}
-      className="absolute bottom-0 overflow-hidden w-[100%] h-[46px] md:h-[96px] lg:h-[126px]"
+      className="col-start-1 row-start-1 overflow-hidden w-full h-[46px] md:h-[96px] lg:h-[126px]"
       style={{
         background: `url('data:image/svg+xml;utf8,${encodedWaveSvg}')`,
       }}
@@ -51,7 +51,7 @@ function AnimatedWave(props: props) {
 
 export default function AnimatedWaves() {
   return (
-    <div className="bottom-0">
+    <div className="grid bottom-0">
       <AnimatedWave color={"#ffd769"} delay={4} />
       <AnimatedWave color={"#b9b0a2"} delay={6} />
       <AnimatedWave color={"#7289da"} delay={4} reverse={true} />

@@ -18,10 +18,10 @@ function Social(props: props) {
   return (
     <motion.div
       whileHover={{ scale: 1.2, rotate: 2.5 }}
-      className="h-[3rem] md:h-[2.5rem] w-[35px] mx-[3px]"
+      className="mx-[3px]"
     >
-      <Link href={props.href}>
-        <Image src={props.src} alt={props.alt} className="h-[3rem] w-[3rem] md:h-[2.5rem] md:w-[2.5rem]"></Image>
+      <Link href={props.href} target="_blank">
+        <Image src={props.src} alt={props.alt} className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]"></Image>
       </Link>
     </motion.div>
   );
