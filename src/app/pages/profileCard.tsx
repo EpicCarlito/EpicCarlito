@@ -13,7 +13,7 @@ export default function ProfileCard() {
     <>
       <div className="h-dvh flex flex-col justify-between">
         <div className="p-4">
-          <div className="flex flex-col bg-zinc-700 p-5 md:p-10">
+          <div className="flex flex-col border border-black bg-zinc-700 p-5 md:p-10">
             {/* <NavBar /> */}
             <div className="flex flex-col md:justify-center md:flex-row">
               <div className="flex flex-col border border-dashed border-black rounded-md bg-[#f4a261] p-4">

@@ -11,39 +11,41 @@ interface props {
 
 function AnimatedWave(props: props) {
   const wave = (
-    <svg viewBox="0 0 1000 125" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="w-full h-auto"
+      viewBox="0 0 960 150"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
-        d="M0 42.9533C178.148 -12.5894 287.4 -13.7474 500 42.9533C682.727 88.1203 798.763 97.7368 1000 42.9533V125.861H0V42.9533Z"
+        d="M0,50.51c171.02-66.65,275.9-68.04,480,0,175.42,54.2,286.81,65.74,480,0v99.49H0V50.51Z"
         fill={props.color}
-        className="w-[980px] h-[126px]"
       />
     </svg>
   );
 
   const svgAsString = renderToStaticMarkup(wave);
   const encodedWaveSvg = encodeURIComponent(svgAsString);
+  const svgWidth = 960;
 
   return (
     <motion.div
-      initial={
-        props.reverse
-          ? { backgroundPositionX: "0px" }
-          : { backgroundPositionX: "768px" }
-      }
-      animate={
-        props.reverse
-          ? { backgroundPositionX: "768px" }
-          : { backgroundPositionX: "0px" }
-      }
+      initial={{
+        backgroundPositionX: props.reverse ? `-${svgWidth}px` : `${svgWidth}px`,
+      }}
+      animate={{
+        backgroundPositionX: props.reverse ? `${svgWidth}px` : `-${svgWidth}px`,
+      }}
       transition={{
         ease: "linear",
         repeat: Infinity,
-        repeatType: "loop",
         duration: props.delay,
       }}
-      className="col-start-1 row-start-1 overflow-hidden w-full h-[46px] md:h-[96px] lg:h-[126px]"
+      className="col-start-1 row-start-1 overflow-hidden"
       style={{
         background: `url('data:image/svg+xml;utf8,${encodedWaveSvg}')`,
+        backgroundRepeat: "repeat-x",
+        backgroundSize: `${svgWidth}px 150px`,
+        height: "150px",
       }}
     ></motion.div>
   );
@@ -52,9 +54,9 @@ function AnimatedWave(props: props) {
 export default function AnimatedWaves() {
   return (
     <div className="grid bottom-0">
-      <AnimatedWave color={"#ffd769"} delay={4} />
-      <AnimatedWave color={"#b9b0a2"} delay={6} />
-      <AnimatedWave color={"#7289da"} delay={4} reverse={true} />
+      <AnimatedWave color={"#ffd769"} delay={8} />
+      <AnimatedWave color={"#b9b0a2"} delay={10} />
+      <AnimatedWave color={"#7289da"} delay={8} reverse={true} />
     </div>
   );
 }
