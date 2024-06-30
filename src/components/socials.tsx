@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import Link from "next/link";
 import discord from "../../public/social/discord.svg";
 import instagram from "../../public/social/instagram.svg";
 import github from "../../public/social/github.svg";
@@ -20,9 +19,9 @@ function Social(props: props) {
       whileHover={{ scale: 1.2, rotate: 2.5 }}
       className="mx-[3px]"
     >
-      <Link href={props.href} target="_blank">
+      <a href={props.href} target="_blank">
         <Image src={props.src} alt={props.alt} className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]"></Image>
-      </Link>
+      </a>
     </motion.div>
   );
 }

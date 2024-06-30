@@ -1,11 +1,11 @@
-import ProfileCard from "@/app/pages/profileCard";
-import Projects from "./pages/projects";
+import ProfileCard from "@/app/home/aboutMe";
+import Projects from "./home/projects";
 
 export default function Home() {
   return (
     <>
       <ProfileCard />
-      {/* <Projects /> */}
+      <Projects />
     </>
   );
 }

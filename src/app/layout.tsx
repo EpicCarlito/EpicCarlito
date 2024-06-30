@@ -1,8 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Comfortaa } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const comfortaa = Comfortaa({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-comfortaa",
+});
 
 export const metadata: Metadata = {
   title: "EpicCarlito",
@@ -30,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={comfortaa.className}>{children}</body>
     </html>
   );
 }
