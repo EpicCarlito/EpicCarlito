@@ -24,7 +24,7 @@ export default function NowPlaying() {
     <div className="flex flex-col mt-0 ml-2 md:ml-0 md:mt-1">
       <div className="flex flex-row">
         <a
-          href="https://open.spotify.com/user/31iyd3ibo5i53uaic62rcehjpsbu"
+          href="https://open.spotify.com/user/nt6yeooaj0di051fntu1q4bw8"
           target="_blank"
           className="flex flex-row items-center"
         >
