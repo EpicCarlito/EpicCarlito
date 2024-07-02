@@ -53,7 +53,7 @@ function AnimatedWave(props: props) {
 
 export default function AnimatedWaves() {
   return (
-    <div className="grid bottom-0 border-b-2 border-black">
+    <div className="bottom-0 grid border-b-2 border-white">
       <AnimatedWave color={"#ffd769"} delay={8} />
       <AnimatedWave color={"#b9b0a2"} delay={10} />
       <AnimatedWave color={"#7289da"} delay={8} reverse={true} />

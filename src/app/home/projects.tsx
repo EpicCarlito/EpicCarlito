@@ -50,16 +50,16 @@ export default function Projects() {
 
   return (
     <>
-      <div className="h-full w-screen">
+      <div className="w-full h-full">
         <div className="p-4">
-          <div className="h-full flex flex-col border border-white bg-zinc-700 p-3 sm:p-5 md:p-10">
-            <h1 className="font-bold text-3xl">Projects</h1>
+          <div className="flex flex-col h-full p-3 border border-white bg-zinc-700 sm:p-5 md:p-10">
+            <h1 className="text-3xl font-bold">Projects</h1>
             <div className="flex items-center justify-center md:mt-1">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {projects.map((project, i) => (
                   <div
                     key={i}
-                    className="flex flex-col border-2 md:border border-black md:border-white rounded-md my-2 md:mx-2 p-3"
+                    className="flex flex-col p-3 my-2 border-2 border-black rounded-md md:border md:border-white md:mx-2"
                   >
                     <div className="flex flex-row items-center mb-2">
                       <Image
@@ -68,7 +68,7 @@ export default function Projects() {
                         height={36}
                         alt={`${project.language}'s logo`}
                       />
-                      <h2 className="font-semibold text-2xl mt-1 ml-1">
+                      <h2 className="mt-1 ml-1 text-2xl font-semibold">
                         {project.title}
                       </h2>
                     </div>
@@ -106,7 +106,7 @@ export default function Projects() {
                           height={32}
                           alt={`no can see`}
                         />
-                        <h2 className="font-semibold text-lg ml-1">Private</h2>
+                        <h2 className="ml-1 text-lg font-semibold">Private</h2>
                       </div>
                     )}
                   </div>

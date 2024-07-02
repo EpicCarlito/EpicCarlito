@@ -13,7 +13,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="flex flex-col items-center top-0 h-full w-full">
+      <div className="top-0 flex flex-col items-center w-full h-full">
         {routes.map((route, i) => (
           <motion.div key={i}>
             <Link

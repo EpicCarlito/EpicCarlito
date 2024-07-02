@@ -18,7 +18,7 @@ export default function ProfileCard() {
               <Image
                 src={EpicCarlito}
                 alt=""
-                className="h-auto w-full border border-black rounded-full shadow-md ml-2"
+                className="w-full h-auto ml-2 border border-black rounded-full shadow-md"
               />
             </motion.div>
             <motion.div
@@ -29,12 +29,12 @@ export default function ProfileCard() {
               <Image
                 src={Face}
                 alt=""
-                className="h-auto w-full border border-black rounded-full shadow-md mr-2"
+                className="w-full h-auto mr-2 border border-black rounded-full shadow-md"
               />
             </motion.div>
           </div>
-          <p className="justify-center text-lg md:text-3xl text-black font-medium font-comfortaa">
-            James C<sub className="text-black text-xs md:text-sm">he/him</sub>
+          <p className="justify-center text-lg font-medium text-black md:text-3xl font-comfortaa">
+            James C<sub className="text-xs text-black md:text-sm">he/him</sub>
           </p>
           <p className="justify-center text-sm text-black font-comforta">
             (Username: EpicCarlito)
