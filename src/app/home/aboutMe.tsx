@@ -25,7 +25,7 @@ export default function AboutMe() {
                     <ul className="ml-5 text-sm list-disc md:text-lg">
                       <li>Typescript & Java Coder</li>
                       <li>Long Distance Runner</li>
-                      <li>Listener of Funk</li>
+                      <li>Kawaii Future Bass Music Enjoyer</li>
                     </ul>
                   </div>
                   <NowPlaying />
