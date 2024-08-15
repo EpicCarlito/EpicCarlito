@@ -12,6 +12,13 @@ import NextJS from "../../../public/frameworks/nextjs.svg";
 export default function Projects() {
   const projects = [
     {
+      title: "FloorIsLava",
+      desc: "A Minecraft plugin that is a simple survival game where lava gradually rises over time.",
+      href: "https://github.com/EpicCarlito/FloorIsLava",
+      language: "java",
+      date: "July - August 2024",
+    },
+    {
       title: "maureen",
       desc: "A Next.js website to replace my best friend's old carrd. Made to practice making websites in Next.js.",
       href: "https://github.com/EpicCarlito/maureen",
@@ -19,15 +26,8 @@ export default function Projects() {
       date: "May 2024",
     },
     {
-      title: "TicTacToe",
-      desc: "A basic tictactoe game using JavaFX. Created to improve my knowledge of Java and learn the JavaFX library.",
-      href: "https://github.com/EpicCarlito/TicTacToe",
-      language: "java",
-      date: "April 2024",
-    },
-    {
       title: "discordjs-template",
-      desc: "A bare bones Discord.js v14 template with a basic command handler and event handler.",
+      desc: "A bare-bones Discord.js v14 template that lets you create a basic Discord bot with a command, event, button, and modal handler.",
       href: "https://github.com/EpicCarlito/discordjs-template",
       language: "typescript",
       date: "April 2024",
@@ -72,7 +72,7 @@ export default function Projects() {
                         {project.title}
                       </h2>
                     </div>
-                    <div className="flex-grow border-t border-black"></div>
+                    <div className="border-t border-black"></div>
                     <div className="mb-[0.125rem]">
                       <p className="mt-1">{project.desc}</p>
                       <p>
