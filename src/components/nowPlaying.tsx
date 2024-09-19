@@ -21,7 +21,7 @@ export default function NowPlaying() {
   const album = song?.album;
 
   return (
-    <div className="flex flex-col mt-0 ml-2 md:ml-0 md:mt-1">
+    <div className="flex flex-col">
       <div className="flex flex-row">
         <a
           href="https://open.spotify.com/user/nt6yeooaj0di051fntu1q4bw8"
@@ -33,12 +33,12 @@ export default function NowPlaying() {
             alt={`music platform`}
             className="h-auto w-[1.25rem]"
           />
-          <p className="ml-1 text-sm font-bold md:text-md md:mt-1">Listening to...</p>
+          <p className="ml-1 text-xs font-bold md:text-md md:mt-1">Listening to...</p>
         </a>
       </div>
       <div className="border border-black rounded p-[0.375rem] mt-1">
         {isLoading ? (
-          <div>Finding songs...</div>
+          <div className="text-xs">Finding songs...</div>
         ) : nowPlaying ? (
           <div>
             {nowPlaying.is_playing != null && song ? (
@@ -55,16 +55,16 @@ export default function NowPlaying() {
                   className="h-[1.75rem] md:h-[3rem] w-auto rounded"
                 />
                 <div className="flex flex-col ml-2 text-sm">
-                  <p className="font-bold md:text-lg">{song?.name}</p>
-                  <p className="md:text-md">{`by ${song?.artists[0].name}`}</p>
+                  <p className="font-bold text-xs md:text-lg">{song?.name}</p>
+                  <p className="text-xs md:text-md">{`by ${song?.artists[0].name}`}</p>
                 </div>
               </a>
             ) : (
-              <div>Nothing. :(</div>
+              <div className="text-xs">Nothing. :(</div>
             )}
           </div>
         ) : (
-          <div>Nothing. :(</div>
+          <div className="text-xs">Nothing. :(</div>
         )}
       </div>
     </div>

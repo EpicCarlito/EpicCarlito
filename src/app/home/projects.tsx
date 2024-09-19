@@ -52,14 +52,14 @@ export default function Projects() {
     <>
       <div className="w-full h-full">
         <div className="p-4">
-          <div className="flex flex-col h-full p-3 border border-white bg-zinc-700 sm:p-5 md:p-10">
-            <h1 className="text-3xl font-bold">Projects</h1>
+          <div className="flex flex-col h-full p-4 border border-white bg-zinc-700 sm:p-5 md:p-10">
+            <h1 className="text-3xl text-center font-bold">Projects</h1>
             <div className="flex items-center justify-center md:mt-1">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {projects.map((project, i) => (
                   <div
                     key={i}
-                    className="flex flex-col p-3 my-2 border-2 border-black rounded-md md:border md:border-white md:mx-2"
+                    className="flex flex-col p-4 md:p-3 mt-4 md:mt-2 border-2 border-black md:border-white rounded-md md:border md:mx-2"
                   >
                     <div className="flex flex-row items-center mb-2">
                       <Image
@@ -68,11 +68,11 @@ export default function Projects() {
                         height={36}
                         alt={`${project.language}'s logo`}
                       />
-                      <h2 className="mt-1 ml-1 text-2xl font-semibold">
+                      <h2 className="ml-1 mt-1 text-2xl font-semibold text-center my-auto">
                         {project.title}
                       </h2>
                     </div>
-                    <div className="border-t border-black"></div>
+                    <div className="h-px my-1 bg-white border-0"></div>
                     <div className="mb-[0.125rem]">
                       <p className="mt-1">{project.desc}</p>
                       <p>
