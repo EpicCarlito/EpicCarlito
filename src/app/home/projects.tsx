@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import Java from "../../../public/languages/java.svg";
-import TypeScript from "../../../public/languages/typescript.svg";
-import JavaScript from "../../../public/languages/javascript.svg";
-import GitHub from "../../../public/social/github.svg";
+import Image from "next/image";
 import Locked from "../../../public/emojis/locked.svg";
 import NextJS from "../../../public/frameworks/nextjs.svg";
+import Java from "../../../public/languages/java.svg";
+import JavaScript from "../../../public/languages/javascript.svg";
+import TypeScript from "../../../public/languages/typescript.svg";
+import GitHub from "../../../public/social/github.svg";
 
 export default function Projects() {
   const projects = [
@@ -50,29 +50,31 @@ export default function Projects() {
 
   return (
     <>
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <div className="p-4">
-          <div className="flex flex-col h-full p-4 border border-white bg-zinc-700 sm:p-5 md:p-10">
-            <h1 className="text-3xl text-center font-bold">Projects</h1>
+          <div className="flex h-full flex-col border border-white bg-zinc-700 px-4 pb-4 lg:px-10 lg:pb-10">
+            <h1 className="pt-4 text-center text-3xl font-bold lg:pt-10">
+              Projects
+            </h1>
             <div className="flex items-center justify-center md:mt-1">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {projects.map((project, i) => (
                   <div
                     key={i}
-                    className="flex flex-col p-4 md:p-3 mt-4 md:mt-2 border-2 border-black md:border-white rounded-md md:border md:mx-2"
+                    className="mt-4 flex flex-col rounded-md border-2 border-black p-4 md:mx-2 md:mt-2 md:border md:border-white md:p-3"
                   >
-                    <div className="flex flex-row items-center mb-2">
+                    <div className="mb-2 flex flex-row items-center">
                       <Image
                         src={type[project.language]}
                         width={36}
                         height={36}
                         alt={`${project.language}'s logo`}
                       />
-                      <h2 className="ml-1 mt-1 text-2xl font-semibold text-center my-auto">
+                      <h2 className="my-auto ml-1 mt-1 text-center text-2xl font-semibold">
                         {project.title}
                       </h2>
                     </div>
-                    <div className="h-px my-1 bg-white border-0"></div>
+                    <div className="my-1 h-px border-0 bg-white"></div>
                     <div className="mb-[0.125rem]">
                       <p className="mt-1">{project.desc}</p>
                       <p>
@@ -84,7 +86,7 @@ export default function Projects() {
                       <div className="flex flex-row items-center">
                         <motion.a
                           whileHover={{ y: -2 }}
-                          className="cursor-pointer flex ml-[-0.25rem]"
+                          className="ml-[-0.25rem] flex cursor-pointer"
                           href={project.href}
                         >
                           <Image
@@ -93,7 +95,7 @@ export default function Projects() {
                             height={32}
                             alt={`${project.language}'s logo`}
                           />
-                          <h2 className="font-semibold text-lg mt-[0.125rem] ml-1">
+                          <h2 className="ml-1 mt-[0.125rem] text-lg font-semibold">
                             Source Code
                           </h2>
                         </motion.a>

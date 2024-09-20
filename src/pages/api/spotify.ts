@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { AccessToken } from "@spotify/web-api-ts-sdk";
+import { NextApiRequest, NextApiResponse } from "next";
 
 // async function codeForRefresh() {
 //   const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;

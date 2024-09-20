@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import discord from "../../public/social/discord.svg";
-import instagram from "../../public/social/instagram.svg";
 import github from "../../public/social/github.svg";
+import instagram from "../../public/social/instagram.svg";
 import starva from "../../public/social/starva.svg";
-import { motion } from "framer-motion";
 
 interface props {
   href: string;
@@ -15,12 +15,13 @@ interface props {
 
 function Social(props: props) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.2, rotate: 2.5 }}
-      className="mx-[3px]"
-    >
+    <motion.div whileHover={{ scale: 1.2, rotate: 2.5 }} className="mx-[3px]">
       <a href={props.href} target="_blank">
-        <Image src={props.src} alt={props.alt} className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]"></Image>
+        <Image
+          src={props.src}
+          alt={props.alt}
+          className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]"
+        ></Image>
       </a>
     </motion.div>
   );
