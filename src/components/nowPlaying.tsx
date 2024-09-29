@@ -21,7 +21,7 @@ export default function NowPlaying() {
   const album = song?.album;
 
   return (
-    <div className="flex flex-col ml-auto md:ml-0">
+    <div className="ml-auto flex flex-col md:ml-0">
       <div className="flex flex-row">
         <a
           href="https://open.spotify.com/user/nt6yeooaj0di051fntu1q4bw8"
@@ -33,12 +33,12 @@ export default function NowPlaying() {
             alt={`music platform`}
             className="h-auto w-[1.25rem]"
           />
-          <p className="my-auto ml-1 font-bold text-xs md:text-sm lg:text-base">
+          <p className="my-auto ml-1 text-xs font-bold md:text-sm lg:text-base">
             Listening to...
           </p>
         </a>
       </div>
-      <div className="border border-black rounded p-[0.375rem] mt-1">
+      <div className="mt-1 rounded border border-black p-[0.375rem]">
         {isLoading ? (
           <div className="text-xs md:text-sm lg:text-base">
             Finding songs...
@@ -56,13 +56,13 @@ export default function NowPlaying() {
                   width={50}
                   height={50}
                   alt={`${album.name} album art`}
-                  className="h-[1.75rem] md:h-[3rem] w-auto rounded"
+                  className="h-[1.75rem] w-auto rounded md:h-[3rem]"
                 />
-                <div className="flex flex-col ml-2">
-                  <p className="font-bold text-xs md:text-base lg:text-lg">
+                <div className="ml-2 flex flex-col">
+                  <p className="text-xs font-bold md:text-base lg:text-lg">
                     {song?.name}
                   </p>
-                  <p className="text-xs md:text-md lg:text-base">{`by ${song?.artists[0].name}`}</p>
+                  <p className="md:text-md text-xs lg:text-base">{`by ${song?.artists[0].name}`}</p>
                 </div>
               </a>
             ) : (

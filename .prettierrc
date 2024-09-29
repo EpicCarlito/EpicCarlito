@@ -1,3 +1,18 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "trailingComma": "es5",
+  "semi": true,
+  "tabWidth": 2,
+  "importOrder": [
+    "^react$",
+    "^react/(.*)$",
+    "^@?\\w",
+    "^components/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ]
 }
