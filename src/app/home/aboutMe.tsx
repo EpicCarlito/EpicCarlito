@@ -7,7 +7,7 @@ import ProfileCard from "./profileCard";
 export default function AboutMe() {
   return (
     <>
-      <div className="flex h-lvh flex-col justify-between">
+      <div className="flex h-svh flex-col justify-between">
         <div className="p-4">
           <div className="flex flex-col border border-white bg-zinc-700 p-5 md:p-10">
             <div className="flex flex-col md:flex-row md:justify-center">
