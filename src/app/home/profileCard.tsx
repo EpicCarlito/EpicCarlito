@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import EpicCarlito from "../../../public/epiccarlito.svg";
-import Face from "../../../public/face.jpg";
+import Face from "../../../public/face.png";
 import Socials from "../../components/socials";
 
 export default function ProfileCard() {
