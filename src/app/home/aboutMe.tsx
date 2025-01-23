@@ -12,7 +12,7 @@ export default function AboutMe() {
           <div className="flex flex-col border border-white bg-zinc-700 p-5 md:p-10">
             <div className="flex flex-col md:flex-row md:justify-center">
               <ProfileCard />
-              <div className="mt-3 flex flex-col px-2 text-white md:ml-4">
+              <div className="text-white mt-3 flex flex-col px-2 md:ml-4">
                 <h1 className="justify-center text-2xl md:text-3xl lg:text-4xl">
                   Hola! I am James! 👋
                 </h1>

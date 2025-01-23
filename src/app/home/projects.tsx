@@ -52,7 +52,7 @@ export default function Projects() {
     <>
       <div className="h-full w-full">
         <div className="p-4">
-          <div className="flex h-full flex-col border border-white bg-zinc-700 px-4 pb-4 lg:px-10 lg:pb-10">
+          <div className="flex h-full flex-col border text-white border-white bg-zinc-700 px-4 pb-4 lg:px-10 lg:pb-10">
             <h1 className="mt-4 text-center text-3xl font-bold">Projects</h1>
             <div className="flex items-center justify-center md:mt-1">
               <div className="grid grid-cols-1 md:grid-cols-2">
