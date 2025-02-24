@@ -1,27 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import discord from "../../public/social/discord.svg";
-import github from "../../public/social/github.svg";
-import instagram from "../../public/social/instagram.svg";
-import starva from "../../public/social/starva.svg";
+import Discord from "../../public/social/discord.svg";
+import Github from "../../public/social/github.svg";
+import Instagram from "../../public/social/instagram.svg";
+import Starva from "../../public/social/starva.svg";
 
 interface props {
   href: string;
-  src: any;
-  alt: string;
+  SVG: any;
 }
 
 function Social(props: props) {
   return (
     <motion.div whileHover={{ scale: 1.2, rotate: 2.5 }} className="mx-[3px]">
       <a href={props.href} target="_blank">
-        <Image
-          src={props.src}
-          alt={props.alt}
-          className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]"
-        ></Image>
+        <props.SVG className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]" />
       </a>
     </motion.div>
   );
@@ -32,23 +26,19 @@ export default function Socials() {
     <div className="flex flex-row justify-center">
       <Social
         href={"https://discord.com/users/546133861751586816"}
-        src={discord}
-        alt={"discordIcon"}
+        SVG={Discord}
       />
       <Social
         href={"https://www.instagram.com/epiccarlito"}
-        src={instagram}
-        alt={"discordIcon"}
+        SVG={Instagram}
       />
       <Social
         href={"https://github.com/EpicCarlito"}
-        src={github}
-        alt={"discordIcon"}
+        SVG={Github}
       />
       <Social
         href={"https://strava.com/athletes/126999343"}
-        src={starva}
-        alt={"discordIcon"}
+        SVG={Starva}
       />
     </div>
   );

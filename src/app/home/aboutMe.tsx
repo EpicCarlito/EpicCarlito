@@ -8,16 +8,16 @@ export default function AboutMe() {
   return (
     <>
       <div className="flex h-svh flex-col justify-between">
-        <div className="p-4">
-          <div className="flex flex-col border border-white bg-zinc-700 p-5 md:p-10">
+        <div className="p-2 md:p-4">
+          <div className="flex flex-col border border-white bg-gray-800 p-3 md:p-10">
             <div className="flex flex-col md:flex-row md:justify-center">
               <ProfileCard />
-              <div className="text-white mt-3 flex flex-col px-2 md:ml-4">
+              <div className="text-stone-300 mt-3 flex flex-col px-2 md:ml-4">
                 <h1 className="justify-center text-2xl md:text-3xl lg:text-4xl">
                   Hola! I am James! 👋
                 </h1>
                 <div className="my-1 h-px border-0 bg-gray-900 md:h-[1.5px]"></div>
-                <div className="mt-1 flex flex-row md:flex-col">
+                <div className="mt-1 flex flex-row justify-between md:flex-col">
                   <div className="flex flex-col">
                     <p className="text-xs sm:text-sm md:text-base lg:text-2xl">
                       Bronx Science Sophomore
