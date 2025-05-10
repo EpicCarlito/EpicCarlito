@@ -1,12 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Comfortaa } from "next/font/google";
-import "./globals.css";
+import './style.linaria.global';
 
-const comfortaa = Comfortaa({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-comfortaa",
-});
+const comfortaa = Comfortaa({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "EpicCarlito",

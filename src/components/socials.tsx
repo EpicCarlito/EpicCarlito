@@ -1,10 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react"
 import Discord from "../../public/social/discord.svg";
 import Github from "../../public/social/github.svg";
 import Instagram from "../../public/social/instagram.svg";
 import Starva from "../../public/social/starva.svg";
+
+import { styled } from '@linaria/react';
+import { css } from '@linaria/core';
+
+const SocialSVG = css`
+  height: 2rem;
+  width: 2rem;
+
+  @media (min-width: 48rem) {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
+
+const margin = css`
+  margin-inline: 3px;
+`
 
 interface props {
   href: string;
@@ -13,17 +36,15 @@ interface props {
 
 function Social(props: props) {
   return (
-    <motion.div whileHover={{ scale: 1.2, rotate: 2.5 }} className="mx-[3px]">
-      <a href={props.href} target="_blank">
-        <props.SVG className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]" />
-      </a>
-    </motion.div>
+    <motion.a whileHover={{ scale: 1.2, rotate: 2.5 }} href={props.href} target="_blank" className={`${SocialSVG} ${margin}`}>
+      <props.SVG className={SocialSVG} />
+    </motion.a>
   );
 }
 
 export default function Socials() {
   return (
-    <div className="flex flex-row justify-center">
+    <Container>
       <Social
         href={"https://discord.com/users/546133861751586816"}
         SVG={Discord}
@@ -40,6 +61,6 @@ export default function Socials() {
         href={"https://strava.com/athletes/126999343"}
         SVG={Starva}
       />
-    </div>
+    </Container>
   );
 }

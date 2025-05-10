@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { css } from "@linaria/core";
+import { styled } from "@linaria/react";
+import { motion } from "motion/react"
 import { renderToStaticMarkup } from "react-dom/server";
 
 interface props {
@@ -9,10 +11,28 @@ interface props {
   reverse?: boolean;
 }
 
+const Container = styled.div`
+  display: absolute;
+  display: grid;
+  border-bottom: 2px solid white;
+  bottom: 0px;
+`
+
+const forceGrid = css`
+  grid-column-start: 1;
+  grid-row-start: 1;
+  overflow: hidden;
+`
+
+const waveSVG = css`
+  height: "auto";
+  width: 100%;
+`
+
 function AnimatedWave(props: props) {
   const wave = (
     <svg
-      className="h-auto w-full"
+      className={waveSVG}
       viewBox="0 0 960 150"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -40,12 +60,12 @@ function AnimatedWave(props: props) {
         repeat: Infinity,
         duration: props.delay,
       }}
-      className="col-start-1 row-start-1 overflow-hidden"
+      className={forceGrid}
       style={{
         background: `url('data:image/svg+xml;utf8,${encodedWaveSvg}')`,
         backgroundRepeat: "repeat-x",
         backgroundSize: `${svgWidth}px 150px`,
-        height: "150px",
+        height: "150px"
       }}
     ></motion.div>
   );
@@ -53,10 +73,10 @@ function AnimatedWave(props: props) {
 
 export default function AnimatedWaves() {
   return (
-    <div className="bottom-0 grid border-b-2 border-white">
+    <Container>
       <AnimatedWave color={"#ffd769"} delay={8} />
       <AnimatedWave color={"#b9b0a2"} delay={10} />
       <AnimatedWave color={"#7289da"} delay={8} reverse={true} />
-    </div>
+    </Container>
   );
 }

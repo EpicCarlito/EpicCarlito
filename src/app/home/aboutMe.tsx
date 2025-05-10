@@ -1,41 +1,115 @@
-"use client";
-
+import { styled } from '@linaria/react';
 import AnimatedWaves from "@/components/animatedWaves";
-import NowPlaying from "../../components/nowPlaying";
 import ProfileCard from "./profileCard";
+
+const Container = styled.div`
+  display: flex;
+  height: 100svh;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white; // white
+  margin: 0.5rem;
+  padding: 0.75rem;
+  background-color: #1f2937; /* bg-gray-800 */
+  
+  @media (min-width: 48rem) {
+    flex-direction: row;
+    justify-content: center;
+    padding: 2.5rem;
+    margin: 1rem;
+  }
+`
+
+const AboutSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.75rem;
+  padding-inline: 0.5rem;
+
+  @media (min-width: 48rem) {
+    margin-left: 1rem;
+  }
+`
+
+const Divider = styled.div`
+  height: 1px;
+  border-width: 0px;
+  background-color: #111827;
+  margin-bottom: 0.25rem;
+
+  @media (min-width: 48rem) {
+    height: 1.5px;
+  }
+`
+
+const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (min-width: 48rem) {
+    flex-direction: column;
+  }
+`
+
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const School = styled.p`
+  font-size: var(--text-xs);
+
+  @media (min-width: 40rem) {
+    font-size: var(--text-lg);
+  }
+
+  @media (min-width: 48rem) {
+    font-size: var(--text-2xl);
+  }
+`
+
+const InfoList = styled.ul`
+  margin-left: 1.25rem;
+  font-size: var(--text-xs);
+
+  @media (min-width: 40rem) {
+    font-size: var(--text-sm);
+  }
+
+  @media (min-width: 48rem) {
+    font-size: var(--text-lg);
+  }
+`
 
 export default function AboutMe() {
   return (
     <>
-      <div className="flex h-svh flex-col justify-between">
-        <div className="p-2 md:p-4">
-          <div className="flex flex-col border border-white bg-gray-800 p-3 md:p-10">
-            <div className="flex flex-col md:flex-row md:justify-center">
-              <ProfileCard />
-              <div className="text-stone-300 mt-3 flex flex-col px-2 md:ml-4">
-                <h1 className="justify-center text-2xl md:text-3xl lg:text-4xl">
-                  Hola! I am James! 👋
-                </h1>
-                <div className="my-1 h-px border-0 bg-gray-900 md:h-[1.5px]"></div>
-                <div className="mt-1 flex flex-row justify-between md:flex-col">
-                  <div className="flex flex-col">
-                    <p className="text-xs sm:text-sm md:text-base lg:text-2xl">
-                      Bronx Science Sophomore
-                    </p>
-                    <ul className="ml-5 list-disc text-xs md:text-base lg:text-lg">
-                      <li>Typescript & Java Coder</li>
-                      <li>Long Distance Runner</li>
-                      <li>Kawaii Future Bass Music Enjoyer</li>
-                    </ul>
-                  </div>
-                  <NowPlaying />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <Container>
+        <InfoBox>
+          <ProfileCard />
+          <AboutSection>
+            <h1>Hola! I am James! 👋</h1>
+            <Divider />
+            <ItemContainer>
+              <InfoContainer>
+                <School>Bronx Science Sophomore</School>
+                <InfoList>
+                  <li>Typescript & Java Coder</li>
+                  <li>Long Distance Runner</li>
+                  <li>Kawaii Future Bass Music Enjoyer</li>
+                </InfoList>
+              </InfoContainer>
+            </ItemContainer>
+          </AboutSection>
+        </InfoBox>
         <AnimatedWaves />
-      </div>
+      </Container>
     </>
   );
 }

@@ -1,12 +1,112 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react"
+import { styled } from '@linaria/react';
+import { css } from '@linaria/core';
 import Locked from "../../../public/emojis/locked.svg";
 import NextJS from "../../../public/frameworks/nextjs.svg";
 import Java from "../../../public/languages/java.svg";
 import JavaScript from "../../../public/languages/javascript.svg";
 import TypeScript from "../../../public/languages/typescript.svg";
 import { IoLogoGithub } from "react-icons/io";
+
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+`
+
+const InfoBox = styled.div`
+  padding: 1rem;
+`
+
+const InnerBox = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #d6d3d1;
+  background-color: #1f2937;
+  border-color: white;
+  border-width: 1px;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  @media (min-width: 1024px) {
+    padding-inline: 2.5rem;
+    padding-block: 2.5rem;
+  }
+`
+
+const Heading = styled.h1`
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+`
+
+const CenteredContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    margin-top: 0.25rem;
+  }
+`
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+`
+const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.375rem;
+  border-width: 2px;
+  border-color: black;
+  margin-top: 1rem;
+  padding-inline: 0.75rem;
+  padding-block: 0.5rem;
+
+  @media (min-width: 768px) {
+    margin-inline: 0.5rem;
+    margin-block: 0.5rem;
+    border-width: 1px;
+    border-color: white;
+    padding-inline: 1rem;
+    padding-block: 0.75rem;
+  }
+`
+
+const CenteredRow = css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+const ProjectTitle = styled.h2`
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-block: auto;
+  margin-top: 0.25rem;
+`
+
+const Divider = styled.div`
+  height: 1px;
+  border-width: 0px;
+  margin-block: 0.25rem;
+  background-color: white;
+`
+
+const StatusText = styled.h2`
+  margin-left: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+`
 
 export default function Projects() {
   const projects = [
@@ -49,61 +149,56 @@ export default function Projects() {
 
   return (
     <>
-      <div className="h-full w-full">
-        <div className="p-4">
-          <div className="flex h-full flex-col border text-stone-300 border-white bg-gray-800 px-4 pb-4 lg:px-10 lg:pb-10">
-            <h1 className="mt-4 text-center text-3xl font-bold">Projects</h1>
-            <div className="flex items-center justify-center md:mt-1">
-              <div className="grid grid-cols-1 md:grid-cols-2">
+      <Container>
+        <InfoBox>
+          <InnerBox>
+            <Heading>Projects</Heading>
+            <CenteredContainer>
+              <GridContainer>
                 {projects.map((project) => {
                   const Icon = type[project.language];
 
                   return (
-                    <div
+                    <ItemsContainer
                       key={project.title}
-                      className="mt-4 flex flex-col rounded-md border-2 border-black md:mx-2 md:mt-2 md:border md:border-white px-3 py-2 md:px-4 md:py-3"
                     >
-                      <div className="mb-1 flex flex-row items-center">
-                        <Icon className="h-[2rem] w-[2rem]" />
-                        <h2 className="my-auto ml-1 mt-1 text-center text-2xl font-semibold">
-                          {project.title}
-                        </h2>
+                      <div className={`margin-bottom: 1px; ${CenteredRow}`}>
+                        <Icon className={`height: 2rem; width: 2rem;`} />
+                        <ProjectTitle>{project.title}</ProjectTitle>
                       </div>
-                      <div className="my-1 h-px border-0 bg-white"></div>
-                      <div className="mb-[0.125rem]">
-                        <p className="mt-1">{project.desc}</p>
+                      <Divider />
+                      <div className={`margin-bottom: 0.125rem;`}>
+                        <p className={`margin-top: 0.25rem;`}>{project.desc}</p>
                         <p>
                           From: <b>{project.date}</b>
                         </p>
                       </div>
 
                       {project.href ? (
-                        <div className="flex flex-row items-center">
+                        <div className={CenteredRow}>
                           <motion.a
                             href={project.href}
-                            className="flex items-center cursor-pointer"
+                            className={`display: flex; align-items: center; cursor: pointer;`}
                             whileHover={{ y: -2 }}
                           >
-                            <IoLogoGithub className="h-[2rem] w-[2rem] md:h-[2.5rem] md:w-[2.5rem]" />
-                            <h2 className="ml-1.5 mt-[0.125rem] text-lg font-semibold">
-                              Source Code
-                            </h2>
+                            <IoLogoGithub className={`height: 2rem; width: 2rem;`} />
+                            <StatusText>Source Code</StatusText>
                           </motion.a>
                         </div>
                       ) : (
-                        <div className="flex flex-row items-center">
-                          <Locked className="h-[2rem] w-[2rem]" />
-                          <h2 className="ml-1 text-lg font-semibold">Private</h2>
+                        <div className={CenteredRow}>
+                          <Locked className={`height: 2rem; width: 2rem;`} />
+                          <StatusText>Private</StatusText>
                         </div>
                       )}
-                    </div>
+                    </ItemsContainer>
                   )
                 })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </GridContainer>
+            </CenteredContainer>
+          </InnerBox>
+        </InfoBox>
+      </Container>
     </>
   );
 }
