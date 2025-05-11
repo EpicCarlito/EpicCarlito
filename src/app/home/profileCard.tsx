@@ -37,6 +37,7 @@ const ProfilePicture = css`
   width: 6rem;
   border: 1px solid black;
   border-radius: 9999px;
+  filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 0.50));
   z-index: 2;
 
   @media (min-width: 48rem) {
@@ -92,20 +93,29 @@ const SocialsText = styled.span`
   padding-inline: 0.75rem;
 `
 
-const OnlineProfile = motion(EpicCarlito);
-const RealProfile = motion(FaceComp);
+const OnlineProfile = motion.create(EpicCarlito);
+const RealProfile = motion.create(Image);
 
 export default function ProfileCard() {
   return (
     <>
       <Container>
         <TopPart>
-          <ProfilePictures>
-            <OnlineProfile whileHover={{ scale: 1.1 }} whileTap={{ scale: 1.1 }} className={ProfilePicture} />
-            <RealProfile whileHover={{ scale: 1.1 }} whileTap={{ scale: 1.1 }} />
+          <ProfilePictures> 
+            <OnlineProfile
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 1.1 }}
+              className={ProfilePicture} />
+            <RealProfile
+              whileHover={{ scale: 1.1 }} 
+              whileTap={{ scale: 1.1 }}
+              src={Face}
+              alt="IRL FACE WHAT?!?!?"
+              className={ProfilePicture}
+              style={{ marginLeft: "-0.5rem" }} />
           </ProfilePictures>
           <Name>
-            James C<Pronouns>he/him</Pronouns>
+            James<Pronouns>he/him</Pronouns>
           </Name>
           <OnlineName>(Username: EpicCarlito)</OnlineName>
         </TopPart>
@@ -118,15 +128,4 @@ export default function ProfileCard() {
       </Container>
     </>
   );
-}
-
-function FaceComp() {
-  return (
-    <Image
-      src={Face}
-      alt="IRL FACE WHAT?!?!?"
-      className={ProfilePicture}
-      style={{ marginLeft: "-0.5rem" }}
-    />
-  )
 }

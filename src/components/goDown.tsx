@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { motion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 import { FaArrowDown } from "react-icons/fa";
 import { css } from '@linaria/core';
 

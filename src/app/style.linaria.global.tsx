@@ -11,6 +11,7 @@ export const globals = css`
       --text-2xl: 1.5rem;
       --text-3xl: 1.875rem;
       --text-4xl: 2.25rem;
+      --white-but-not: #d6d3d1; /* text-stone-300 */
     }
 
     html {
@@ -20,7 +21,7 @@ export const globals = css`
     body {
       margin: 0;
       background-color: #111827;
-      color: #d6d3d1; /* text-stone-300 */
+      color: var(--white-but-not); 
       font-family: var(--font-comfortaa), sans-serif;
       font-weight: 600;
       font-style: normal;
@@ -37,19 +38,6 @@ export const globals = css`
 
     h1, p {
       margin-block: 0.25rem;
-    }
-
-    h1 {
-      justify-content: center;
-      font-size: var(--text-xl);
-
-      @media (min-width: 40rem) {
-        font-size: var(--text-2xl);
-      }
-
-      @media (min-width: 48rem) {
-        font-size: var(--text-4xl);
-      }
     }
     
     *,
