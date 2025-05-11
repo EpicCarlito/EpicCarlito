@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import withLinaria, { LinariaConfig } from 'next-with-linaria';
+
+const config: LinariaConfig = {
   images: {
     remotePatterns: [
       {
@@ -19,4 +20,5 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withLinaria(config);
+
