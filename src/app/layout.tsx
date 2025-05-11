@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Comfortaa } from "next/font/google";
 import './style.linaria.global';
 
-const comfortaa = Comfortaa({ subsets: ['latin'] })
+const comfortaa = Comfortaa({
+  subsets: ["latin"],
+  display: "swap"
+})
 
 export const metadata: Metadata = {
   title: "EpicCarlito",

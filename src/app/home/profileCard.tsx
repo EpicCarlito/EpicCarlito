@@ -7,7 +7,6 @@ import Image from "next/image";
 import EpicCarlito from "../../../public/epiccarlito.svg";
 import Face from "../../../public/face.png";
 import Socials from "../../components/socials";
-// const GoDown = dynamic(() => import("@/components/goDown"), { ssr: false });
 
 const Container = styled.div`
   display: flex;
@@ -123,7 +122,7 @@ export default function ProfileCard() {
           <Divider />
           <SocialsText>Socials</SocialsText>
           <Divider />
-        </SocialsDivider>
+        </SocialsDivider>        
         <Socials />
       </Container>
     </>

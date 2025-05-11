@@ -2,6 +2,7 @@ import { styled } from '@linaria/react';
 import AnimatedWaves from "@/components/animatedWaves";
 import ProfileCard from "./profileCard";
 import NowPlaying from '@/components/nowPlaying';
+import GoDown from '@/components/goDown';
 
 const Container = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const Container = styled.div`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid white; // white
+  border: 1px solid var(--white-but-not);
   margin: 0.5rem;
   padding: 0.75rem;
   background-color: #1f2937; /* bg-gray-800 */
@@ -123,6 +124,7 @@ export default function Page() {
             </ItemContainer>
           </AboutSection>
         </InfoBox>
+        <GoDown />
         <AnimatedWaves />
       </Container>
     </>

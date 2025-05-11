@@ -23,7 +23,6 @@ export const globals = css`
       background-color: #111827;
       color: var(--white-but-not); 
       font-family: var(--font-comfortaa), sans-serif;
-      font-weight: 600;
       font-style: normal;
     }
 

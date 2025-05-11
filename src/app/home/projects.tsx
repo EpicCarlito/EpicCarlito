@@ -49,7 +49,7 @@ const GridContainer = styled.div`
   margin-top: 0.5rem;
   gap: 1rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 48rem) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `
@@ -57,11 +57,10 @@ const GridContainer = styled.div`
 const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   border: 2px solid var(--white-but-not);
   border-radius: 0.375rem;
-  padding-block: 0.5rem;
-  padding-inline: 0.75rem;
+  padding: 0.75rem;
 `
 
 const CenteredRow = css`
@@ -70,6 +69,7 @@ const CenteredRow = css`
   text-decoration: none;
   color: inherit;
   gap: 0.25rem;
+  align-self: flex-start;
 `
 
 const ProjectTitle = styled.h2`
@@ -92,25 +92,25 @@ const StatusText = styled.h2`
   font-weight: 600;
 `
 
-const desc = styled.p`
-  margin-block: 0;
+const Desc = styled.p`
+  margin-block: 0.125rem;
 `
 
 export default function Projects() {
   const projects = [
+    {
+      title: "IntoTheDeep",
+      desc: "Contributed to Bronx Science's FTC team code. Helped provide the autonomous and player-controllable modes.",
+      href: "https://github.com/BxSciFTC/IntoTheDeep-24",
+      language: "java",
+      date: "September 2024 - March 2025",
+    },
     {
       title: "FloorIsLava",
       desc: "A Minecraft plugin that is a simple survival game where lava gradually rises over time.",
       href: "https://github.com/EpicCarlito/FloorIsLava",
       language: "java",
       date: "July - August 2024",
-    },
-    {
-      title: "maureen",
-      desc: "A Next.js website to replace my best friend's old carrd. Made to practice making websites in Next.js.",
-      href: "https://github.com/EpicCarlito/maureen",
-      language: "nextjs",
-      date: "May 2024",
     },
     {
       title: "discordjs-template",
@@ -153,14 +153,14 @@ export default function Projects() {
                     <ProjectTitle>{project.title}</ProjectTitle>
                   </div>
                   <Divider />
-                  <desc>{project.desc}</desc>
+                  <Desc>{project.desc}</Desc>
                   <p>From: <b>{project.date}</b></p>
                   
                   {project.href ? (
                     <motion.a
                       href={project.href}
                       className={CenteredRow}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "pointer", flexShrink: 0, width: "auto" }}
                       whileHover={{ y: -2 }}>
                       <GitHub className={Image} />
                       <StatusText>Source Code</StatusText>

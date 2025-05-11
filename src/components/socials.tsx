@@ -12,6 +12,7 @@ import { css } from '@linaria/core';
 const SocialSVG = css`
   height: 2rem;
   width: 2rem;
+  filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 0.05));
 
   @media (min-width: 48rem) {
     height: 2.5rem;

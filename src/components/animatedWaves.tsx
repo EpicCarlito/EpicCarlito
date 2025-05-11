@@ -14,7 +14,7 @@ interface props {
 const Container = styled.div`
   display: absolute;
   display: grid;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--white-but-not);
   bottom: 0px;
 `
 
