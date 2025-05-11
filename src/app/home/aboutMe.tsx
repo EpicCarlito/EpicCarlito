@@ -5,7 +5,7 @@ import NowPlaying from '@/components/nowPlaying';
 
 const Container = styled.div`
   display: flex;
-  height: 100svh;
+  height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 `

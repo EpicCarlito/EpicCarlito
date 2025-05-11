@@ -3,109 +3,97 @@
 import { motion } from "motion/react"
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
+import GitHub from "../../../public/social/github.svg"
 import Locked from "../../../public/emojis/locked.svg";
 import NextJS from "../../../public/frameworks/nextjs.svg";
 import Java from "../../../public/languages/java.svg";
 import JavaScript from "../../../public/languages/javascript.svg";
 import TypeScript from "../../../public/languages/typescript.svg";
-import { IoLogoGithub } from "react-icons/io";
 
 const Container = styled.div`
   height: 100%;
   width: 100%;
-`
-
-const InfoBox = styled.div`
   padding: 1rem;
 `
 
-const InnerBox = styled.div`
-  height: 100%;
+const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  color: #d6d3d1;
+  align-items: center;
+  justify-content: center;
   background-color: #1f2937;
-  border-color: white;
-  border-width: 1px;
-  padding-inline: 1rem;
-  padding-block: 1rem;
-
-  @media (min-width: 1024px) {
-    padding-inline: 2.5rem;
-    padding-block: 2.5rem;
+  border: 1px solid var(--white-but-not);
+  padding-inline: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  
+  @media (min-width: 48rem) {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
   }
 `
 
 const Heading = styled.h1`
-  margin-top: 1rem;
   text-align: center;
-  font-size: 1.875rem;
-  font-weight: 700;
+  font-size: var(--text-3xl);
 `
 
-const CenteredContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 768px) {
-    margin-top: 0.25rem;
-  }
+const Image = css`
+  height: 2rem;
+  width: 2rem;
 `
 
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
+  margin-top: 0.5rem;
+  gap: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `
-const ItemsContainer = styled.div`
+
+const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  border: 2px solid var(--white-but-not);
   border-radius: 0.375rem;
-  border-width: 2px;
-  border-color: black;
-  margin-top: 1rem;
-  padding-inline: 0.75rem;
   padding-block: 0.5rem;
-
-  @media (min-width: 768px) {
-    margin-inline: 0.5rem;
-    margin-block: 0.5rem;
-    border-width: 1px;
-    border-color: white;
-    padding-inline: 1rem;
-    padding-block: 0.75rem;
-  }
+  padding-inline: 0.75rem;
 `
 
 const CenteredRow = css`
   display: flex;
-  flex-direction: row;
   align-items: center;
+  text-decoration: none;
+  color: inherit;
+  gap: 0.25rem;
 `
 
 const ProjectTitle = styled.h2`
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
-  margin-block: auto;
-  margin-top: 0.25rem;
+  margin-block: 0;
 `
 
 const Divider = styled.div`
   height: 1px;
   border-width: 0px;
-  margin-block: 0.25rem;
+  margin-block: 0.375rem;
   background-color: white;
 `
 
 const StatusText = styled.h2`
-  margin-left: 0.25rem;
+  margin-block: 0;
   font-size: 1.125rem;
   font-weight: 600;
+`
+
+const desc = styled.p`
+  margin-block: 0;
 `
 
 export default function Projects() {
@@ -151,52 +139,42 @@ export default function Projects() {
     <>
       <Container>
         <InfoBox>
-          <InnerBox>
-            <Heading>Projects</Heading>
-            <CenteredContainer>
-              <GridContainer>
-                {projects.map((project) => {
-                  const Icon = type[project.language];
+          <Heading>Projects</Heading>
+          <GridContainer>
+            {projects.map((project) => {
+              const Icon = type[project.language];
 
-                  return (
-                    <ItemsContainer
-                      key={project.title}
-                    >
-                      <div className={`margin-bottom: 1px; ${CenteredRow}`}>
-                        <Icon className={`height: 2rem; width: 2rem;`} />
-                        <ProjectTitle>{project.title}</ProjectTitle>
-                      </div>
-                      <Divider />
-                      <div className={`margin-bottom: 0.125rem;`}>
-                        <p className={`margin-top: 0.25rem;`}>{project.desc}</p>
-                        <p>
-                          From: <b>{project.date}</b>
-                        </p>
-                      </div>
-
-                      {project.href ? (
-                        <div className={CenteredRow}>
-                          <motion.a
-                            href={project.href}
-                            className={`display: flex; align-items: center; cursor: pointer;`}
-                            whileHover={{ y: -2 }}
-                          >
-                            <IoLogoGithub className={`height: 2rem; width: 2rem;`} />
-                            <StatusText>Source Code</StatusText>
-                          </motion.a>
-                        </div>
-                      ) : (
-                        <div className={CenteredRow}>
-                          <Locked className={`height: 2rem; width: 2rem;`} />
-                          <StatusText>Private</StatusText>
-                        </div>
-                      )}
-                    </ItemsContainer>
-                  )
-                })}
-              </GridContainer>
-            </CenteredContainer>
-          </InnerBox>
+              return (
+                <ItemContainer
+                  key={project.title}
+                >
+                  <div className={CenteredRow}>
+                    <Icon className={Image} />
+                    <ProjectTitle>{project.title}</ProjectTitle>
+                  </div>
+                  <Divider />
+                  <desc>{project.desc}</desc>
+                  <p>From: <b>{project.date}</b></p>
+                  
+                  {project.href ? (
+                    <motion.a
+                      href={project.href}
+                      className={CenteredRow}
+                      style={{ cursor: "pointer" }}
+                      whileHover={{ y: -2 }}>
+                      <GitHub className={Image} />
+                      <StatusText>Source Code</StatusText>
+                    </motion.a>
+                  ) : (
+                    <div className={CenteredRow}>
+                      <Locked className={Image} />
+                      <StatusText>Private</StatusText>
+                    </div>
+                  )}
+                </ItemContainer>
+              )
+            })}
+          </GridContainer>
         </InfoBox>
       </Container>
     </>
