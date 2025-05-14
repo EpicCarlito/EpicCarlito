@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
 import AnimatedWaves from "@/components/animatedWaves";
-import ProfileCard from "./profileCard";
+import ProfileCard from "../../components/profileCard";
 import NowPlaying from '@/components/nowPlaying';
 import GoDown from '@/components/goDown';
 

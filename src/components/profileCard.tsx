@@ -4,9 +4,9 @@ import { motion } from "motion/react"
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 import Image from "next/image";
-import EpicCarlito from "../../../public/epiccarlito.svg";
-import Face from "../../../public/face.png";
-import Socials from "../../components/socials";
+import EpicCarlito from "../../public/epiccarlito.svg";
+import Face from "../../public/face.png";
+import Socials from "./socials";
 
 const Container = styled.div`
   display: flex;
@@ -100,13 +100,13 @@ export default function ProfileCard() {
     <>
       <Container>
         <TopPart>
-          <ProfilePictures> 
+          <ProfilePictures>
             <OnlineProfile
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 1.1 }}
               className={ProfilePicture} />
             <RealProfile
-              whileHover={{ scale: 1.1 }} 
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 1.1 }}
               src={Face}
               alt="IRL FACE WHAT?!?!?"
@@ -122,7 +122,7 @@ export default function ProfileCard() {
           <Divider />
           <SocialsText>Socials</SocialsText>
           <Divider />
-        </SocialsDivider>        
+        </SocialsDivider>
         <Socials />
       </Container>
     </>
