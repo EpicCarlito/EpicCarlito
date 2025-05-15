@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Comfortaa } from "next/font/google";
+import { Comfortaa, Sen } from "next/font/google";
 import './style.linaria.global';
 
 const comfortaa = Comfortaa({
-  subsets: ["latin"],
-  display: "swap"
+  subsets: ["latin"]
+})
+
+const sen = Sen({
+  subsets: ["latin"]
 })
 
 export const metadata: Metadata = {
@@ -33,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={comfortaa.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
