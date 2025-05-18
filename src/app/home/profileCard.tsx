@@ -4,9 +4,9 @@ import { motion } from "motion/react"
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 import Image from "next/image";
-import EpicCarlito from "../../public/epiccarlito.svg";
-import Face from "../../public/face.png";
-import Socials from "./socials";
+import EpicCarlito from "../../../public/epiccarlito.svg";
+import Face from "../../../public/face.png";
+import Socials from "../../components/socials";
 
 const Container = styled.div`
   display: flex;
@@ -67,13 +67,6 @@ const Pronouns = styled.span`
   }
 `
 
-const OnlineName = styled.p`
-  color: black;
-  justify-content: center;
-  font-family: Comfortaa;
-  font-size: 0.875rem;
-`
-
 const SocialsDivider = styled.div`
   display: flex;
   align-items: center;
@@ -116,7 +109,6 @@ export default function ProfileCard() {
           <Name>
             James<Pronouns>he/him</Pronouns>
           </Name>
-          <OnlineName>(Username: EpicCarlito)</OnlineName>
         </TopPart>
         <SocialsDivider>
           <Divider />

@@ -1,15 +1,19 @@
 import { css } from "@linaria/core";
 
-const scaleEffect = css`
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+const scaleUp = css`
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.2);
-  }
-
-  &:active {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
 
-export { scaleEffect };
+const scaleDown = css`
+  transition: transform 0.3s ease-in-out;
+
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
+export { scaleUp, scaleDown };

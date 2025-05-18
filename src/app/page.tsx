@@ -1,13 +1,22 @@
-import AboutMe from "@/app/home/aboutMe";
-import Projects from "./home/projects";
-import AnimatedWaves from "./home/animatedWaves";
+import { styled } from '@linaria/react';
+import AnimatedWaves from "@/app/home/animatedWaves";
+import AboutMe from './home/aboutMe';
 
-export default function Home() {
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+`;
+
+export default function Page() {
   return (
     <>
-      <AboutMe />
-      {/* <Projects /> */}
-      <AnimatedWaves />
+      <Container>
+        <AboutMe />
+        <AnimatedWaves />
+      </Container>
     </>
   );
 }
