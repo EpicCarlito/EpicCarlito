@@ -46,7 +46,16 @@ export const globals = css`
     h1, p {
       margin-block: 0.25rem;
     }
+
+    .rCS1w3zcxh {
+      --moveable-color: none!important;
+    }
     
+    .rCS1w3zcxh .moveable-control.moveable-origin {
+      border: none;
+      background: transparent!important;
+    }
+
     *,
     *:before,
     *:after {

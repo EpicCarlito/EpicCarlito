@@ -34,7 +34,7 @@ export default function AnimatedWaves() {
   return (
     <Container>
       <AnimatedWave color={"#ffd769"} height={20} />
-      <AnimatedWave color={"#b9b0a2"} height={35} />
+      <AnimatedWave color={"#b9b0a2"} height={30} />
       <AnimatedWave color={"#7289da"} height={50} />
     </Container>
   );

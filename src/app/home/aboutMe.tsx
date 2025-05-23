@@ -1,13 +1,16 @@
-import { scaleDown, scaleUp } from '@/components/animations';
-import NowPlaying from '@/components/nowPlaying';
+"use client"
+
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
+import { useState } from 'react';
 import { ImInfo } from "react-icons/im";
 import { MdLibraryMusic, MdConstruction } from "react-icons/md";
 import { BsEnvelopePaperFill } from "react-icons/bs";
-import ProfileCard from './profileCard';
-import Name from './name';
+
+import { scaleDown, scaleUp } from '@/components/animations';
 import Socials from '@/components/socials';
+import Name from './name';
+import DraggableWindow from '@/components/DraggableWindow';
 
 interface props {
   name: string;
@@ -95,11 +98,11 @@ export default function Page() {
             <ToggleButton name='projects' Icon={MdConstruction} />
             <ToggleButton name='poems' Icon={BsEnvelopePaperFill} />
           </Buttons>
-        <SocialsDivider>
-          <Divider />
-          <SocialsText>Socials</SocialsText>
-          <Divider />
-        </SocialsDivider>
+          <SocialsDivider>
+            <Divider />
+            <SocialsText>Socials</SocialsText>
+            <Divider />
+          </SocialsDivider>
           <Socials />
         </ItemContainer>
       </Container>
@@ -109,11 +112,16 @@ export default function Page() {
 
 function ToggleButton(props: props) {
   const { name, Icon } = props;
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
-    <ButtonContainer>
-      <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
-      <ButtonText>{name}</ButtonText>
-    </ButtonContainer>
+    <>
+      <ButtonContainer onClick={() => setShowPopup(!showPopup)}>
+        <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
+        <ButtonText>{name}</ButtonText>
+      </ButtonContainer>
+
+      {showPopup && (<DraggableWindow name={name} setState={setShowPopup} />)}
+    </>
   )
 }
