@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Spotify from "../../public/social/spotify.svg";
+import Spotify from "../../../../public/social/spotify.svg";
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 

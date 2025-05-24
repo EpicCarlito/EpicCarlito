@@ -1,36 +1,56 @@
 "use client"
 
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import { constants } from 'node:buffer';
 import { useEffect, useRef, useState } from 'react';
 import Moveable from "react-moveable";
 
 interface props {
   name: string;
   setState: any;
+  children?: React.ReactNode;
 }
 
 const Container = styled.div<{ left: number, top: number }>`
   position: absolute;
   display: flex;
   flex-direction: column;
+  background: #111827;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
-  background: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  border: 1px solid var(--white-but-not);
+  border-radius: 0.375rem;
+  z-index: 10;
 `
 
-const PopupContainer = styled.div`
-  height: 1rem;
-  background: gray;
+const DraggableContainer = styled.div`
+  background: #1f2937;
+  border-radius: 0.375rem;
   cursor: grab;
 `;
 
+const TopBar = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0.25rem 0.5rem;
+  gap: 0.375rem;
+`
+
+const CloseButton = styled.button`
+  height: 0.875rem;
+  width: 0.875rem;
+  border: none;
+  border-radius: 9999px;
+  justify-self: center;
+  background-color: gray;
+
+  &:hover {
+    background-color: red;
+  }
+`
+
 export default function DraggableWindow(props: props) {
-  const { name, setState } = props;
+  const { name, setState, children } = props;
+  console.log(children)
   const [position, setPosition] = useState({ left: 100, top: 100 });
   const moveableRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -83,20 +103,22 @@ export default function DraggableWindow(props: props) {
         left={position.left}
         top={position.top}
       >
-        <PopupContainer ref={moveableRef} />
+        <DraggableContainer ref={moveableRef}>
+          <TopBar>
+            <CloseButton onClick={() => setState(false)} />
+            <p>{"epiccarlito/" + name}</p>
+          </TopBar>
+        </DraggableContainer>
+
         {isInitialized && (
           <Moveable
             target={moveableRef.current}
             draggable={true}
             onDrag={onDrag}
-            throttleDrag={10}
           />
         )}
 
-        <div>
-          <p>{name} draggable content</p>
-          <button onClick={() => setState(false)}>Close</button>
-        </div>
+        {children}
       </Container>
     </>
   )

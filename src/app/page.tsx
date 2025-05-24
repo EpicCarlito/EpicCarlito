@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
-import AnimatedWaves from "@/app/home/animatedWaves";
-import AboutMe from './home/aboutMe';
+import AnimatedWaves from "@/app/home/components/animatedWaves";
+import Home from './home/home';
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <>
       <Container>
-        <AboutMe />
+        <Home />
         <AnimatedWaves />
       </Container>
     </>

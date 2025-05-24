@@ -2,7 +2,7 @@
 
 import { FaDiscord, FaInstagram } from "react-icons/fa";
 import { AiFillGithub } from "react-icons/ai";
-import Starva from "../../public/social/starva.svg";
+import Starva from "../../../../public/social/starva.svg"
 
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
@@ -21,16 +21,14 @@ const LinkSVG = styled.a`
     width: 2.5rem;
   }
 
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.2);
-    rotate: 5deg;
   }
 
   &:active {
     transform: scale(1.2);
-    rotate: 5deg;
   }
 `
 
