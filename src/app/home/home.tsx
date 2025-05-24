@@ -129,7 +129,11 @@ function ToggleButton(props: props) {
         <ButtonText>{name}</ButtonText>
       </ButtonContainer>
 
-      {showPopup && (<DraggableWindow name={name} setState={setShowPopup} children={children} />)}
+      {showPopup && (
+      <DraggableWindow name={name} setState={setShowPopup}>
+        {children}
+      </DraggableWindow>
+      )}
     </>
   )
 }

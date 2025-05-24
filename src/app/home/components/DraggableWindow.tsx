@@ -94,7 +94,7 @@ export default function DraggableWindow(props: props) {
     if (moveableRef.current) {
       setIsInitialized(true);
     }
-  }, [moveableRef.current]);
+  }, []);
 
   return (
     <>
