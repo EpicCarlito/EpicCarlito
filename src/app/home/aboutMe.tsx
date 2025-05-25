@@ -17,7 +17,7 @@ const TopSection = styled.div`
 `
 
 const Divider = styled.div`
-    border-bottom: 1px solid var(--white-but-not);
+    border-bottom: 1px solid gray;
 `
 
 const BottomSection = styled.div`

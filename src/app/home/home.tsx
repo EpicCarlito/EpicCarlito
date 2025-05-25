@@ -2,10 +2,10 @@
 
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ImInfo } from "react-icons/im";
 import { MdLibraryMusic, MdConstruction } from "react-icons/md";
-import { BsEnvelopePaperFill } from "react-icons/bs";
+import { FaCircleExclamation } from "react-icons/fa6";
 
 import { scaleDown, scaleUp } from '@/components/animations';
 import Socials from '@/app/home/components/socials';
@@ -14,10 +14,14 @@ import DraggableWindow from '@/app/home/components/DraggableWindow';
 
 import AboutMe from "./aboutMe";
 import Musica from './musica';
+import useCheckMobile from '@/hooks/useCheckMobile';
 
 interface props {
   name: string;
   Icon: any;
+  nowPlaying?: any;
+  notChecked?: boolean;
+  setNotChecked?: Dispatch<SetStateAction<boolean>>;
   children?: React.ReactNode;
 }
 
@@ -43,10 +47,10 @@ const ItemContainer = styled.div`
 
 const Buttons = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 
   @media (min-width: 48rem) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 `
 
@@ -91,6 +95,20 @@ const SocialsText = styled.span`
 `
 
 export default function Home() {
+  const [nowPlaying, setNowPlaying] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [notChecked, setNotChecked] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/spotify")
+      .then((res) => res.json())
+      .then((data: any) => {
+        setNotChecked(true);
+        setNowPlaying(data.nowPlaying);
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
     <>
       <Container>
@@ -100,11 +118,15 @@ export default function Home() {
             <ToggleButton name='about' Icon={ImInfo}>
               <AboutMe />
             </ToggleButton>
-            <ToggleButton name='música' Icon={MdLibraryMusic}>
-              <Musica />
+            <ToggleButton
+              name='música'
+              nowPlaying={nowPlaying}
+              notChecked={notChecked}
+              setNotChecked={setNotChecked}
+              Icon={MdLibraryMusic}>
+              <Musica nowPlaying={nowPlaying} isLoading={isLoading} />
             </ToggleButton>
             <ToggleButton name='projects' Icon={MdConstruction} />
-            <ToggleButton name='poems' Icon={BsEnvelopePaperFill} />
           </Buttons>
           <SocialsDivider>
             <Divider />
@@ -118,21 +140,38 @@ export default function Home() {
   );
 }
 
-function ToggleButton(props: props) {
-  const { name, Icon, children } = props;
+function ToggleButton({
+  name,
+  Icon,
+  nowPlaying,
+  notChecked,
+  setNotChecked,
+  children
+}: props) {
   const [showPopup, setShowPopup] = useState(false);
+  const isMobile = useCheckMobile();
+
+  const handleClick = () => {
+    setShowPopup(!showPopup)
+    if (notChecked && setNotChecked) setNotChecked(false);
+  }
 
   return (
     <>
-      <ButtonContainer onClick={() => setShowPopup(!showPopup)}>
-        <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
+      <ButtonContainer onClick={handleClick}>
+        <div>
+          <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
+          {notChecked && nowPlaying && (
+            <FaCircleExclamation color="red" style={{ position: 'absolute' }} />
+          )}
+        </div>
         <ButtonText>{name}</ButtonText>
       </ButtonContainer>
 
       {showPopup && (
-      <DraggableWindow name={name} setState={setShowPopup}>
-        {children}
-      </DraggableWindow>
+        <DraggableWindow name={name} isMobile={isMobile} setState={setShowPopup}>
+          {children}
+        </DraggableWindow>
       )}
     </>
   )

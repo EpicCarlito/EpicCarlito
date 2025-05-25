@@ -6,6 +6,11 @@ import Spotify from "../../../../public/social/spotify.svg";
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 
+interface props {
+  nowPlaying: any;
+  isLoading: boolean;
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -117,19 +122,7 @@ const Artist = styled.p`
   }
 `
 
-export default function NowPlaying() {
-  const [nowPlaying, setNowPlaying] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/api/spotify")
-      .then((res) => res.json())
-      .then((data: any) => {  
-        setNowPlaying(data.nowPlaying);
-        setIsLoading(false);
-      });
-  }, []);
-
+export default function NowPlaying({ nowPlaying, isLoading }: props) {
   const song = nowPlaying?.item;
   const album = song?.album;
 
