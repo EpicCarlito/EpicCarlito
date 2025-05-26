@@ -151,7 +151,7 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
 
                         <SongContainer>
-                            <ArtistName>snail's house</ArtistName>
+                            <ArtistName>snail&apos;s house</ArtistName>
                             <SongName>Moon Rabbit</SongName>
                             <SongName>Digit Tattoo</SongName>
                             <SongName>Cosmo Funk</SongName>
@@ -170,7 +170,7 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
 
                         <SongContainer>
-                            <ArtistName>moe's shop</ArtistName>
+                            <ArtistName>moe&apos;s shop</ArtistName>
                             <SongName>WONDER POP</SongName>
                             <SongName>WWW</SongName>
                             <SongName>LOVE RECORD</SongName>
