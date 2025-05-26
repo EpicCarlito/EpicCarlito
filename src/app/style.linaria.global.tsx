@@ -11,7 +11,16 @@ export const globals = css`
       --text-2xl: 1.5rem;
       --text-3xl: 1.875rem;
       --text-4xl: 2.25rem;
+      --text-5xl: 3rem;
+      --text-6xl: 3.75rem;
+      --text-7xl: 4.5rem;
+      --text-8xl: 6rem;
+      --text-9xl: 8rem;
       --white-but-not: #d6d3d1; /* text-stone-300 */
+
+      --font-comfortaa: "Comfortaa", sans-serif;
+      --font-sen: "Sen", serif;
+      --font-poppins: "Poppins", sans-serif; 
     }
 
     html {
@@ -23,7 +32,7 @@ export const globals = css`
       background-color: #111827;
       color: var(--white-but-not); 
       font-family: var(--font-comfortaa), sans-serif;
-      font-style: normal;
+      font-weight: 400;
     }
 
     ul {
@@ -38,7 +47,16 @@ export const globals = css`
     h1, p {
       margin-block: 0.25rem;
     }
+
+    .rCS1w3zcxh {
+      --moveable-color: none!important;
+    }
     
+    .rCS1w3zcxh .moveable-control.moveable-origin {
+      border: none;
+      background: transparent!important;
+    }
+
     *,
     *:before,
     *:after {

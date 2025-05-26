@@ -1,132 +1,88 @@
-import { styled } from '@linaria/react';
-import AnimatedWaves from "@/components/animatedWaves";
-import ProfileCard from "./profileCard";
-import NowPlaying from '@/components/nowPlaying';
-import GoDown from '@/components/goDown';
+import { styled } from "@linaria/react"
+import { scaleUp } from "@/components/animations"
+import { css } from "@linaria/core"
+import EpicCarlito from "../../../public/epiccarlito.svg";
+import Face from "../../../public/face.png";
+import Image from "next/image";
 
 const Container = styled.div`
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 `
 
-const InfoBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--white-but-not);
-  margin: 0.5rem;
-  padding: 0.75rem;
-  background-color: #1f2937; /* bg-gray-800 */
-  
-  @media (min-width: 48rem) {
-    flex-direction: row;
-    justify-content: center;
-    padding: 2.5rem;
+const TopSection = styled.div`
+    display: flex;
+    align-items: center;
     margin: 1rem;
-  }
-`
-
-const AboutSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 0.75rem;
-  padding-inline: 0.5rem;
-
-  @media (min-width: 48rem) {
-    margin-left: 1rem;
-  }
-`
-
-const Intro = styled.h1`
-  justify-content: center;
-  font-size: var(--text-xl);
-
-  @media (min-width: 48rem) {
-    font-size: var(--text-2xl)
-  }
-
-  @media (min-width: 64rem) {
-    font-size: var(--text-3xl)
-  }
 `
 
 const Divider = styled.div`
-  height: 1px;
-  border-width: 0px;
-  background-color: #111827;
-  margin-bottom: 0.25rem;
-
-  @media (min-width: 48rem) {
-    height: 1.5px;
-  }
+    border-bottom: 1px solid gray;
 `
 
-const ItemContainer = styled.div`
+const BottomSection = styled.div`
+    font-family: var(--font-poppins);
+    margin: 0.75rem 1rem;
+`
+
+const ProfilePictures = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+`
+
+const ProfilePicture = css`
+  height: 6rem;
+  width: 6rem;
+  border: 1px solid black;
+  border-radius: 9999px;
+  filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 0.50));
+  z-index: 2;
 
   @media (min-width: 48rem) {
+    height: 8rem;
+    width: 8rem;
+  }
+`
+
+const TextSection = styled.div`
+    display: flex;
     flex-direction: column;
-  }
+    padding-left: 1rem;
 `
 
-const AboutMe = styled.div`
-  display: flex;
-  flex-direction: column;
+const InfoHeading = styled.h2`
+    margin-block: 0.25rem;
 `
 
-const School = styled.p`
-  font-size: var(--text-xs);
-
-  @media (min-width: 48rem) {
-    font-size: var(--text-lg)
-  }
-
-  @media (min-width: 64rem) {
-    font-size: var(--text-xl)
-  }
-`
-
-const InfoList = styled.ul`
-  margin-left: 1.25rem;
-  font-size: var(--text-xs);
-
-  @media (min-width: 48rem) {
-    font-size: var(--text-sm)
-  }
-
-  @media (min-width: 64rem) {
-    font-size: var(--text-lg)
-  }
-`
-
-export default function Page() {
-  return (
-    <>
-      <Container>
-        <InfoBox>
-          <ProfileCard />
-          <AboutSection>
-            <Intro>Hola! I am James! 👋</Intro>
+export default function AboutMe() {
+    return (
+        <Container>
+            <TopSection>
+                <ProfilePictures>
+                    <EpicCarlito className={`${ProfilePicture} ${scaleUp}`} />
+                    <Image
+                        src={Face}
+                        alt="IRL FACE WHAT?!?!?"
+                        className={`${ProfilePicture} ${scaleUp}`}
+                        style={{ marginLeft: "-0.5rem" }}
+                    />
+                </ProfilePictures>
+                <TextSection>
+                    <h1>Hola! I am James!</h1>
+                    <p>Figuring out my code along the way ¯\_(ツ)_/¯</p>
+                </TextSection>
+            </TopSection>
             <Divider />
-            <ItemContainer>
-              <AboutMe>
-                <School>Bronx Science Sophomore</School>
-                <InfoList>
-                  <li>Typescript & Java Coder</li>
-                  <li>Long Distance Runner</li>
-                  <li>Kawaii Future Bass Music Enjoyer</li>
-                </InfoList>
-              </AboutMe>
-              <NowPlaying />
-            </ItemContainer>
-          </AboutSection>
-        </InfoBox>
-        <GoDown />
-        <AnimatedWaves />
-      </Container>
-    </>
-  );
+            <BottomSection>
+                <InfoHeading>who am i?</InfoHeading>
+                <p>hi! i&apos;m james, a long distance runner and coder. i enjoy to...</p>
+                <li>make cool things with frontend</li>
+                <li>read on self-improvement and psychology</li>
+                <li>going on long runs</li>
+                <InfoHeading>other</InfoHeading>
+                <li>current bronx science sophomore (&apos;27)</li>
+                <li>an INFP and an ambivert</li>
+            </BottomSection>
+        </Container>
+    )
 }

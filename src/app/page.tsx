@@ -1,11 +1,22 @@
-import ProfileCard from "@/app/home/aboutMe";
-import Projects from "./home/projects";
+import { styled } from '@linaria/react';
+import AnimatedWaves from "@/app/home/components/animatedWaves";
+import Home from './home/home';
 
-export default function Home() {
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+`;
+
+export default function Page() {
   return (
     <>
-      <ProfileCard />
-      <Projects />
+      <Container>
+        <Home />
+        <AnimatedWaves />
+      </Container>
     </>
   );
 }

@@ -1,17 +1,41 @@
 "use client";
 
-import { motion } from "motion/react"
-import Discord from "../../public/social/discord.svg";
-import Github from "../../public/social/github.svg";
-import Instagram from "../../public/social/instagram.svg";
-import Starva from "../../public/social/starva.svg";
+import { FaDiscord, FaInstagram } from "react-icons/fa";
+import { AiFillGithub } from "react-icons/ai";
+import Starva from "../../../../public/social/starva.svg"
 
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 
+interface props {
+  href: string;
+  SVG: any;
+}
+
+const LinkSVG = styled.a`
+  height: 2rem;
+  width: 2rem;
+
+  @media (min-width: 48rem) {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:active {
+    transform: scale(1.2);
+  }
+`
+
 const SocialSVG = css`
   height: 2rem;
   width: 2rem;
+  color: var(--white-but-not);
   filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 0.05));
 
   @media (min-width: 48rem) {
@@ -24,22 +48,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 0.325rem;
 `
-
-const margin = css`
-  margin-inline: 3px;
-`
-
-interface props {
-  href: string;
-  SVG: any;
-}
 
 function Social(props: props) {
   return (
-    <motion.a whileHover={{ scale: 1.2, rotate: 2.5 }} href={props.href} target="_blank" className={`${SocialSVG} ${margin}`}>
+    <LinkSVG href={props.href} target="_blank">
       <props.SVG className={SocialSVG} />
-    </motion.a>
+    </LinkSVG>
   );
 }
 
@@ -48,15 +64,15 @@ export default function Socials() {
     <Container>
       <Social
         href={"https://discord.com/users/546133861751586816"}
-        SVG={Discord}
+        SVG={FaDiscord}
       />
       <Social
         href={"https://www.instagram.com/epiccarlito"}
-        SVG={Instagram}
+        SVG={FaInstagram}
       />
       <Social
         href={"https://github.com/EpicCarlito"}
-        SVG={Github}
+        SVG={AiFillGithub}
       />
       <Social
         href={"https://strava.com/athletes/126999343"}

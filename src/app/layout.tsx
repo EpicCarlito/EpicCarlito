@@ -1,10 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Comfortaa } from "next/font/google";
+import { Comfortaa, Sen, Poppins } from "next/font/google";
 import './style.linaria.global';
 
 const comfortaa = Comfortaa({
+  subsets: ["latin"]
+})
+
+const sen = Sen({
+  subsets: ["latin"]
+})
+
+const poppins = Poppins({
   subsets: ["latin"],
-  display: "swap"
+  weight: "400"
 })
 
 export const metadata: Metadata = {
@@ -33,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={comfortaa.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
