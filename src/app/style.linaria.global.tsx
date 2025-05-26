@@ -18,8 +18,9 @@ export const globals = css`
       --text-9xl: 8rem;
       --white-but-not: #d6d3d1; /* text-stone-300 */
 
-      --font-comfortaa: 'Comfortaa', sans-serif;
-      --font-sen: 'Sen', serif;
+      --font-comfortaa: "Comfortaa", sans-serif;
+      --font-sen: "Sen", serif;
+      --font-poppins: "Poppins", sans-serif; 
     }
 
     html {

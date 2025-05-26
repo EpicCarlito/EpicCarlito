@@ -5,15 +5,16 @@ import { styled } from '@linaria/react';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ImInfo } from "react-icons/im";
 import { MdLibraryMusic, MdConstruction } from "react-icons/md";
-import { FaCircleExclamation } from "react-icons/fa6";
+import { MdNotificationImportant } from "react-icons/md";
 
 import { scaleDown, scaleUp } from '@/components/animations';
 import Socials from '@/app/home/components/socials';
 import Name from './components/name';
-import DraggableWindow from '@/app/home/components/DraggableWindow';
+import DraggableWindow from "./components/DraggableWindow";
 
 import AboutMe from "./aboutMe";
 import Musica from './musica';
+import Projects from "./projects"
 import useCheckMobile from '@/hooks/useCheckMobile';
 
 interface props {
@@ -47,11 +48,7 @@ const ItemContainer = styled.div`
 
 const Buttons = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-
-  @media (min-width: 48rem) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 `
 
 const ButtonContainer = styled.div`
@@ -94,6 +91,28 @@ const SocialsText = styled.span`
   padding-inline: 0.75rem;
 `
 
+const MusicaContaienr = styled.div`
+  display: flex;
+  align-items: flex-start;
+`
+
+const notify = css`
+  animation: notify 2s ease-in-out infinite;
+  margin-left: -1rem;
+
+  @keyframes notify {
+    0% {
+      rotate: 10deg;
+    }
+    50% {
+      rotate: -10deg;
+    }
+    100% {
+      rotate: 10deg;
+    }
+  }
+`
+
 export default function Home() {
   const [nowPlaying, setNowPlaying] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -126,7 +145,9 @@ export default function Home() {
               Icon={MdLibraryMusic}>
               <Musica nowPlaying={nowPlaying} isLoading={isLoading} />
             </ToggleButton>
-            <ToggleButton name='projects' Icon={MdConstruction} />
+            <ToggleButton name='projects' Icon={MdConstruction}>
+              <Projects />
+              </ToggleButton>
           </Buttons>
           <SocialsDivider>
             <Divider />
@@ -159,12 +180,12 @@ function ToggleButton({
   return (
     <>
       <ButtonContainer onClick={handleClick}>
-        <div>
+        <MusicaContaienr>
           <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
           {notChecked && nowPlaying && (
-            <FaCircleExclamation color="red" style={{ position: 'absolute' }} />
+            <MdNotificationImportant color="red" size={"1.5rem"} className={notify} />
           )}
-        </div>
+        </MusicaContaienr>
         <ButtonText>{name}</ButtonText>
       </ButtonContainer>
 

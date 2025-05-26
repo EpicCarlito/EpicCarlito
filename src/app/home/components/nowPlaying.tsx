@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import Spotify from "../../../../public/social/spotify.svg";
+import { FaSpotify } from "react-icons/fa";
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 
@@ -15,60 +14,34 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   color: #d6d3d1;
-  margin-left: 0.25rem;
-
-  @media (min-width: 48rem) {
-    margin-left: 0px;
-  }
+  gap: 0.375rem;
 `
 
 const HeadingContainer = styled.a`
   display: flex;
-  flex-direction: "column";
   align-items: center;
   text-decoration: none;
   color: inherit;
 `
 
 const SpotifyLogo = css`
-  height: 1.5rem;
-  width: 1.5rem;
   filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 0.50));
-
-  @media (min-width: 48rem) {
-    height: 2rem;
-    width: 2rem;
-  }
 `
 
 const Heading = styled.p`
-  font-size: var(--text-xs);
+  font-size: var(--text-lg);
   margin-left: 0.25rem;
-
-  @media (min-width: 40rem) {
-    font-size: var(--text-base)
-  }
 `
 
 const Gradient = styled.div`
-  background-image: linear-gradient(to top, rgb(15 23 42), #1e293b);
-  border: 2px solid black;
+  background-image: linear-gradient(to right, rgb(15 23 42), #1e293b);
+  border: 2px solid var(--white-but-not);
   border-radius: 0.25rem;
-  margin-top: 0.375rem;
-  padding: 0.325rem;
-
-  @media (min-width: 48rem) {
-    background-image: linear-gradient(to right, rgb(15 23 42), #1e293b);
-    padding: 0.625rem;
-  }
+  padding: 1rem;
 `
 
 const InnerHeading = styled.p`
-  font-size: var(--text-xs);
-
-  @media (min-width: 40rem) {
-    font-size: var(--text-base)
-  }
+  font-size: var(--text-base);
 `
 
 const SongContainer = styled.a`
@@ -82,19 +55,9 @@ const SongContainer = styled.a`
 const SongImage = css`
   border: 1px solid #d6d3d1;
   border-radius: 0.25rem;
-  height: 2rem;
-  width: 2rem;
+  height: 4rem;
+  width: 4rem;
   filter: drop-shadow(3px 3px 5px rgb(214 211 209 / 0.25));
-
-  @media (min-width: 48rem) {
-    height: 3rem;
-    width: 3rem;
-  }
-
-  @media (min-width: 64rem) {
-    height: 4rem;
-    width: 4rem;
-  }
 `
 
 const SongInfo = styled.div`
@@ -104,22 +67,14 @@ const SongInfo = styled.div`
 `
 
 const SongName = styled.p`
-  font-size: var(--text-xs);
+  font-size: var(--text-2xl);
   font-weight: bold;
   margin-block: 0.125rem;
-  
-  @media (min-width: 48rem) {
-    font-size: var(--text-lg)
-  }
 `
 
 const Artist = styled.p`
-  font-size: var(--text-xs);
+  font-size: var(--text-base);
   margin-block: 0.125rem;
-
-  @media (min-width: 48rem) {
-    font-size: var(--text-base)
-  }
 `
 
 export default function NowPlaying({ nowPlaying, isLoading }: props) {
@@ -132,7 +87,7 @@ export default function NowPlaying({ nowPlaying, isLoading }: props) {
         href="https://open.spotify.com/user/nt6yeooaj0di051fntu1q4bw8"
         target="_blank"
       >
-        <Spotify className={SpotifyLogo} />
+        <FaSpotify color={"#1ED760"} size={"2rem"} className={SpotifyLogo} />
         <Heading>Listening on Spotify...</Heading>
       </HeadingContainer>
       <Gradient>

@@ -44,11 +44,11 @@ const moveUp = css`
 
   @keyframes moveUp {
     0% {
-      transform: translateY(150%);
+      transform: translateY(100vh);
       opacity: 0;
     }
     100% {
-      transform: translateY(-120%);
+      transform: translateY(0);
       opacity: 1;
     }
   }
@@ -59,11 +59,11 @@ const moveDown = css`
 
   @keyframes moveDown {
     0% {
-      transform: translateY(-120%);
+      transform: translateY(0);
       opacity: 1;
     }
     100% {
-      transform: translateY(150%);
+      transform: translateY(100vh);
       opacity: 0;
     }
   }

@@ -13,7 +13,7 @@ const Container = styled.div`
 const TopSection = styled.div`
     display: flex;
     align-items: center;
-    margin: 1rem 1.5rem;
+    margin: 1rem;
 `
 
 const Divider = styled.div`
@@ -21,8 +21,8 @@ const Divider = styled.div`
 `
 
 const BottomSection = styled.div`
-    margin: 1rem 1.5rem;
-
+    font-family: var(--font-poppins);
+    margin: 0.75rem 1rem;
 `
 
 const ProfilePictures = styled.div`
@@ -50,6 +50,10 @@ const TextSection = styled.div`
     padding-left: 1rem;
 `
 
+const InfoHeading = styled.h2`
+    margin-block: 0.25rem;
+`
+
 export default function AboutMe() {
     return (
         <Container>
@@ -65,13 +69,20 @@ export default function AboutMe() {
                     />
                 </ProfilePictures>
                 <TextSection>
-                <h1>Hola! I am James!</h1>
-                <p>Figuring out my code along the way ¯\_(ツ)_/¯</p>
+                    <h1>Hola! I am James!</h1>
+                    <p>Figuring out my code along the way ¯\_(ツ)_/¯</p>
                 </TextSection>
             </TopSection>
-            <Divider/>
+            <Divider />
             <BottomSection>
-                <p>Help me out here</p>
+                <InfoHeading>who am i?</InfoHeading>
+                <p>hi! i'm james, a long distance runner and coder. i enjoy to...</p>
+                <li>make cool things with frontend</li>
+                <li>read on self-improvement and psychology</li>
+                <li>going on long runs</li>
+                <InfoHeading>other</InfoHeading>
+                <li>current bronx science sophomore ('27)</li>
+                <li>ambivert as an INFP (i can't pick a side 😿)</li>
             </BottomSection>
         </Container>
     )

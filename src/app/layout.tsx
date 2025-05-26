@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Comfortaa, Sen } from "next/font/google";
+import { Comfortaa, Sen, Poppins } from "next/font/google";
 import './style.linaria.global';
 
 const comfortaa = Comfortaa({
@@ -8,6 +8,11 @@ const comfortaa = Comfortaa({
 
 const sen = Sen({
   subsets: ["latin"]
+})
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "400"
 })
 
 export const metadata: Metadata = {
