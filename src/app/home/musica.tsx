@@ -91,6 +91,15 @@ const SongContainer = styled.div`
     flex-direction: column;
 `
 
+const scaleUp = css`
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+
 export default function Musica({ nowPlaying, isLoading }: props) {
     return (
         <Container>
@@ -105,13 +114,13 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                     <ArtistContainer>
                         <a
                             href="https://open.spotify.com/artist/38SKxCyfrmNWqWunb9wGHP"
-                            className={ArtistImage}>
+                            className={`${ArtistImage} ${scaleUp}`}>
                             <Image
                                 alt="good kid"
                                 src="https://i.scdn.co/image/ab6761610000e5ebe825d8ceaa3bb7ce3151f3a5"
                                 width={96}
                                 height={96}
-                                className={ArtistImage} />
+                                className={`${ArtistImage} ${scaleUp}`} />
                         </a>
                         <SongContainer>
                             <ArtistName>good kid</ArtistName>
@@ -123,13 +132,13 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                     <ArtistContainer>
                         <a
                             href="https://open.spotify.com/artist/581C5Qwl87TskfBEzuoisu"
-                            className={ArtistImage}>
+                            className={`${ArtistImage} ${scaleUp}`}>
                             <Image
                                 alt="Cafuné"
                                 src="https://i.scdn.co/image/ab6761610000e5ebc8ff003610ebb5bab7add76b"
                                 width={96}
                                 height={96}
-                                className={ArtistImage} />
+                                className={`${ArtistImage} ${scaleUp}`} />
                         </a>
                         <SongContainer>
                             <ArtistName>Cafuné</ArtistName>
@@ -141,13 +150,13 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                     <ArtistContainer>
                         <a
                             href="https://open.spotify.com/artist/29O9ZebFa65aIEvMaW5pQY"
-                            className={ArtistImage}>
+                            className={`${ArtistImage} ${scaleUp}`}>
                             <Image
                                 alt="snail's house"
                                 src="https://i.scdn.co/image/ab6761610000517437ce1606bdfa85907d4add14"
                                 width={96}
                                 height={96}
-                                className={ArtistImage} />
+                                className={`${ArtistImage} ${scaleUp}`} />
                         </a>
 
                         <SongContainer>
@@ -160,13 +169,13 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                     <ArtistContainer>
                         <a
                             href="https://open.spotify.com/artist/7cvljqLNhWNFMb8wP2NImJ"
-                            className={ArtistImage}>
+                            className={`${ArtistImage} ${scaleUp}`}>
                             <Image
                                 alt="moe's shop"
                                 src="https://i.scdn.co/image/ab6761610000e5eb18cc2390dfccdd20efddb5a9"
                                 width={96}
                                 height={96}
-                                className={ArtistImage} />
+                                className={`${ArtistImage} ${scaleUp}`} />
                         </a>
 
                         <SongContainer>

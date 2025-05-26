@@ -59,8 +59,7 @@ export default function AboutMe() {
         <Container>
             <TopSection>
                 <ProfilePictures>
-                    <EpicCarlito
-                        className={`${ProfilePicture} ${scaleUp}`} />
+                    <EpicCarlito className={`${ProfilePicture} ${scaleUp}`} />
                     <Image
                         src={Face}
                         alt="IRL FACE WHAT?!?!?"
@@ -82,7 +81,7 @@ export default function AboutMe() {
                 <li>going on long runs</li>
                 <InfoHeading>other</InfoHeading>
                 <li>current bronx science sophomore (&apos;27)</li>
-                <li>ambivert as an INFP (i can&apos;t pick a side 😿)</li>
+                <li>an INFP and an ambivert</li>
             </BottomSection>
         </Container>
     )

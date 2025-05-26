@@ -31,7 +31,6 @@ const MobileContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #111827;
-  width: 100%;
   bottom: 0;
   left: 0;
   border: 2px solid var(--white-but-not);
@@ -44,7 +43,7 @@ const moveUp = css`
 
   @keyframes moveUp {
     0% {
-      transform: translateY(100vh);
+      transform: translateY(75vh);
       opacity: 0;
     }
     100% {
@@ -63,7 +62,7 @@ const moveDown = css`
       opacity: 1;
     }
     100% {
-      transform: translateY(100vh);
+      transform: translateY(75vh);
       opacity: 0;
     }
   }
