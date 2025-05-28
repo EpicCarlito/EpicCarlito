@@ -3,7 +3,7 @@
 import { styled } from "@linaria/react"
 import Link from "next/link"
 import { css } from '@linaria/core';
-import { motion } from "motion/react"
+import { scaleUp } from "./animations"
 
 const Heading = styled.div`
   position: sticky;
@@ -36,18 +36,15 @@ const Title = styled.h1`
     text-align: center;
 `
 
-const MotionLink = motion(Link)
-
 export default function PageHeading() {
     return (
         <Heading>
             <Title>MDX Practice</Title>
-            <MotionLink
-                whileHover={{ scale: 1.2 }}
-                className={PagesButton}
+            <Link
+                className={`${PagesButton} ${scaleUp}`}
                 href="/blog">
                 Pages
-            </MotionLink>
+            </Link>
         </Heading>
     )
 }

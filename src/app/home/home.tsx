@@ -10,7 +10,7 @@ import { MdNotificationImportant } from "react-icons/md";
 import { scaleDown, scaleUp } from '@/components/animations';
 import Socials from '@/app/home/components/socials';
 import Name from './components/name';
-import DraggableWindow from "./components/DraggableWindow";
+import DraggableWindow from "./components/draggableWindow";
 
 import AboutMe from "./aboutMe";
 import Musica from './musica';
