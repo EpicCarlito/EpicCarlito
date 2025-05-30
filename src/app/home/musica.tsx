@@ -135,7 +135,7 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                             className={`${ArtistImage} ${scaleUp}`}>
                             <Image
                                 alt="Cafuné"
-                                src="https://i.scdn.co/image/ab6761610000e5ebc8ff003610ebb5bab7add76b"
+                                src="https://i.scdn.co/image/ab676161000051744d72dc74c11df7baf1d08508"
                                 width={96}
                                 height={96}
                                 className={`${ArtistImage} ${scaleUp}`} />
@@ -143,8 +143,8 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         <SongContainer>
                             <ArtistName>Cafuné</ArtistName>
                             <SongName>Shadowboxing</SongName>
-                            <SongName>Shadow</SongName>
-                            <SongName>Tek it</SongName>
+                            <SongName>Tek It</SongName>
+                            <SongName>e-Asphyxiation</SongName>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -161,9 +161,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
 
                         <SongContainer>
                             <ArtistName>snail&apos;s house</ArtistName>
-                            <SongName>Moon Rabbit</SongName>
-                            <SongName>Digit Tattoo</SongName>
-                            <SongName>Cosmo Funk</SongName>
+                            <SongName>Digital Tattoo</SongName>
+                            <SongName>Planet Girl</SongName>
+                            <SongName>Galatic Whisper</SongName>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>

@@ -124,10 +124,9 @@ export default function Home() {
       .then((data: any) => {
         setNotChecked(true);
         setNowPlaying(data.nowPlaying);
-        setIsLoading(false);
+        setIsLoading(false);        
       });
   }, []);
-
   return (
     <>
       <Container>
@@ -182,7 +181,7 @@ function ToggleButton({
       <ButtonContainer onClick={handleClick}>
         <MusicaContaienr>
           <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
-          {notChecked && nowPlaying && (
+          {notChecked && nowPlaying.is_playing != null && (
             <MdNotificationImportant color="red" size={"1.5rem"} className={notify} />
           )}
         </MusicaContaienr>
