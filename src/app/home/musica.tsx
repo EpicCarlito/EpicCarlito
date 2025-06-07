@@ -77,15 +77,6 @@ const ArtistImage = css`
     }
 `
 
-const SongName = styled.li`
-  list-style: none;
-
-  &::before {
-    content: '•';
-    margin-right: 0.5rem;
-  }
-`;
-
 const SongContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -124,9 +115,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
                         <SongContainer>
                             <ArtistName>good kid</ArtistName>
-                            <SongName>First Rate Town</SongName>
-                            <SongName>Alchemist</SongName>
-                            <SongName>Summer</SongName>
+                            <li>First Rate Town</li>
+                            <li>Alchemist</li>
+                            <li>Summer</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -142,9 +133,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
                         <SongContainer>
                             <ArtistName>Cafuné</ArtistName>
-                            <SongName>Shadowboxing</SongName>
-                            <SongName>Tek It</SongName>
-                            <SongName>e-Asphyxiation</SongName>
+                            <li>Shadowboxing</li>
+                            <li>Tek It</li>
+                            <li>e-Asphyxiation</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -161,9 +152,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
 
                         <SongContainer>
                             <ArtistName>snail&apos;s house</ArtistName>
-                            <SongName>Digital Tattoo</SongName>
-                            <SongName>Planet Girl</SongName>
-                            <SongName>Galatic Whisper</SongName>
+                            <li>Digital Tattoo</li>
+                            <li>Planet Girl</li>
+                            <li>Galatic Whisper</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -180,9 +171,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
 
                         <SongContainer>
                             <ArtistName>moe&apos;s shop</ArtistName>
-                            <SongName>WONDER POP</SongName>
-                            <SongName>WWW</SongName>
-                            <SongName>LOVE RECORD</SongName>
+                            <li>WONDER POP</li>
+                            <li>WWW</li>
+                            <li>LOVE RECORD</li>
                         </SongContainer>
                     </ArtistContainer>
                 </Artists>

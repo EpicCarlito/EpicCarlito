@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from 'react';
 import { FiXCircle } from 'react-icons/fi';
 import { HiChevronDoubleDown } from "react-icons/hi";
 import Moveable from "react-moveable";
+import useSound from 'use-sound';
+import exitSound from "../../../../public/sounds/exitSound.mp3"
 
 interface props {
   name: string;
@@ -31,6 +33,7 @@ const MobileContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #111827;
+  width: 100vw;
   bottom: 0;
   left: 0;
   border: 2px solid var(--white-but-not);
@@ -94,6 +97,8 @@ const CloseButton = css`
 `
 
 export default function DraggableWindow(props: props) {
+  const [ExitSound] = useSound(exitSound);
+
   const { name, isMobile, setState, children } = props;
   const [position, setPosition] = useState({ left: 100, top: 100 });
   const moveableRef = useRef<HTMLDivElement | null>(null);
@@ -144,6 +149,7 @@ export default function DraggableWindow(props: props) {
 
   const handleExit = () => {
     setIfExit(true)
+    ExitSound();
     setTimeout(() => {
       setState(false)
       setIfExit(false)
@@ -169,7 +175,10 @@ export default function DraggableWindow(props: props) {
     >
       <DraggableContainer ref={moveableRef}>
         <TopBar>
-          <FiXCircle className={CloseButton} onClick={() => setState(false)} size={"1.125rem"} />
+          <FiXCircle className={CloseButton} onClick={() => {
+            setState(false);
+            ExitSound();
+          }} size={"1.125rem"} />
           <p>{"epiccarlito/" + name}</p>
         </TopBar>
       </DraggableContainer>

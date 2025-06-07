@@ -48,6 +48,19 @@ export const globals = css`
       margin-block: 0.25rem;
     }
 
+    li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      &::before {
+        content: '•';
+        font-size: 1em;
+        color: currentColor;
+      }
+    }
+
     .rCS1w3zcxh {
       --moveable-color: none!important;
     }

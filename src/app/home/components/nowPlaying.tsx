@@ -80,6 +80,7 @@ const Artist = styled.p`
 export default function NowPlaying({ nowPlaying, isLoading }: props) {
   const song = nowPlaying?.item;
   const album = song?.album;
+  
 
   return (
     <Container>
@@ -95,7 +96,7 @@ export default function NowPlaying({ nowPlaying, isLoading }: props) {
           <InnerHeading>Finding Songs...</InnerHeading>
         ) : nowPlaying ? (
           <>
-            {nowPlaying.is_playing != null && song ? (
+            {nowPlaying?.is_playing && song ? (
               <SongContainer
                 href={song?.external_urls.spotify}
                 target="_blank"

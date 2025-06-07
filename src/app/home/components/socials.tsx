@@ -7,6 +7,9 @@ import Starva from "../../../../public/social/starva.svg"
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 
+import socialSound from "../../../../public/sounds/socialSound.mp3"
+import useSound from "use-sound";
+
 interface props {
   href: string;
   SVG: any;
@@ -52,8 +55,12 @@ const Container = styled.div`
 `
 
 function Social(props: props) {
+  const [SocialSound] = useSound(socialSound);
+
   return (
-    <LinkSVG href={props.href} target="_blank">
+    <LinkSVG href={props.href} onClick={() => {
+      SocialSound();
+    }} target="_blank">
       <props.SVG className={SocialSVG} />
     </LinkSVG>
   );

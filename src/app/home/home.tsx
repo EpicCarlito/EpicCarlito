@@ -16,6 +16,8 @@ import AboutMe from "./aboutMe";
 import Musica from './musica';
 import Projects from "./projects"
 import useCheckMobile from '@/hooks/useCheckMobile';
+import openSound from "../../../public/sounds/openSound.mp3"
+import useSound from 'use-sound';
 
 interface props {
   name: string;
@@ -168,10 +170,12 @@ function ToggleButton({
   setNotChecked,
   children
 }: props) {
+  const [OpenSound] = useSound(openSound);
   const [showPopup, setShowPopup] = useState(false);
   const isMobile = useCheckMobile();
 
   const handleClick = () => {
+    OpenSound()
     setShowPopup(!showPopup)
     if (notChecked && setNotChecked) setNotChecked(false);
   }
@@ -181,7 +185,7 @@ function ToggleButton({
       <ButtonContainer onClick={handleClick}>
         <MusicaContaienr>
           <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
-          {notChecked && nowPlaying.is_playing != null && (
+          {notChecked && nowPlaying?.is_playing && (
             <MdNotificationImportant color="red" size={"1.5rem"} className={notify} />
           )}
         </MusicaContaienr>

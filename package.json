@@ -21,7 +21,8 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-moveable": "^0.56.0",
-    "react-wavify": "^1.11.1"
+    "react-wavify": "^1.11.1",
+    "use-sound": "^5.0.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
