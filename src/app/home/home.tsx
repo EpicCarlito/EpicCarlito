@@ -126,7 +126,7 @@ export default function Home() {
       .then((data: any) => {
         setNotChecked(true);
         setNowPlaying(data.nowPlaying);
-        setIsLoading(false);        
+        setIsLoading(false);
       });
   }, []);
   return (
@@ -148,7 +148,7 @@ export default function Home() {
             </ToggleButton>
             <ToggleButton name='projects' Icon={MdConstruction}>
               <Projects />
-              </ToggleButton>
+            </ToggleButton>
           </Buttons>
           <SocialsDivider>
             <Divider />
