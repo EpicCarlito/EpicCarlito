@@ -100,8 +100,44 @@ export default function Musica({ nowPlaying, isLoading }: props) {
             <Divider />
             <BottomSection>
                 <p>i enjoy listening to indie rock, future bass and electronic</p>
+                <p>i am lazy, here is my monthly playlist: <a href={"https://open.spotify.com/playlist/4yjcOQctOJzSUCaaaJItHC?si=5a4a9d99ac244d27"}>july playlist</a></p>
                 <InfoHeading>favorite artists</InfoHeading>
                 <Artists>
+                    <ArtistContainer>
+                        <a
+                            href="https://open.spotify.com/artist/536BYVgOnRky0xjsPT96zl"
+                            className={`${ArtistImage} ${scaleUp}`}>
+                            <Image
+                                alt="two door cinema club"
+                                src="https://i.scdn.co/image/ab6761610000e5eb86faeb97a905a571b2c361a0"
+                                width={96}
+                                height={96}
+                                className={`${ArtistImage} ${scaleUp}`} />
+                        </a>
+                        <SongContainer>
+                            <ArtistName>two door cinema club</ArtistName>
+                            <li>Undercover Martyn</li>
+                            <li>What You Know</li>
+                        </SongContainer>
+                    </ArtistContainer>
+                    <ArtistContainer>
+                        <a
+                            href="https://open.spotify.com/artist/24kKjYHpxr9bHyAJqChG68"
+                            className={`${ArtistImage} ${scaleUp}`}>
+                            <Image
+                                alt="keanu bicol"
+                                src="https://i.scdn.co/image/ab6761610000e5eb38d41024be8e40092480baa4"
+                                width={96}
+                                height={96}
+                                className={`${ArtistImage} ${scaleUp}`} />
+                        </a>
+                        <SongContainer>
+                            <ArtistName>Keanu Bicol</ArtistName>
+                            <li>i won't run</li>
+                            <li>don't know</li>
+                            <li>summer love</li>
+                        </SongContainer>
+                    </ArtistContainer>
                     <ArtistContainer>
                         <a
                             href="https://open.spotify.com/artist/38SKxCyfrmNWqWunb9wGHP"
@@ -115,9 +151,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
                         <SongContainer>
                             <ArtistName>good kid</ArtistName>
-                            <li>First Rate Town</li>
-                            <li>Alchemist</li>
-                            <li>Summer</li>
+                            <li>Witches</li>
+                            <li>Down with the King</li>
+                            <li>Tell Me You Know</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -133,47 +169,9 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
                         <SongContainer>
                             <ArtistName>Cafuné</ArtistName>
-                            <li>Shadowboxing</li>
                             <li>Tek It</li>
-                            <li>e-Asphyxiation</li>
-                        </SongContainer>
-                    </ArtistContainer>
-                    <ArtistContainer>
-                        <a
-                            href="https://open.spotify.com/artist/29O9ZebFa65aIEvMaW5pQY"
-                            className={`${ArtistImage} ${scaleUp}`}>
-                            <Image
-                                alt="snail's house"
-                                src="https://i.scdn.co/image/ab6761610000517437ce1606bdfa85907d4add14"
-                                width={96}
-                                height={96}
-                                className={`${ArtistImage} ${scaleUp}`} />
-                        </a>
-
-                        <SongContainer>
-                            <ArtistName>snail&apos;s house</ArtistName>
-                            <li>Digital Tattoo</li>
-                            <li>Planet Girl</li>
-                            <li>Galatic Whisper</li>
-                        </SongContainer>
-                    </ArtistContainer>
-                    <ArtistContainer>
-                        <a
-                            href="https://open.spotify.com/artist/7cvljqLNhWNFMb8wP2NImJ"
-                            className={`${ArtistImage} ${scaleUp}`}>
-                            <Image
-                                alt="moe's shop"
-                                src="https://i.scdn.co/image/ab6761610000e5eb18cc2390dfccdd20efddb5a9"
-                                width={96}
-                                height={96}
-                                className={`${ArtistImage} ${scaleUp}`} />
-                        </a>
-
-                        <SongContainer>
-                            <ArtistName>moe&apos;s shop</ArtistName>
-                            <li>WONDER POP</li>
-                            <li>WWW</li>
-                            <li>LOVE RECORD</li>
+                            <li>Friction</li>
+                            <li>Demise</li>
                         </SongContainer>
                     </ArtistContainer>
                 </Artists>
