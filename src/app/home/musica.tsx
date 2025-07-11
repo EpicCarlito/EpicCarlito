@@ -133,8 +133,8 @@ export default function Musica({ nowPlaying, isLoading }: props) {
                         </a>
                         <SongContainer>
                             <ArtistName>Keanu Bicol</ArtistName>
-                            <li>i won't run</li>
-                            <li>don't know</li>
+                            <li>i won&apos;t run</li>
+                            <li>don&apos;t know</li>
                             <li>summer love</li>
                         </SongContainer>
                     </ArtistContainer>
