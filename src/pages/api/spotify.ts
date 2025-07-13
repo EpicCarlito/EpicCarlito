@@ -45,29 +45,6 @@ export async function getAccessToken(
   return accessToken;
 }
 
-async function getNowPlaying(accessToken: AccessToken) {
-  const response = await fetch(
-    "https://api.spotify.com/v1/me/player/currently-playing",
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken.access_token}`,
-      },
-    }
-  );
-
-  const text = await response.text();
-  if (text.trim() === "") {
-    return null;
-  }
-
-  try {
-    const data = JSON.parse(text);
-    return data;
-  } catch (error) {
-    console.error("Error parsing JSON:", error);
-  }
-}
-
 export default async function GET(req: NextApiRequest, res: NextApiResponse) {
   const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID as string;
   const secret = process.env.NEXT_PUBLIC_SPOTIFY_SECRET as string;
@@ -81,8 +58,8 @@ export default async function GET(req: NextApiRequest, res: NextApiResponse) {
       refresh
     );
 
-    const nowPlaying = await getNowPlaying(accessToken);
-    res.status(200).json({ nowPlaying });
+    const token = accessToken.access_token;
+    res.status(200).json({ accessToken });
   } catch (error) {
     res.status(500).json({ error: "An error occurred while fetching data." });
   }

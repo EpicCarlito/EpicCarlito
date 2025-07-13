@@ -20,7 +20,7 @@ const BottomSection = styled.div`
     }
 `
 
-export default function Musica() {
+export default function Projects() {
     return (
         <Container>
             <BottomSection>

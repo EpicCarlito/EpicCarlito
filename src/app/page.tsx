@@ -1,3 +1,4 @@
+
 import { styled } from '@linaria/react';
 import AnimatedWaves from "@/app/home/components/animatedWaves";
 import Home from './home/home';
@@ -10,7 +11,7 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
       <Container>

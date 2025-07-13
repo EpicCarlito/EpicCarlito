@@ -8,6 +8,14 @@ const scaleUp = css`
   }
 `;
 
+const miniScaleUp = css`
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.025);
+  }
+`
+
 const scaleDown = css`
   transition: transform 0.2s ease-in-out;
 
@@ -16,4 +24,4 @@ const scaleDown = css`
   }
 `;
 
-export { scaleUp, scaleDown };
+export { scaleUp, miniScaleUp, scaleDown };
