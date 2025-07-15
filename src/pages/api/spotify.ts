@@ -59,7 +59,7 @@ export default async function GET(req: NextApiRequest, res: NextApiResponse) {
     );
 
     const token = accessToken.access_token;
-    res.status(200).json({ accessToken });
+    res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ error: "An error occurred while fetching data." });
   }

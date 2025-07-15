@@ -91,6 +91,7 @@ const ListContainer = styled.div`
     border: 2px solid var(--white-but-not);
     border-radius: 0.25rem;
     align-items: center;
+    cursor: pointer;
     padding: 1rem;
     gap: 0.75rem;
 `

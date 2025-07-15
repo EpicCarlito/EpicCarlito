@@ -92,7 +92,7 @@ export function ToggleButton({
 }
 
 export default function MusciaButton() {
-  const [nowPlaying, setNowPlaying] = useState<any>(null);
+  const [song, setSong] = useState<any>(null);
   const [playlist, setPlaylist] = useState<any>(null);
 
   const [notChecked, setNotChecked] = useState(true);
@@ -108,13 +108,14 @@ export default function MusciaButton() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const accessToken = await fetch("/api/spotify") as any;
+      const fetchedRes = await fetch("/api/spotify");
+      const fetchedToken = JSON.parse(await fetchedRes.text()).token
       const playerlistId = "4yjcOQctOJzSUCaaaJItHC";
 
-      const currentTrack = await fetchSpotify("https://api.spotify.com/v1/me/player/currently-playing", accessToken);
-      const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playerlistId}`, accessToken);
+      const currentTrack = await fetchSpotify("https://api.spotify.com/v1/me/player/currently-playing", fetchedToken);
+      const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playerlistId}`, fetchedToken);
 
-      setNowPlaying(currentTrack);
+      setSong(currentTrack);
       setPlaylist(currentPlaylist);
     };
 
@@ -126,7 +127,7 @@ export default function MusciaButton() {
       <ButtonContainer onClick={handleClick}>
         <MusicaContaienr>
           <MdLibraryMusic className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
-          {notChecked && nowPlaying?.is_playing && (
+          {notChecked && song?.is_playing && (
             <MdNotificationImportant color="red" size={"1.5rem"} className={notify} />
           )}
         </MusicaContaienr>
@@ -135,19 +136,19 @@ export default function MusciaButton() {
 
       {showPopup && (
         <DraggableWindow name="música" isMobile={isMobile} setState={setShowPopup}>
-          <Musica nowPlaying={nowPlaying} playlist={playlist} />
+          <Musica nowPlaying={song} playlist={playlist} />
         </DraggableWindow>
       )}
     </>
   )
 }
 
-async function fetchSpotify(url: string, accessToken: AccessToken) {
+async function fetchSpotify(url: string, accessToken: string) {
   const response = await fetch(
    url,
     {
       headers: {
-        Authorization: `Bearer ${accessToken.access_token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     }
   );
