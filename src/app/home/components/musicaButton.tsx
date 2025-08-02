@@ -8,7 +8,6 @@ import { styled } from "@linaria/react";
 import { useEffect, useState } from "react";
 import useCheckMobile from "@/hooks/useCheckMobile";
 import Musica from "../musica";
-import { AccessToken } from "@spotify/web-api-ts-sdk";
 
 interface props {
   name: string;
@@ -110,7 +109,7 @@ export default function MusciaButton() {
     const fetchData = async () => {
       const fetchedRes = await fetch("/api/spotify");
       const fetchedToken = JSON.parse(await fetchedRes.text()).token
-      const playerlistId = "4yjcOQctOJzSUCaaaJItHC";
+      const playerlistId = "0YQUtMJgqkQh22JqYrBUfs";
 
       const currentTrack = await fetchSpotify("https://api.spotify.com/v1/me/player/currently-playing", fetchedToken);
       const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playerlistId}`, fetchedToken);
