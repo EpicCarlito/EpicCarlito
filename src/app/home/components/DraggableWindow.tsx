@@ -100,7 +100,7 @@ export default function DraggableWindow(props: props) {
   const [ExitSound] = useSound(exitSound);
 
   const { name, isMobile, setState, children } = props;
-  const [position, setPosition] = useState({ left: 100, top: 100 });
+  const [position, setPosition] = useState({ left: 50, top: 50 });
   const moveableRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);

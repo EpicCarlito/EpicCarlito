@@ -258,7 +258,7 @@ export default function Musica({ nowPlaying, playlist }: props) {
                 <SongContainer>
                     <li>Next Exit by Vacations</li>
                     <li>Fairhaven Station by tanner.</li>
-                    <li>She Doesn't Get It by Rec Hall</li>
+                    <li>She Doesn&apos;t Get It by Rec Hall</li>
                 </SongContainer>
             </BottomSection>
         </Container>
