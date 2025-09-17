@@ -109,10 +109,10 @@ export default function MusciaButton() {
     const fetchData = async () => {
       const fetchedRes = await fetch("/api/spotify");
       const fetchedToken = JSON.parse(await fetchedRes.text()).token
-      const playerlistId = "0YQUtMJgqkQh22JqYrBUfs";
+      const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID as string;
 
       const currentTrack = await fetchSpotify("https://api.spotify.com/v1/me/player/currently-playing", fetchedToken);
-      const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playerlistId}`, fetchedToken);
+      const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playlistId}`, fetchedToken);
 
       setSong(currentTrack);
       setPlaylist(currentPlaylist);

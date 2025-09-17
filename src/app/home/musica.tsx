@@ -32,7 +32,7 @@ const Divider = styled.div`
 `
 
 const BottomSection = styled.div`
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1.25rem;
     overflow: scroll;
 
     @media (min-width: 48rem) {
@@ -41,7 +41,7 @@ const BottomSection = styled.div`
 `
 
 const InfoHeading = styled.h2`
-    margin-block: 0.75rem;
+    margin-block: 0.5rem;
 `
 
 const Artists = styled.div`
@@ -178,43 +178,26 @@ export default function Musica({ nowPlaying, playlist }: props) {
                         </InfoContainer>
                     </ListContainer>
                 ) : (
-                    <p>shit, you reached the spotify api limit, no playlist then</p>
+                    <p>you reached the spotify api limit, no playlist then hehe</p>
                 )}
                 <InfoHeading>favorite artists</InfoHeading>
                 <Artists>
                     <ArtistContainer>
                         <a
-                            href="https://open.spotify.com/artist/536BYVgOnRky0xjsPT96zl"
+                            href="https://open.spotify.com/artist/6eXOyTfkdOlynFf7lTCp19"
                             className={`${ArtistImage} ${miniScaleUp}`}>
                             <Image
-                                alt="two door cinema club"
-                                src="https://i.scdn.co/image/ab6761610000e5eb86faeb97a905a571b2c361a0"
+                                alt="bedfashion"
+                                src="https://i.scdn.co/image/ab6761610000e5eb018a39ffe60f9bccc9f2be10"
                                 width={96}
                                 height={96}
                                 className={`${ArtistImage} ${miniScaleUp}`} />
                         </a>
                         <SongContainer>
-                            <ArtistName>two door cinema club</ArtistName>
-                            <li>Undercover Martyn</li>
-                            <li>What You Know</li>
-                        </SongContainer>
-                    </ArtistContainer>
-                    <ArtistContainer>
-                        <a
-                            href="https://open.spotify.com/artist/24kKjYHpxr9bHyAJqChG68"
-                            className={`${ArtistImage} ${miniScaleUp}`}>
-                            <Image
-                                alt="keanu bicol"
-                                src="https://i.scdn.co/image/ab6761610000e5eb38d41024be8e40092480baa4"
-                                width={96}
-                                height={96}
-                                className={`${ArtistImage} ${miniScaleUp}`} />
-                        </a>
-                        <SongContainer>
-                            <ArtistName>Keanu Bicol</ArtistName>
-                            <li>i won&apos;t run</li>
-                            <li>don&apos;t know</li>
-                            <li>summer love</li>
+                            <ArtistName>bedfashion (underrated 🔥)</ArtistName>
+                            <li>Lay Low</li>
+                            <li>KK ARIZONA</li>
+                            <li>Anime Dream Queen</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -237,23 +220,46 @@ export default function Musica({ nowPlaying, playlist }: props) {
                     </ArtistContainer>
                     <ArtistContainer>
                         <a
-                            href="https://open.spotify.com/artist/581C5Qwl87TskfBEzuoisu"
+                            href="https://open.spotify.com/artist/536BYVgOnRky0xjsPT96zl"
                             className={`${ArtistImage} ${miniScaleUp}`}>
                             <Image
-                                alt="Cafuné"
-                                src="https://i.scdn.co/image/ab676161000051744d72dc74c11df7baf1d08508"
+                                alt="two door cinema club"
+                                src="https://i.scdn.co/image/ab6761610000e5eb86faeb97a905a571b2c361a0"
                                 width={96}
                                 height={96}
                                 className={`${ArtistImage} ${miniScaleUp}`} />
                         </a>
                         <SongContainer>
-                            <ArtistName>Cafuné</ArtistName>
-                            <li>Tek It</li>
-                            <li>Friction</li>
-                            <li>Demise</li>
+                            <ArtistName>two door cinema club</ArtistName>
+                            <li>Undercover Martyn</li>
+                            <li>What You Know</li>
+                        </SongContainer>
+                    </ArtistContainer>
+                    <ArtistContainer>
+                        <a
+                            href="https://open.spotify.com/artist/5vh3TBzvI4nASt2A1KfgcR"
+                            className={`${ArtistImage} ${miniScaleUp}`}>
+                            <Image
+                                alt="Phoneboy"
+                                src="https://i.scdn.co/image/ab6761610000e5eba41c7c4dbcea837acaabb4a9"
+                                width={96}
+                                height={96}
+                                className={`${ArtistImage} ${miniScaleUp}`} />
+                        </a>
+                        <SongContainer>
+                            <ArtistName>Phoneboy</ArtistName>
+                            <li>Open Up</li>
+                            <li>Ferrari</li>
+                            <li>Roses</li>
                         </SongContainer>
                     </ArtistContainer>
                 </Artists>
+                <InfoHeading>honorable mentions</InfoHeading>
+                <SongContainer>
+                    <li>Next Exit by Vacations</li>
+                    <li>Fairhaven Station by tanner.</li>
+                    <li>She Doesn't Get It by Rec Hall</li>
+                </SongContainer>
             </BottomSection>
         </Container>
     )
