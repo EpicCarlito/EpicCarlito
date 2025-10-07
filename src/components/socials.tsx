@@ -2,12 +2,12 @@
 
 import { FaDiscord, FaInstagram } from "react-icons/fa";
 import { AiFillGithub } from "react-icons/ai";
-import Starva from "../../../../public/social/starva.svg"
+import Starva from "../../public/social/starva.svg"
 
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
 
-import socialSound from "../../../../public/sounds/socialSound.mp3"
+import socialSound from "../../public/sounds/socialSound.mp3"
 import useSound from "use-sound";
 
 interface props {

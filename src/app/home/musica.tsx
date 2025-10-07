@@ -1,10 +1,11 @@
 import { styled } from "@linaria/react"
-import NowPlaying from "./components/nowPlaying";
+import NowPlaying from "./musicComponents/nowPlaying";
 import Image from 'next/image'
 import { css } from "@linaria/core";
 import { miniScaleUp } from "@/components/animations";
 import { FaSpotify } from "react-icons/fa";
 import { Suspense } from "react";
+import checkString from "@/components/checkString";
 
 interface props {
     nowPlaying: any;
@@ -140,7 +141,6 @@ const InnerHeading = styled.p`
   font-size: var(--text-base);
 `
 
-
 export default function Musica({ nowPlaying, playlist }: props) {
     return (
         <Container>
@@ -212,27 +212,27 @@ export default function Musica({ nowPlaying, playlist }: props) {
                                 className={`${ArtistImage} ${miniScaleUp}`} />
                         </a>
                         <SongContainer>
-                            <ArtistName>good kid</ArtistName>
-                            <li>Witches</li>
-                            <li>Down with the King</li>
-                            <li>Tell Me You Know</li>
+                            <ArtistName>Good Kid</ArtistName>
+                            <li>{"Mimi's Delivery Service"}</li>
+                            <li>Faster</li>
+                            <li>Nomu</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
                         <a
-                            href="https://open.spotify.com/artist/536BYVgOnRky0xjsPT96zl"
+                            href="https://open.spotify.com/artist/0U7iI0Dk4Ojvi17nZboNO4"
                             className={`${ArtistImage} ${miniScaleUp}`}>
                             <Image
-                                alt="two door cinema club"
-                                src="https://i.scdn.co/image/ab6761610000e5eb86faeb97a905a571b2c361a0"
+                                alt="vacations"
+                                src="https://i.scdn.co/image/ab6761610000e5eb080c868c83bba9ba37f13639"
                                 width={96}
                                 height={96}
                                 className={`${ArtistImage} ${miniScaleUp}`} />
                         </a>
                         <SongContainer>
-                            <ArtistName>two door cinema club</ArtistName>
-                            <li>Undercover Martyn</li>
-                            <li>What You Know</li>
+                            <ArtistName>Vacations</ArtistName>
+                            <li>Next Exit</li>
+                            <li>On Hold</li>
                         </SongContainer>
                     </ArtistContainer>
                     <ArtistContainer>
@@ -248,17 +248,17 @@ export default function Musica({ nowPlaying, playlist }: props) {
                         </a>
                         <SongContainer>
                             <ArtistName>Phoneboy</ArtistName>
-                            <li>Open Up</li>
                             <li>Ferrari</li>
                             <li>Roses</li>
+                            <li>Open Up</li>
                         </SongContainer>
                     </ArtistContainer>
                 </Artists>
                 <InfoHeading>honorable mentions</InfoHeading>
                 <SongContainer>
-                    <li>Next Exit by Vacations</li>
                     <li>Fairhaven Station by tanner.</li>
-                    <li>She Doesn&apos;t Get It by Rec Hall</li>
+                    <li>With Or Without by Luka Ferraro, Álvaro Rubio</li>
+                    <li>GESHUOU by INOHA</li>
                 </SongContainer>
             </BottomSection>
         </Container>

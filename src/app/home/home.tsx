@@ -7,17 +7,16 @@ import { ImInfo } from "react-icons/im";
 import { MdConstruction, MdLibraryMusic } from "react-icons/md";
 
 import { scaleDown, scaleUp } from '@/components/animations';
-import Socials from '@/app/home/components/socials';
-import Name from './components/name';
+import Socials from '@/components/socials';
+import Name from '../../components/name';
 
 import AboutMe from "./aboutMe";
-import Projects from "./projects"
+import Projects from "./projects";
 import { useSound } from 'use-sound';
 import openSound from "../../../public/sounds/openSound.mp3"
 import useCheckMobile from '@/hooks/useCheckMobile';
-import DraggableWindow from './components/DraggableWindow';
-import dynamic from 'next/dynamic';
-import MusciaButton from './components/musicaButton';
+import DraggableWindow from '../../components/DraggableWindow';
+import MusciaButton from './musicComponents/musicaButton';
 
 interface props {
   name: string;

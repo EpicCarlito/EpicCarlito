@@ -75,13 +75,15 @@ export default function AboutMe() {
             <Divider />
             <BottomSection>
                 <InfoHeading>who am i?</InfoHeading>
-                <p>hi! i&apos;m james, a long distance runner and coder. i enjoy to...</p>
+                <p>{"hi! i'm james, a long distance runner and coder. i enjoy to..."}</p>
                 <li>make cool things with frontend</li>
                 <li>read on self-improvement and psychology</li>
                 <li>going on long runs</li>
                 <InfoHeading>other</InfoHeading>
-                <li>current bronx science sophomore (&apos;27)</li>
+                <li>{"current bronx science junior ('27)"}</li>
                 <li>an INFP and an ambivert</li>
+
+                <p>{"P.S. i'll update the pfp eventually 😮‍💨"}</p>
             </BottomSection>
         </Container>
     )

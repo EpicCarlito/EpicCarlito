@@ -7,7 +7,7 @@ import { FiXCircle } from 'react-icons/fi';
 import { HiChevronDoubleDown } from "react-icons/hi";
 import Moveable from "react-moveable";
 import useSound from 'use-sound';
-import exitSound from "../../../../public/sounds/exitSound.mp3"
+import exitSound from "../../public/sounds/exitSound.mp3";
 
 interface props {
   name: string;

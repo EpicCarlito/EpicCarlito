@@ -1,6 +1,6 @@
 
 import { styled } from '@linaria/react';
-import AnimatedWaves from "@/app/home/components/animatedWaves";
+import AnimatedWaves from "@/components/animatedWaves";
 import Home from './home/home';
 
 const Container = styled.div`

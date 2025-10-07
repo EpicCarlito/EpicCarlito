@@ -1,5 +1,5 @@
 import { MdLibraryMusic, MdNotificationImportant } from "react-icons/md";
-import DraggableWindow from "./DraggableWindow";
+import DraggableWindow from "../../../components/DraggableWindow";
 import { scaleDown, scaleUp } from "@/components/animations";
 import openSound from "../../../../public/sounds/openSound.mp3"
 import useSound from "use-sound";
@@ -8,6 +8,7 @@ import { styled } from "@linaria/react";
 import { useEffect, useState } from "react";
 import useCheckMobile from "@/hooks/useCheckMobile";
 import Musica from "../musica";
+import checkString from "@/components/checkString";
 
 interface props {
   name: string;
@@ -77,7 +78,7 @@ export function ToggleButton({
   return (
     <>
       <ButtonContainer onClick={handleClick}>
-          <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
+        <Icon className={`${ButtonIcon} ${scaleUp} ${scaleDown}`} />
         <ButtonText>{name}</ButtonText>
       </ButtonContainer>
 
@@ -111,11 +112,11 @@ export default function MusciaButton() {
       const fetchedToken = JSON.parse(await fetchedRes.text()).token
       const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID as string;
 
+      const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playlistId}`, fetchedToken, true);
       const currentTrack = await fetchSpotify("https://api.spotify.com/v1/me/player/currently-playing", fetchedToken);
-      const currentPlaylist = await fetchSpotify(`https://api.spotify.com/v1/playlists/${playlistId}`, fetchedToken);
 
-      setSong(currentTrack);
       setPlaylist(currentPlaylist);
+      setSong(currentTrack);
     };
 
     fetchData();
@@ -142,15 +143,34 @@ export default function MusciaButton() {
   )
 }
 
-async function fetchSpotify(url: string, accessToken: string) {
-  const response = await fetch(
-   url,
-    {
+async function fetchSpotify(url: string, accessToken: string, isPlaylist?: Boolean) {
+  try {
+    const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
+    });
+
+    if (isPlaylist) {
+      const resText = await response.text()
+
+      if (!resText) return null;
+
+      const resJSON = JSON.parse(resText);
+
+      let resInfo = {
+        name: resJSON.name,
+        description: checkString(resJSON.description as string),
+        images: resJSON.images
+      };
+      return resInfo;
+    } else {
+      const resText = await response.text()
+      const resJSON = JSON.parse(resText);
+
+      return resJSON;
     }
-  );
-  const textRes = await response.text()
-  return JSON.parse(textRes)
+  } catch (error) {
+    return null;
+  }
 }
