@@ -1,24 +1,17 @@
 import Wave from "react-wavify";
 import "../styles/_waves.scss";
-import { useMemo } from "react";
 
 function AnimatedWave({ pos }: { pos: number }) {
-  const waveConfig = useMemo(() => {
-    return {
-      amplitude: Math.random() * 20 + (20 * pos),
-    };
-  }, []);
-
   return (
     <Wave
       className="wave"
       fill={`url(#gradient-${pos})`}
       style={{ filter: `url(#wave-shadow-${pos})` }}
       options={{
-        height: 25,
-        amplitude: waveConfig.amplitude,
-        speed: 0.1 * pos,
-        points: 2,
+        height: 10 * pos + 15,
+        amplitude: 20,
+        speed: 0.15 + pos * 0.075,
+        points: 3 + pos - 1,
       }}
     >
       <defs>
@@ -33,8 +26,8 @@ function AnimatedWave({ pos }: { pos: number }) {
             dx="0"
             dy="4"
             stdDeviation="6"
-            floodColor="#000000"
-            floodOpacity="0.75"
+            floodColor="#000"
+            floodOpacity="0.6"
           />
         </filter>
 
@@ -51,9 +44,9 @@ function AnimatedWave({ pos }: { pos: number }) {
 export default function AnimatedWaves() {
   return (
     <div className="container">
+      <AnimatedWave pos={0} />
       <AnimatedWave pos={1} />
       <AnimatedWave pos={2} />
-      <AnimatedWave pos={3} />
     </div>
   );
 }

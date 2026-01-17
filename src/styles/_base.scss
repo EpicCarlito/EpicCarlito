@@ -13,10 +13,21 @@
   --text-8xl: 6rem;
   --text-9xl: 8rem;
   --color-bg: #111827;
+  --inner-bg: #1f2937;
   --white-but-not: #d6d3d1; /* text-stone-300 */
   --font-comfortaa: "Comfortaa", sans-serif;
-  --font-sen: "Sen", serif;
+  --font-sen: "Sen", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Sen";
+  src: url("/fonts/Sen.ttf") format("truetype");
 }
 
 html {

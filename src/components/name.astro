@@ -1,0 +1,85 @@
+---
+const text = "EpicCarlito";
+---
+
+<div class="container">
+  <h1 class="name">
+    {
+      text.split("").map((letter, i) => {
+        const middle = (text.length - 1) / 2;
+        const delay = Math.abs(i - middle) * 0.05;
+
+        return (
+          <span class="letter" style={{ "--delay": `${delay}s` }}>
+            {letter}
+          </span>
+        );
+      })
+    }
+  </h1>
+</div>
+
+<style>
+  .container {
+    max-height: clamp(var(--text-6xl), 5vw, var(--text-8xl));
+  }
+
+  .name {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    font-size: clamp(var(--text-6xl), 5vw, var(--text-8xl));
+    font-family: var(--font-sen);
+    font-weight: 800;
+    max-height: clamp(var(--text-6xl), 5vw, var(--text-8xl));
+
+    transform: perspective(31.25rem) rotateX(-2deg);
+    transform-style: preserve-3d;
+
+    animation: slideUp 2.5s ease-in-out forwards 5s;
+  }
+
+  .letter {
+    display: inline-block;
+    color: var(--white-but-not);
+    opacity: 0;
+
+    animation:
+      zoomIn 0.75s ease-in-out forwards,
+      zoomOut 1.75s ease-in-out forwards calc(var(--delay) + 0.75s);
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: translateZ(25rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateZ(-6.25rem);
+      opacity: 1;
+    }
+  }
+
+  @keyframes zoomOut {
+    0% {
+      transform: translateZ(-6.25rem);
+    }
+    50% {
+      transform: translateZ(5.5rem);
+    }
+    100% {
+      transform: translateZ(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-10rem);
+    }
+  }
+</style>

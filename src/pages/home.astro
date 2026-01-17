@@ -1,0 +1,60 @@
+---
+import Name from "../components/name.astro";
+---
+
+<div class="homeContainer" id="homeContainer">
+  <div class="expandContainer" id="expandContent">
+    <Name />
+  </div>
+</div>
+
+<style>
+.homeContainer {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg);
+  padding: 5rem;
+}
+
+.expandContainer {
+  display: inline-flex;
+  padding: 2rem 2.5rem;
+  background-color: var(--inner-bg);
+  border: 1px solid var(--white-but-not);
+
+  width: var(--start-width);
+  height: var(--start-height);
+
+  animation: expand 2s ease-in-out 1.5s forwards;
+}
+
+@keyframes expand {
+  to {
+    width: var(--target-width);
+    height: var(--target-height);
+    overflow: hidden;
+  }
+}
+</style>
+
+<script type="module">
+  const container = document.getElementById('homeContainer');
+  const expand = document.getElementById('expandContent');
+
+  const startWidth = expand.offsetWidth + 'px';
+  const startHeight = expand.offsetHeight + 'px';
+
+  const parentStyles = getComputedStyle(container);
+  const paddingX = parseFloat(parentStyles.paddingLeft) + parseFloat(parentStyles.paddingRight);
+  const paddingY = parseFloat(parentStyles.paddingTop) + parseFloat(parentStyles.paddingBottom);
+  const targetWidth = (container.clientWidth - paddingX) + 'px';
+  const targetHeight = (container.clientHeight - paddingY) + 'px';
+
+  expand.style.setProperty('--start-width', startWidth);
+  expand.style.setProperty('--start-height', startHeight);
+  expand.style.setProperty('--target-width', targetWidth);
+  expand.style.setProperty('--target-height', targetHeight);
+</script>
