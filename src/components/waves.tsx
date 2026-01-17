@@ -1,10 +1,10 @@
 import Wave from "react-wavify";
-import "../styles/_waves.scss";
+import styles from "../styles/_waves.module.scss";
 
 function AnimatedWave({ pos }: { pos: number }) {
   return (
     <Wave
-      className="wave"
+      className={styles.wave}
       fill={`url(#gradient-${pos})`}
       style={{ filter: `url(#wave-shadow-${pos})` }}
       options={{
@@ -43,7 +43,7 @@ function AnimatedWave({ pos }: { pos: number }) {
 
 export default function AnimatedWaves() {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <AnimatedWave pos={0} />
       <AnimatedWave pos={1} />
       <AnimatedWave pos={2} />

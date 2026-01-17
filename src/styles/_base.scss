@@ -43,6 +43,10 @@ body {
   background-color: var(--color-bg);
 }
 
+span, p, h1, h2, h2 {
+  color: var(--white-but-not);
+}
+
 ul {
   margin-block: 0;
   padding-inline: 0;

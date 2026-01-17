@@ -7,7 +7,7 @@ const text = "EpicCarlito";
     {
       text.split("").map((letter, i) => {
         const middle = (text.length - 1) / 2;
-        const delay = Math.abs(i - middle) * 0.05;
+        const delay = Math.abs(i - middle) * 0.1;
 
         return (
           <span class="letter" style={{ "--delay": `${delay}s` }}>
@@ -20,8 +20,17 @@ const text = "EpicCarlito";
 </div>
 
 <style>
+  h1,
+  p {
+    margin-block: 0;
+  }
+
   .container {
+    display: flex;
     max-height: clamp(var(--text-6xl), 5vw, var(--text-8xl));
+    animation: disappear 2.5s ease-in-out forwards 5s;
+    margin-block: 0.5rem;
+    justify-content: center;
   }
 
   .name {
@@ -57,14 +66,14 @@ const text = "EpicCarlito";
       opacity: 0;
     }
     to {
-      transform: translateZ(-6.25rem);
+      transform: translateZ(-8rem);
       opacity: 1;
     }
   }
 
   @keyframes zoomOut {
     0% {
-      transform: translateZ(-6.25rem);
+      transform: translateZ(-8rem);
     }
     50% {
       transform: translateZ(5.5rem);
@@ -80,6 +89,13 @@ const text = "EpicCarlito";
     }
     to {
       transform: translateY(-10rem);
+    }
+  }
+
+  @keyframes disappear {
+    to {
+      max-height: 0;
+      margin-block: 0;
     }
   }
 </style>

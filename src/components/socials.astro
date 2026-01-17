@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+// discord instagram github starva
+---
+
+<div class="container">
+  <a class="link" href="https://www.instagram.com/epiccarlito/">
+    <Icon id="icon" name="mdi:instagram" />
+  </a>
+  <a class="link" href="https://github.com/epiccarlito">
+    <Icon id="icon" name="mdi:github" />
+  </a>
+</div>
+
+<style>
+  [data-icon] {
+    font-size: 2rem;
+    color: var(--white-but-not);
+  }
+
+  .container {
+    display: flex;
+    gap: 0.325rem;
+    padding: 0.5rem;
+    left: 50%;
+  }
+
+  .link {
+    display: inline-flex;
+    transition: transform 300ms ease;
+    color: var(--white-but-not);
+    cursor: pointer;
+  }
+
+  link:hover {
+    transform: scale(1.2);
+  }
+
+  .icon {
+    filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 5%));
+  }
+
+  @media (width >= 48rem) {
+    [data-icon] {
+      font-size: 2.5rem;
+    }
+  }
+</style>
