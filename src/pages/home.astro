@@ -14,133 +14,134 @@ import Songs from "../components/songs";
       </div>
     </div>
   </div>
+</div>
 
-  <style>
+<style>
+  .homeContainer {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-bg);
+    padding: 1rem 1.3rem;
+  }
+
+  .expandContainer {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--inner-bg);
+    border: 1px solid var(--white-but-not);
+
+    width: var(--start-width);
+    height: var(--start-height);
+
+    animation: expand 2s ease-in-out 1.5s forwards;
+  }
+
+  .windowContainer {
+    position: relative;
+    width: 100%;
+    align-items: center;
+    background: linear-gradient(to top, #000, #000, #333, #333);
+    background-color: gray;
+    background-size: 100% 3px;
+    border: 1px var(--white-but-not) solid;
+    border-radius: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    animation:
+      appear 2s ease-in-out 1.3s forwards,
+      scanlines 55s linear 2s infinite;
+    overflow: hidden;
+    height: 0;
+  }
+
+  .socialsContainer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateY(5rem) translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border-radius: 1rem 1rem 0 0;
+    animation: appearSocials 2s ease-in-out 4.5s forwards;
+    border-left: 1px var(--white-but-not) solid;
+    border-right: 1px var(--white-but-not) solid;
+    border-top: 1px var(--white-but-not) solid;
+    opacity: 0;
+  }
+
+  @keyframes appear {
+    to {
+      flex-grow: 1;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @keyframes expand {
+    to {
+      width: var(--target-width);
+      height: var(--target-height);
+      overflow: hidden;
+    }
+  }
+
+  @keyframes scanlines {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: 0 -10px;
+    }
+  }
+
+  @keyframes appearSocials {
+    to {
+      opacity: 1;
+      transform: translateY(0) translateX(-50%);
+    }
+  }
+
+  @media (min-width: 48rem) {
     .homeContainer {
-      height: 100%;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--color-bg);
-      padding: 1rem 1.3rem;
+      padding: 3rem 4rem;
     }
 
     .expandContainer {
-      display: inline-flex;
-      flex-direction: column;
-      padding: 1rem;
-      background-color: var(--inner-bg);
-      border: 1px solid var(--white-but-not);
-
-      width: var(--start-width);
-      height: var(--start-height);
-
-      animation: expand 2s ease-in-out 1.5s forwards;
+      padding: 1.5rem 2.5rem;
     }
+  }
+</style>
 
-    .windowContainer {
-      position: relative;
-      flex-grow: 1;
-      width: 100%;
-      align-items: center;
-      background: linear-gradient(to top, #000, #000, #333, #333);
-      background-color: gray;
-      background-size: 100% 3px;
-      border: 1px var(--white-but-not) solid;
-      border-radius: 1rem;
-      opacity: 0;
-      visibility: hidden;
-      animation:
-        appear 2s ease-in-out 2.3s forwards,
-        scanlines 55s linear 2s infinite;
-      overflow: hidden;
-    }
+<script type="module">
+  const container = document.getElementById("homeContainer");
+  const expand = document.getElementById("expandContent");
 
-    .socialsContainer {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateY(5rem) translateX(-50%);
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      border-radius: 1rem 1rem 0 0;
-      animation: appearSocials 2s ease-in-out 4.5s forwards;
-      border-left: 1px var(--white-but-not) solid;
-      border-right: 1px var(--white-but-not) solid;
-      border-top: 1px var(--white-but-not) solid;
-      opacity: 0;
-    }
+  const containerStyles = getComputedStyle(container);
+  let paddingX =
+    parseFloat(containerStyles.paddingLeft) +
+    parseFloat(containerStyles.paddingRight);
+  let paddingY =
+    parseFloat(containerStyles.paddingTop) +
+    parseFloat(containerStyles.paddingBottom);
+  const targetWidth = container.clientWidth - paddingX + "px";
+  const targetHeight = container.clientHeight - paddingY + "px";
 
-    @keyframes appear {
-      to {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
+  const expandStyles = getComputedStyle(expand);
+  paddingX =
+    parseFloat(expandStyles.paddingLeft) +
+    parseFloat(expandStyles.paddingRight);
 
-    @keyframes expand {
-      to {
-        width: var(--target-width);
-        height: var(--target-height);
-        overflow: hidden;
-      }
-    }
+  const startWidth = expand.clientWidth - paddingX + "px";
+  const startHeight = expand.clientHeight + "px";
 
-    @keyframes scanlines {
-      from {
-        background-position: 0 0;
-      }
-
-      to {
-        background-position: 0 -10px;
-      }
-    }
-
-    @keyframes appearSocials {
-      to {
-        opacity: 1;
-        transform: translateY(0) translateX(-50%);
-      }
-    }
-    
-    @media (min-width: 48rem) {
-      .homeContainer {
-        padding: 3rem 4rem;
-      }
-
-      .expandContainer {
-        padding: 1.5rem 2.5rem;
-      }
-    }
-  </style>
-
-  <script type="module">
-    const container = document.getElementById("homeContainer");
-    const expand = document.getElementById("expandContent");
-
-    const containerStyles = getComputedStyle(container);
-    let paddingX =
-      parseFloat(containerStyles.paddingLeft) +
-      parseFloat(containerStyles.paddingRight);
-    let paddingY =
-      parseFloat(containerStyles.paddingTop) +
-      parseFloat(containerStyles.paddingBottom);
-    const targetWidth = container.clientWidth - paddingX + "px";
-    const targetHeight = container.clientHeight - paddingY + "px";
-
-    const expandStyles = getComputedStyle(expand);
-    paddingX =
-      parseFloat(expandStyles.paddingLeft) +
-      parseFloat(expandStyles.paddingRight);
-
-    const startWidth = expand.clientWidth - paddingX + "px";
-    const startHeight = expand.clientHeight + "px";
-
-    expand.style.setProperty("--start-width", startWidth);
-    expand.style.setProperty("--start-height", startHeight);
-    expand.style.setProperty("--target-width", targetWidth);
-    expand.style.setProperty("--target-height", targetHeight);
-  </script>
-</div>
+  expand.style.setProperty("--start-width", startWidth);
+  expand.style.setProperty("--start-height", startHeight);
+  expand.style.setProperty("--target-width", targetWidth);
+  expand.style.setProperty("--target-height", targetHeight);
+</script>
