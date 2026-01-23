@@ -27,9 +27,8 @@ const text = "EpicCarlito";
 
   .container {
     display: flex;
-    max-height: clamp(var(--text-6xl), 5vw, var(--text-8xl));
+    height: calc(clamp(var(--text-5xl), 5vw, var(--text-8xl)));
     animation: disappear 2.5s ease-in-out forwards 5s;
-    margin-block: 0.5rem;
     justify-content: center;
   }
 
@@ -37,12 +36,10 @@ const text = "EpicCarlito";
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    line-height: 1;
 
-    font-size: clamp(var(--text-6xl), 5vw, var(--text-8xl));
+    font-size: clamp(var(--text-5xl), 5vw, var(--text-8xl));
     font-family: var(--font-sen);
     font-weight: 800;
-    max-height: clamp(var(--text-6xl), 5vw, var(--text-8xl));
 
     transform: perspective(31.25rem) rotateX(-2deg);
     transform-style: preserve-3d;
@@ -94,7 +91,7 @@ const text = "EpicCarlito";
 
   @keyframes disappear {
     to {
-      max-height: 0;
+      height: 0;
       margin-block: 0;
     }
   }

@@ -23,13 +23,13 @@ import Songs from "../components/songs";
       justify-content: center;
       align-items: center;
       background: var(--color-bg);
-      padding: 3rem 4rem;
+      padding: 1rem 1.3rem;
     }
 
     .expandContainer {
       display: inline-flex;
       flex-direction: column;
-      padding: 1.5rem 2.5rem;
+      padding: 1rem;
       background-color: var(--inner-bg);
       border: 1px solid var(--white-but-not);
 
@@ -50,6 +50,7 @@ import Songs from "../components/songs";
       border: 1px var(--white-but-not) solid;
       border-radius: 1rem;
       opacity: 0;
+      visibility: hidden;
       animation:
         appear 2s ease-in-out 2.3s forwards,
         scanlines 55s linear 2s infinite;
@@ -74,8 +75,8 @@ import Songs from "../components/songs";
 
     @keyframes appear {
       to {
+        visibility: visible;
         opacity: 1;
-        margin-block: 0.5rem;
       }
     }
 
@@ -103,24 +104,39 @@ import Songs from "../components/songs";
         transform: translateY(0) translateX(-50%);
       }
     }
+    
+    @media (min-width: 48rem) {
+      .homeContainer {
+        padding: 3rem 4rem;
+      }
+
+      .expandContainer {
+        padding: 1.5rem 2.5rem;
+      }
+    }
   </style>
 
   <script type="module">
     const container = document.getElementById("homeContainer");
     const expand = document.getElementById("expandContent");
 
-    const startWidth = expand.offsetWidth + "px";
-    const startHeight = expand.offsetHeight + "px";
-
-    const parentStyles = getComputedStyle(container);
-    const paddingX =
-      parseFloat(parentStyles.paddingLeft) +
-      parseFloat(parentStyles.paddingRight);
-    const paddingY =
-      parseFloat(parentStyles.paddingTop) +
-      parseFloat(parentStyles.paddingBottom);
+    const containerStyles = getComputedStyle(container);
+    let paddingX =
+      parseFloat(containerStyles.paddingLeft) +
+      parseFloat(containerStyles.paddingRight);
+    let paddingY =
+      parseFloat(containerStyles.paddingTop) +
+      parseFloat(containerStyles.paddingBottom);
     const targetWidth = container.clientWidth - paddingX + "px";
     const targetHeight = container.clientHeight - paddingY + "px";
+
+    const expandStyles = getComputedStyle(expand);
+    paddingX =
+      parseFloat(expandStyles.paddingLeft) +
+      parseFloat(expandStyles.paddingRight);
+
+    const startWidth = expand.clientWidth - paddingX + "px";
+    const startHeight = expand.clientHeight + "px";
 
     expand.style.setProperty("--start-width", startWidth);
     expand.style.setProperty("--start-height", startHeight);
