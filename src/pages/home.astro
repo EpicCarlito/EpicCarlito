@@ -2,6 +2,7 @@
 import Name from "../components/name.astro";
 import Socials from "../components/socials.astro";
 import Songs from "../components/songs";
+import Spotify from "../components/spotify";
 ---
 
 <div class="homeContainer" id="homeContainer">
@@ -9,6 +10,7 @@ import Songs from "../components/songs";
     <Name />
     <div class="windowContainer">
       <Songs client:load />
+      <Spotify client:load />
       <div class="socialsContainer">
         <Socials />
       </div>
@@ -18,75 +20,73 @@ import Songs from "../components/songs";
 
 <style>
   .homeContainer {
-    height: 100%;
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--color-bg);
+    width: 100vw;
+    height: 100%;
     padding: 1rem 1.3rem;
+    background: var(--color-bg);
   }
 
   .expandContainer {
     display: inline-flex;
     flex-direction: column;
+    width: var(--start-width);
+    height: var(--start-height);
     padding: 1rem;
     background-color: var(--inner-bg);
     border: 1px solid var(--white-but-not);
-
-    width: var(--start-width);
-    height: var(--start-height);
-
     animation: expand 2s ease-in-out 1.5s forwards;
   }
 
   .windowContainer {
     position: relative;
-    width: 100%;
+    visibility: hidden;
+    overflow: hidden;
     align-items: center;
+    width: 100%;
+    height: 0;
     background: linear-gradient(to top, #000, #000, #333, #333);
     background-color: gray;
     background-size: 100% 3px;
     border: 1px var(--white-but-not) solid;
     border-radius: 1rem;
     opacity: 0;
-    visibility: hidden;
     animation:
       appear 2s ease-in-out 1.3s forwards,
       scanlines 55s linear 2s infinite;
-    overflow: hidden;
-    height: 0;
   }
 
   .socialsContainer {
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateY(5rem) translateX(-50%);
     display: flex;
     flex-direction: row;
     gap: 1rem;
     border-radius: 1rem 1rem 0 0;
+    opacity: 0;
     animation: appearSocials 2s ease-in-out 4.5s forwards;
     border-left: 1px var(--white-but-not) solid;
     border-right: 1px var(--white-but-not) solid;
     border-top: 1px var(--white-but-not) solid;
-    opacity: 0;
+    transform: translateY(5rem) translateX(-50%);
   }
 
   @keyframes appear {
     to {
-      flex-grow: 1;
       visibility: visible;
+      flex-grow: 1;
       opacity: 1;
     }
   }
 
   @keyframes expand {
     to {
+      overflow: hidden;
       width: var(--target-width);
       height: var(--target-height);
-      overflow: hidden;
     }
   }
 
@@ -107,7 +107,7 @@ import Songs from "../components/songs";
     }
   }
 
-  @media (min-width: 48rem) {
+  @media (width >= 48rem) {
     .homeContainer {
       padding: 3rem 4rem;
     }

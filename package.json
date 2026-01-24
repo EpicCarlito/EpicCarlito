@@ -6,11 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "style": "npx stylelint \"**/*.{astro,scss,css}\" --fix",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@iconify-json/mdi": "^1.2.3",
+    "@spotify/web-api-ts-sdk": "^1.2.0",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.9",
@@ -19,5 +21,14 @@
     "react-dom": "^19.2.3",
     "react-wavify": "^1.11.1",
     "sass": "^1.97.2"
+  },
+  "devDependencies": {
+    "postcss-html": "^1.8.1",
+    "postcss-scss": "^4.0.9",
+    "stylelint": "^17.0.0",
+    "stylelint-config-astro": "^2.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^7.0.1"
   }
 }

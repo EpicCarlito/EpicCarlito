@@ -1,7 +1,7 @@
 .container {
   position: relative;
-  justify-self: center;
   z-index: 100;
+  justify-self: center;
 
   --default-rotate: 11deg;
 }
@@ -9,9 +9,9 @@
 .container .image {
   --rotateX: 5deg;
   --rotateY: 0deg;
+
   width: 5rem;
   height: 5rem;
-
   transition: transform 500ms ease;
   transform: perspective(31.25rem) rotateY(var(--rotateY))
     rotateX(var(--rotateX));
@@ -76,8 +76,8 @@
 }
 
 .container .pos:nth-child(6) {
-  bottom: 0;
   right: 0;
+  bottom: 0;
 }
 
 .container .pos:nth-child(6):hover ~ .image {
@@ -85,7 +85,7 @@
   --rotateY: var(--default-rotate);
 }
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .container .image {
     width: 8rem;
     height: 8rem;

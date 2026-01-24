@@ -27,31 +27,28 @@ const text = "EpicCarlito";
 
   .container {
     display: flex;
+    justify-content: center;
     height: calc(clamp(var(--text-5xl), 5vw, var(--text-8xl)));
     animation: disappear 2.5s ease-in-out forwards 5s;
-    justify-content: center;
+    margin-block: 1rem;
   }
 
   .name {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-
-    font-size: clamp(var(--text-5xl), 5vw, var(--text-8xl));
     font-family: var(--font-sen);
+    font-size: clamp(var(--text-5xl), 5vw, var(--text-8xl));
     font-weight: 800;
-
+    animation: slideUp 2.5s ease-in-out forwards 5s;
     transform: perspective(31.25rem) rotateX(-2deg);
     transform-style: preserve-3d;
-
-    animation: slideUp 2.5s ease-in-out forwards 5s;
   }
 
   .letter {
     display: inline-block;
     color: var(--white-but-not);
     opacity: 0;
-
     animation:
       zoomIn 0.75s ease-in-out forwards,
       zoomOut 1.75s ease-in-out forwards calc(var(--delay) + 0.75s);
@@ -59,12 +56,13 @@ const text = "EpicCarlito";
 
   @keyframes zoomIn {
     from {
-      transform: translateZ(25rem);
       opacity: 0;
+      transform: translateZ(25rem);
     }
+
     to {
-      transform: translateZ(-8rem);
       opacity: 1;
+      transform: translateZ(-8rem);
     }
   }
 
@@ -72,9 +70,11 @@ const text = "EpicCarlito";
     0% {
       transform: translateZ(-8rem);
     }
+
     50% {
       transform: translateZ(5.5rem);
     }
+
     100% {
       transform: translateZ(0);
     }
@@ -84,6 +84,7 @@ const text = "EpicCarlito";
     from {
       transform: translateY(0);
     }
+
     to {
       transform: translateY(-10rem);
     }
