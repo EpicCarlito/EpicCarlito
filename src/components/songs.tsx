@@ -22,7 +22,7 @@ export default function Members() {
             : styles.default;
 
         const ifActive = offset == 0 && curr != null;
-        const appearText = ifActive ? styles.show : styles.hide;
+        const appearText = ifActive ? styles.show : "";
 
         return (
           <div
@@ -38,8 +38,8 @@ export default function Members() {
               )}
 
               <div className={`${styles.textContainer} ${appearText}`}>
-                <h1 className={styles.name}>{image.artist}</h1>
-                <h1 className={styles.desc}>{image.desc}</h1>
+                <h1 className={styles.title}>{image.title}</h1>
+                <h1 className={styles.artist}>by {image.artist}</h1>
               </div>
             </div>
           </div>
