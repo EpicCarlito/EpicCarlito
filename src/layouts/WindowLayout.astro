@@ -1,0 +1,72 @@
+---
+import Heading from "../components/heading.astro";
+import Socials from "../components/socials.astro";
+import Songs from "../components/displaySongs";
+import Spotify from "../components/spotify";
+
+const ifAnimate = Astro.url.pathname == "/";
+---
+
+<div
+  class={`windowContainer ${ifAnimate ? "appear" : ""}`}
+  transition:name="window"
+  transition:animate="fade"
+>
+  <Heading />
+  <div class="scrollable">
+    <slot />
+  </div>
+</div>
+<Socials />
+
+<style>
+  .windowContainer {
+    display: flex;
+    visibility: visible;
+    overflow: hidden;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000, #000, #333, #333);
+    background-color: gray;
+    background-size: 100% 3px;
+    border: 2px var(--white-but-not) solid;
+    border-radius: 0.375rem;
+    opacity: 1;
+    animation: scanlines 55s linear 2s infinite;
+
+    &.appear {
+      visibility: hidden;
+      height: 0;
+      opacity: 0;
+      animation: appear 2s ease-in-out 1.3s forwards;
+    }
+  }
+
+  .scrollable {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: none;
+    padding-block: 2rem;
+  }
+
+  @keyframes appear {
+    to {
+      visibility: visible;
+      flex-grow: 1;
+      opacity: 1;
+    }
+  }
+
+  @keyframes scanlines {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: 0 -10px;
+    }
+  }
+</style>

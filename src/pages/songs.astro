@@ -1,0 +1,17 @@
+---
+import Spotify from "../components/spotify";
+import Layout from "../layouts/Layout.astro";
+import WindowLayout from "../layouts/WindowLayout.astro";
+import DisplaySongs from "../components/displaySongs.tsx";
+import Waves from "../components/waves";
+---
+
+<Layout>
+  <div class="innerContainer">
+    <WindowLayout>
+      <DisplaySongs client:load />
+      <Spotify client:load />
+    </WindowLayout>
+  </div>
+  <Waves client:load />
+</Layout>

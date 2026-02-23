@@ -1,3 +1,8 @@
+---
+import "../styles/_base.scss";
+import { ClientRouter } from "astro:transitions";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,18 +11,21 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
+    <ClientRouter />
   </head>
   <body>
-    <slot />
+    <div class="container">
+      <slot />
+    </div>
   </body>
 </html>
 
 <style>
-  html,
-  body {
-    width: 100%;
+  .container {
+    display: grid;
+    overflow: hidden;
     height: 100%;
-    margin: 0;
+    grid-template-rows: 1fr auto;
   }
 </style>
 

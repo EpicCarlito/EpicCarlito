@@ -1,35 +1,37 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/_spotify.module.scss";
+import { SpotifyStorage, type SpotifyState } from "../lib/spotifyStorage";
+import type { Track } from "@spotify/web-api-ts-sdk";
 
 export default function Spotify() {
-  const [track, setTrack] = useState<any>(null);
-  const [playlist, setPlaylist] = useState<any>(null);
+  const [state, setState] = useState<SpotifyState>(SpotifyStorage.getState());
 
   useEffect(() => {
-    const fetchData = async () => {
-      const fetchedRes = await fetch("/api/spotify");
-      const fetchedToken = JSON.parse(await fetchedRes.text()).token;
-      const playlistId = import.meta.env.PUBLIC_SPOTIFY_PLAYLIST_ID as string;
+    const unsubscribe = SpotifyStorage.listen((next) => {
+      setState((prev) => {
+        const prevId = prev.track?.item?.id;
+        const nextId = next.track?.item?.id;
 
-      const currentPlaylist = await fetchSpotify(
-        `https://api.spotify.com/v1/playlists/${playlistId}`,
-        fetchedToken,
-        true,
-      );
-      const currentTrack = await fetchSpotify(
-        "https://api.spotify.com/v1/me/player/currently-playing",
-        fetchedToken,
-      );
+        if (prevId === nextId && prev.playlist === next.playlist) {
+          return prev;
+        }
 
-      setPlaylist(currentPlaylist);
-      setTrack(currentTrack);
-    };
+        return next;
+      });
+    });
 
-    fetchData();
+    if (window.location.pathname === "/songs") {
+      SpotifyStorage.fetchPlaylist();
+      SpotifyStorage.fetchTrack();
+    }
+
+    return () => unsubscribe();
   }, []);
 
-  const song = track?.item;
+  const track = state.track;
+  const song = track?.item as Track;
   const album = song?.album;
+  const playlist = state.playlist;
 
   return (
     <>
@@ -55,42 +57,13 @@ export default function Spotify() {
       ) : (
         <p className={styles.innerHeader}>Nothing :(</p>
       )}
+
+      {playlist && (
+        <div>
+          <h1>{playlist.name}</h1>
+          <p>{playlist.description}</p>
+        </div>
+      )}
     </>
   );
-}
-
-function checkString(string: String) {
-  if (string.includes("&#x27;")) return string.replaceAll("&#x27;", "'");
-  if (string.includes("'")) return string.replaceAll("'", "&apos;");
-  return string;
-}
-
-async function fetchSpotify(
-  url: string,
-  accessToken: string,
-  isPlaylist?: Boolean,
-) {
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-
-  const resText = await response.text();
-
-  try {
-    const resJSON = JSON.parse(resText);
-    if (isPlaylist) {
-      let resInfo = {
-        name: resJSON.name,
-        description: checkString(resJSON.description as string),
-        images: resJSON.images,
-      };
-      return resInfo;
-    } else {
-      return resJSON;
-    }
-  } catch (error) {
-    return null;
-  }
 }

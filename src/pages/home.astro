@@ -1,104 +1,47 @@
 ---
-import Heading from "../components/heading.astro";
 import Name from "../components/name.astro";
-import Socials from "../components/socials.astro";
-import Songs from "../components/songs";
-import Spotify from "../components/spotify";
 import Waves from "../components/waves";
 import Layout from "../layouts/Layout.astro";
-import "../styles/_base.scss";
+import WindowLayout from "../layouts/WindowLayout.astro";
 
 const ifAnimate = Astro.url.pathname == "/";
 ---
 
 <Layout>
-  <div class="container">
-    <div class="homeContainer" id="homeContainer">
-      <div
-        class={`expandContainer ${ifAnimate ? "expand" : ""}`}
-        id="expandContent"
-      >
-        {ifAnimate && <Name />}
-        <div class={`windowContainer ${ifAnimate ? "appear" : ""}`}>
-          <Heading />
-          <Songs client:load />
-          <Spotify client:load />
-          <Socials />
-        </div>
-      </div>
+  <div id="container" class="innerContainer">
+    <div
+      class={`expandContainer ${ifAnimate ? "expand" : ""}`}
+      id="expandContent"
+    >
+      {ifAnimate && <Name />}
+      <WindowLayout>
+        <h1>HI!</h1>
+      </WindowLayout>
     </div>
-    <Waves client:load />
   </div>
+  <Waves client:load />
 </Layout>
 
 <style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .homeContainer {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 1.3rem;
-    background: var(--color-bg);
-  }
-
   .expandContainer {
     display: inline-flex;
     flex-direction: column;
     width: var(--target-width);
     height: var(--target-height);
-    padding: 0rem;
-    background-color: var(--inner-bg);
-    border: 1px solid var(--white-but-not);
+    padding: 0;
 
     &.expand {
       width: var(--start-width);
       height: var(--start-height);
-      animation: expand 2s ease-in-out 1.5s forwards;
+      background-color: var(--inner-bg);
+      border: 2px solid var(--white-but-not);
+      animation:
+        expandWindow 2s ease-in-out 1.5s forwards,
+        disappearWindow 1s ease-in-out 7.5s forwards;
     }
   }
 
-  .windowContainer {
-    position: relative;
-
-    overflow: hidden;
-    align-items: center;
-    width: 100%;
-
-    background: linear-gradient(to top, #000, #000, #333, #333);
-    background-color: gray;
-    background-size: 100% 3px;
-    border: 2px var(--white-but-not) solid;
-    border-radius: 0.375rem;
-
-    animation: scanlines 55s linear 2s infinite;
-
-    visibility: visible;
-    flex-grow: 1;
-    opacity: 1;
-
-    &.appear {
-      visibility: hidden;
-      height: 0;
-      opacity: 0;
-      animation: appear 2s ease-in-out 1.3s forwards;
-    }
-  }
-
-  @keyframes appear {
-    to {
-      visibility: visible;
-      flex-grow: 1;
-      opacity: 1;
-    }
-  }
-
-  @keyframes expand {
+  @keyframes expandWindow {
     to {
       overflow: hidden;
       width: var(--target-width);
@@ -106,28 +49,14 @@ const ifAnimate = Astro.url.pathname == "/";
     }
   }
 
-  @keyframes scanlines {
-    from {
-      background-position: 0 0;
-    }
-
+  @keyframes disappearWindow {
     to {
-      background-position: 0 -10px;
-    }
-  }
-
-  @keyframes appearSocials {
-    to {
-      opacity: 1;
-      transform: translateY(0) translateX(-50%);
+      background-color: transparent;
+      border: 0;
     }
   }
 
   @media (width >= 48rem) {
-    .homeContainer {
-      padding: 3rem 4rem;
-    }
-
     .expandContainer {
       padding: 1.5rem 2.5rem;
     }
@@ -135,29 +64,41 @@ const ifAnimate = Astro.url.pathname == "/";
 </style>
 
 <script type="module">
-  const container = document.getElementById("homeContainer");
-  const expand = document.getElementById("expandContent");
+  function runExpandLogic() {
+    const container = document.getElementById("container");
+    const expand = document.getElementById("expandContent");
 
-  const containerStyles = getComputedStyle(container);
-  let paddingX =
-    parseFloat(containerStyles.paddingLeft) +
-    parseFloat(containerStyles.paddingRight);
-  let paddingY =
-    parseFloat(containerStyles.paddingTop) +
-    parseFloat(containerStyles.paddingBottom);
-  const targetWidth = container.clientWidth - paddingX + "px";
-  const targetHeight = container.clientHeight - paddingY + "px";
+    if (!container || !expand) return;
 
-  const expandStyles = getComputedStyle(expand);
-  paddingX =
-    parseFloat(expandStyles.paddingLeft) +
-    parseFloat(expandStyles.paddingRight);
+    const containerStyles = getComputedStyle(container);
+    let paddingX =
+      parseFloat(containerStyles.paddingLeft) +
+      parseFloat(containerStyles.paddingRight);
+    let paddingY =
+      parseFloat(containerStyles.paddingTop) +
+      parseFloat(containerStyles.paddingBottom);
 
-  const startWidth = expand.clientWidth - paddingX + "px";
-  const startHeight = expand.clientHeight + "px";
+    const targetWidth = container.clientWidth - paddingX + "px";
+    const targetHeight = container.clientHeight - paddingY + "px";
 
-  expand.style.setProperty("--start-width", startWidth);
-  expand.style.setProperty("--start-height", startHeight);
-  expand.style.setProperty("--target-width", targetWidth);
-  expand.style.setProperty("--target-height", targetHeight);
+    const expandStyles = getComputedStyle(expand);
+    paddingX =
+      parseFloat(expandStyles.paddingLeft) +
+      parseFloat(expandStyles.paddingRight);
+
+    const startWidth = expand.clientWidth - paddingX + "px";
+    const startHeight = expand.clientHeight + "px";
+
+    expand.style.setProperty("--start-width", startWidth);
+    expand.style.setProperty("--start-height", startHeight);
+    expand.style.setProperty("--target-width", targetWidth);
+    expand.style.setProperty("--target-height", targetHeight);
+  }
+
+  function setupExpand() {
+    runExpandLogic();
+  }
+
+  document.addEventListener("astro:page-load", setupExpand);
+  document.addEventListener("astro:after-swap", setupExpand);
 </script>

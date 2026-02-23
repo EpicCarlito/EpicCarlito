@@ -1,17 +1,31 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const pages = [
-  { name: "Home", href: "/home" },
-  { name: "Songs", href: "/songs" },
+  { name: "Home", icon: "mdi:home", href: "/home", alt: "/" },
+  { name: "Songs", icon: "mdi:music-note-eighth", href: "/songs" },
 ];
+
+const { pathname } = Astro.url;
 ---
 
 <div class="container">
   {
-    pages.map((page) => (
-      <a class="heading" href={page.href}>
-        <h1 class="innerText">{page.name}</h1>
-      </a>
-    ))
+    pages.map((page, i) => {
+      const ifActive = pathname == page.href || pathname == page.alt ;
+
+      return (
+        <>
+          <a class={`outlineLink ${ifActive ? "active" : ""}`} href={page.href}>
+            <div class="inner">
+              <Icon name={page.icon} />
+              <h1>{page.name}</h1>
+            </div>
+          </a>
+          <div class="divider" />
+        </>
+      );
+    })
   }
 </div>
 
@@ -19,22 +33,45 @@ const pages = [
   .container {
     display: flex;
     flex-direction: row;
-    height: 2rem;
     width: 100%;
-    border-bottom: 0.25rem black solid;
+    height: 2rem;
     background-color: gray;
+    border-bottom: 0.5rem black solid;
   }
 
-  .heading {
+  .inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 1rem;
+
+    h1 {
+      font-size: var(--text-sm);
+      text-align: center;
+      margin-block: 0;
+    }
+  }
+
+  .divider {
+    align-self: center;
+    width: 0.175rem;
+    height: 75%;
+    background-color: darkgray;
+    border-radius: 5rem;
+  }
+
+  .outlineLink {
     --tabGirth: 0.5rem;
+
     display: flex;
     align-items: center;
-    background-color: black;
-    height: 100%;
     width: 7rem;
+    height: 100%;
     transition: clip-path 10s ease-in-out;
 
     &.active {
+      background-color: black;
       clip-path: shape(
         from bottom left,
         curve to var(--tabGirth) calc(100% - var(--tabGirth)) with
@@ -48,10 +85,5 @@ const pages = [
         curve to 100% 100% with calc(100% - var(--tabGirth)) 100%
       );
     }
-  }
-
-  .innerText {
-    margin-left: 1rem;
-    font-size: var(--text-xs);
   }
 </style>
