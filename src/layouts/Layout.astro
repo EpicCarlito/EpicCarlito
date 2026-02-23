@@ -20,3 +20,17 @@
     margin: 0;
   }
 </style>
+
+<script is:inline>
+  document.addEventListener("pointerdown", (element) => {
+    const selected = element.target.closest("[data-tap]");
+    if (!selected) return;
+
+    const scale = selected.dataset.tap;
+    selected.style.setProperty("--scale", scale);
+
+    selected.classList.remove("tap");
+    void selected.offsetWidth;
+    selected.classList.add("tap");
+  });
+</script>

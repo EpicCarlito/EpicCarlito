@@ -22,7 +22,7 @@ export default function Spotify() {
       );
 
       setPlaylist(currentPlaylist);
-      // setTrack(currentTrack);
+      setTrack(currentTrack);
     };
 
     fetchData();

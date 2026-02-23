@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import songs from "../../public/songs.json";
 import styles from "../styles/_songs.module.scss";
 import MoveImage from "./moveImage";
 
 export default function Members() {
   const [curr, setCurr] = useState<number | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const [maxHeight, setMax] = useState<number>(0);
+
+  useEffect(() => {
+    const container = textRef.current;
+
+    if (container) {
+      setMax(container?.offsetHeight);
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -32,14 +42,27 @@ export default function Members() {
           >
             <div className={styles.gridContainer}>
               {ifActive ? (
-                <MoveImage src={image.src} onClick={() => setCurr(i)} />
+                <MoveImage
+                  src={image.src}
+                  className={styles.image}
+                  onClick={() => setCurr(i)}
+                />
               ) : (
                 <img src={image.src} onClick={() => setCurr(i)} />
               )}
 
-              <div className={`${styles.textContainer} ${appearText}`}>
-                <h1 className={styles.title}>{image.title}</h1>
-                <h1 className={styles.artist}>by {image.artist}</h1>
+              <div
+                id={styles.textContainer}
+                className={appearText}
+                ref={textRef}
+                style={
+                  { "--maxHeight": `${maxHeight}px` } as React.CSSProperties
+                }
+              >
+                <div style={{ padding: "0.25rem 0.375rem" }}>
+                  <h1 className={styles.title}>{image.title}</h1>
+                  <h1 className={styles.artist}>by {image.artist}</h1>
+                </div>
               </div>
             </div>
           </div>

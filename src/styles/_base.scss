@@ -36,6 +36,7 @@ html {
 }
 
 body {
+  overflow: hidden auto;
   margin: 0;
   font-family: var(--font-comfortaa), sans-serif;
   font-weight: 400;
@@ -49,6 +50,16 @@ h1,
 h2,
 h2 {
   color: var(--white-but-not);
+}
+
+img {
+  filter: drop-shadow(3px 3px 5px #000);
+}
+
+a {
+  text-decoration: none;
+  color: var(--white-but-not);
+  pointer-events: auto;
 }
 
 ul {
@@ -78,8 +89,35 @@ li {
   }
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: revert;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+[data-tap].tap {
+  animation: scaleUp 500ms ease;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(var(--scale));
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

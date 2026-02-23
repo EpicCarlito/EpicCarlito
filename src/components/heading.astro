@@ -1,0 +1,57 @@
+---
+const pages = [
+  { name: "Home", href: "/home" },
+  { name: "Songs", href: "/songs" },
+];
+---
+
+<div class="container">
+  {
+    pages.map((page) => (
+      <a class="heading" href={page.href}>
+        <h1 class="innerText">{page.name}</h1>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    width: 100%;
+    border-bottom: 0.25rem black solid;
+    background-color: gray;
+  }
+
+  .heading {
+    --tabGirth: 0.5rem;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 100%;
+    width: 7rem;
+    transition: clip-path 10s ease-in-out;
+
+    &.active {
+      clip-path: shape(
+        from bottom left,
+        curve to var(--tabGirth) calc(100% - var(--tabGirth)) with
+          var(--tabGirth) 100%,
+        vline to var(--tabGirth),
+        curve to calc(var(--tabGirth) * 2) 0 with var(--tabGirth) 0,
+        hline to calc(100% - calc(var(--tabGirth) * 2)),
+        curve to calc(100% - var(--tabGirth)) var(--tabGirth) with
+          calc(100% - var(--tabGirth)) 0,
+        vline to calc(100% - var(--tabGirth)),
+        curve to 100% 100% with calc(100% - var(--tabGirth)) 100%
+      );
+    }
+  }
+
+  .innerText {
+    margin-left: 1rem;
+    font-size: var(--text-xs);
+  }
+</style>

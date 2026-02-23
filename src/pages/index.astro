@@ -1,30 +1,9 @@
 ---
-import Waves from "../components/waves";
 import Layout from "../layouts/Layout.astro";
 import "../styles/_base.scss";
 import Home from "./home.astro";
 ---
 
 <Layout>
-  <div class="container">
-    <Home />
-    <Waves client:load />
-  </div>
+  <Home />
 </Layout>
-
-<style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  @media (width >= 40rem) {
-    .container {
-      height: 100lvh;
-    }
-  }
-</style>
