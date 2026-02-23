@@ -5,17 +5,7 @@ import MoveImage from "./moveImage";
 
 export default function Members() {
   const [curr, setCurr] = useState<number | null>(null);
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const [maxHeight, setMax] = useState<number>(0);
-
-  useEffect(() => {
-    const container = textRef.current;
-
-    if (container) {
-      setMax(container?.offsetHeight);
-    }
-  }, []);
-
+  
   return (
     <div className={styles.container}>
       {songs.map((image, i) => {
@@ -51,14 +41,7 @@ export default function Members() {
                 <img src={image.src} onClick={() => setCurr(i)} />
               )}
 
-              <div
-                id={styles.textContainer}
-                className={appearText}
-                ref={textRef}
-                style={
-                  { "--maxHeight": `${maxHeight}px` } as React.CSSProperties
-                }
-              >
+              <div id={styles.textContainer} className={appearText}>
                 <div style={{ padding: "0.25rem 0.375rem" }}>
                   <h1 className={styles.title}>{image.title}</h1>
                   <h1 className={styles.artist}>by {image.artist}</h1>

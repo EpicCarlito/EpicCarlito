@@ -37,8 +37,7 @@ class spotifyStorage {
   }
 
   notify() {
-    const snapshot = { ...this.state };
-    this.listeners.forEach((l) => l(snapshot));
+    this.listeners.forEach((l) => l(this.state));
   }
 
   async fetchPlaylist() {
@@ -55,7 +54,13 @@ class spotifyStorage {
 
     if (!res.ok) return;
 
-    this.state.playlist = await res.json();
+    const playlist = await res.json();
+
+    this.state = {
+      ...this.state,
+      playlist,
+    };
+
     this.notify();
   }
 
@@ -69,9 +74,15 @@ class spotifyStorage {
       },
     );
 
-    if (!res.ok || res.status != 200) return;
+    if (!res.ok || res.status !== 200) return;
 
-    this.state.track = await res.json();
+    const track = await res.json();
+
+    this.state = {
+      ...this.state,
+      track,
+    };
+
     this.notify();
   }
 }

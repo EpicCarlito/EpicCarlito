@@ -1,8 +1,6 @@
 ---
 import Heading from "../components/heading.astro";
 import Socials from "../components/socials.astro";
-import Songs from "../components/displaySongs";
-import Spotify from "../components/spotify";
 
 const ifAnimate = Astro.url.pathname == "/";
 ---
@@ -16,11 +14,12 @@ const ifAnimate = Astro.url.pathname == "/";
   <div class="scrollable">
     <slot />
   </div>
+  <Socials />
 </div>
-<Socials />
 
 <style>
   .windowContainer {
+    position: relative;
     display: flex;
     visibility: visible;
     overflow: hidden;
@@ -45,11 +44,14 @@ const ifAnimate = Astro.url.pathname == "/";
   }
 
   .scrollable {
+    display: flex;
     flex: 1;
+    flex-direction: column;
     min-height: 0;
-    overflow-y: auto;
+    padding: 1rem;
+    padding-bottom: 4rem;
+    overflow-y: scroll;
     overscroll-behavior: none;
-    padding-block: 2rem;
   }
 
   @keyframes appear {

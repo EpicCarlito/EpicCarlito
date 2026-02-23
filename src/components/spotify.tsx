@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/_spotify.module.scss";
 import { SpotifyStorage, type SpotifyState } from "../lib/spotifyStorage";
 import type { Track } from "@spotify/web-api-ts-sdk";
+import { FaSpotify } from "react-icons/fa";
 
 export default function Spotify() {
   const [state, setState] = useState<SpotifyState>(SpotifyStorage.getState());
@@ -37,21 +38,28 @@ export default function Spotify() {
     <>
       {track?.is_playing && song ? (
         <a
-          className={styles.container}
+          data-tap="1.025"
+          className={styles.songContainer}
           href={song?.external_urls.spotify}
           target="_blank"
         >
-          <img
-            src={album.images[0].url}
-            className={styles.songImage}
-            width={64}
-            height={64}
-            alt={`${album.name} album art`}
-          />
+          <div className={styles.songHeading}>
+            <FaSpotify size={32}/>
+            <h2>Currently Listening to...</h2>
+          </div>
+          <div className={styles.songInner}>
+            <img
+              src={album.images[0].url}
+              className={styles.songImage}
+              width={64}
+              height={64}
+              alt={`${album.name} album art`}
+            />
 
-          <div className={styles.songInfo}>
-            <h1 className={styles.songName}>{song?.name}</h1>
-            <p className={styles.artist}>{`by ${song?.artists[0].name}`}</p>
+            <div className={styles.songInfo}>
+              <h1 className={styles.songName}>{song?.name}</h1>
+              <p className={styles.artist}>{`by ${song?.artists[0].name}`}</p>
+            </div>
           </div>
         </a>
       ) : (

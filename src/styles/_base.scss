@@ -1,4 +1,5 @@
 :root {
+  --text-xxs: 0.5rem;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -43,7 +44,7 @@ html {
 }
 
 body {
-  font-family: var(--font-comfortaa), sans-serif;
+  font-family: var(--font-comfortaa);
   font-weight: 400;
   color: var(--color-bg);
   background-color: var(--color-bg);

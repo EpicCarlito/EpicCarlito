@@ -1,9 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 // discord instagram github starva
+const ifAnimate = Astro.url.pathname == "/";
 ---
 
-<div class="socialsContainer">
+<div class={`socialsContainer ${ifAnimate ? "animate" : ""}`}>
   <div class="container">
     <a class="link" href="https://www.instagram.com/epiccarlito/">
       <Icon id="icon" name="mdi:instagram" />
@@ -29,16 +30,19 @@ import { Icon } from "astro-icon/components";
     gap: 1rem;
     background-color: var(--color-bg);
     border-radius: 1rem 1rem 0 0;
-    opacity: 0;
-    animation: appearSocials 2s ease-in-out 4.5s forwards;
     border-left: 1px var(--white-but-not) solid;
     border-right: 1px var(--white-but-not) solid;
     border-top: 1px var(--white-but-not) solid;
-    transform: translateY(5rem) translateX(-50%);
+    transform: translateX(-50%);
+
+    &.animate {
+      opacity: 0;
+      animation: appearSocials 2s ease-in-out 4.5s forwards;
+      transform: translateY(5rem) translateX(-50%);
+    }
   }
 
   .container {
-    left: 50%;
     display: flex;
     gap: 0.325rem;
     padding: 0.5rem;
@@ -57,6 +61,13 @@ import { Icon } from "astro-icon/components";
 
   .icon {
     filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 5%));
+  }
+
+  @keyframes appearSocials {
+    to {
+      opacity: 1;
+      transform: translateY(0) translateX(-50%);
+    }
   }
 
   @media (width >= 48rem) {
