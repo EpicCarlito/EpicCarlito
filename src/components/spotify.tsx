@@ -21,7 +21,7 @@ export default function Spotify() {
       });
     });
 
-    if (window.location.pathname === "/songs") {
+    if (window.location.pathname === "/music") {
       SpotifyStorage.fetchPlaylist();
       SpotifyStorage.fetchTrack();
     }
@@ -44,7 +44,7 @@ export default function Spotify() {
           target="_blank"
         >
           <div className={styles.songHeading}>
-            <FaSpotify size={32}/>
+            <FaSpotify size={32} />
             <h2>Currently Listening to...</h2>
           </div>
           <div className={styles.songInner}>
@@ -63,13 +63,27 @@ export default function Spotify() {
           </div>
         </a>
       ) : (
-        <p className={styles.innerHeader}>Nothing :(</p>
+        <div className={styles.songContainer}>
+          <div className={styles.songHeading}>
+            <FaSpotify size={32} />
+            <h2>Currently Listening to...</h2>
+          </div>
+          <div className={styles.songInner}>
+            <h2>uh, nothing</h2>
+          </div>
+        </div>
       )}
 
       {playlist && (
-        <div>
-          <h1>{playlist.name}</h1>
-          <p>{playlist.description}</p>
+        <div className={styles.songContainer}>
+          <div className={styles.songInner}>
+            <h1 className={styles.songName}>current playlist</h1>
+            <img className={styles.songImage} src={playlist.images[0].url} />
+            <div className={styles.songInfo}>
+              <h1 className={styles.songName}>{playlist.name}</h1>
+              <p className={styles.artist}>{playlist.description}</p>
+            </div>
+          </div>
         </div>
       )}
     </>

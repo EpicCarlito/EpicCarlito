@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 const ifAnimate = Astro.url.pathname == "/";
 ---
 
-<div class={`socialsContainer ${ifAnimate ? "animate" : ""}`}>
+<div class={`socialsContainer ${ifAnimate ? "animate" : "fastAnimate"}`}>
   <div class="container">
     <a class="link" href="https://www.instagram.com/epiccarlito/">
       <Icon id="icon" name="mdi:instagram" />
@@ -30,14 +30,20 @@ const ifAnimate = Astro.url.pathname == "/";
     gap: 1rem;
     background-color: var(--color-bg);
     border-radius: 1rem 1rem 0 0;
-    border-left: 1px var(--white-but-not) solid;
-    border-right: 1px var(--white-but-not) solid;
-    border-top: 1px var(--white-but-not) solid;
+    border-left: 2px var(--white-but-not) solid;
+    border-right: 2px var(--white-but-not) solid;
+    border-top: 2px var(--white-but-not) solid;
     transform: translateX(-50%);
 
     &.animate {
       opacity: 0;
       animation: appearSocials 2s ease-in-out 4.5s forwards;
+      transform: translateY(5rem) translateX(-50%);
+    }
+
+    &.fastAnimate {
+      opacity: 0;
+      animation: appearSocials 2s ease-in-out forwards;
       transform: translateY(5rem) translateX(-50%);
     }
   }

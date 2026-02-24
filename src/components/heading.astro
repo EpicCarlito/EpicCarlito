@@ -36,8 +36,8 @@ const { pathname } = Astro.url;
     align-items: end;
     width: 100%;
     height: 2.75rem;
-    background-color: gray;
-    border-bottom: 0.5rem black solid;
+    background-color: var(--inner-bg);
+    border-bottom: 0.5rem var(--color-bg) solid;
   }
 
   .inner {
@@ -72,7 +72,8 @@ const { pathname } = Astro.url;
     transition: clip-path 10s ease-in-out;
 
     &.active {
-      background-color: black;
+      background-color: var(--color-bg);
+      filter: drop-shadow(3px 3px 5px #000);
       clip-path: shape(
         from bottom left,
         curve to var(--tabGirth) calc(100% - var(--tabGirth)) with

@@ -1,4 +1,5 @@
-img, .image {
+img,
+.image {
   display: block;
   width: 5rem;
   height: 5rem;
@@ -8,7 +9,8 @@ img, .image {
 
 .container {
   display: grid;
-  width: 100%;
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
   min-height: 12rem;
   overflow-x: clip;
   perspective: 31.25rem;
