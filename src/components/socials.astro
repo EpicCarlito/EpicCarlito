@@ -4,13 +4,16 @@ import { Icon } from "astro-icon/components";
 const ifAnimate = Astro.url.pathname == "/";
 ---
 
-<div class={`socialsContainer ${ifAnimate ? "animate" : "fastAnimate"}`}>
+<div class={`socialsContainer ${ifAnimate ? "animate" : ""}`}>
   <div class="container">
     <a class="link" href="https://www.instagram.com/epiccarlito/">
       <Icon id="icon" name="mdi:instagram" />
     </a>
     <a class="link" href="https://github.com/epiccarlito">
       <Icon id="icon" name="mdi:github" />
+    </a>
+    <a class="link" href="https://www.strava.com/athletes/126999343">
+      <Icon id="icon" name="starva" />
     </a>
   </div>
 </div>
@@ -37,13 +40,7 @@ const ifAnimate = Astro.url.pathname == "/";
 
     &.animate {
       opacity: 0;
-      animation: appearSocials 2s ease-in-out 4.5s forwards;
-      transform: translateY(5rem) translateX(-50%);
-    }
-
-    &.fastAnimate {
-      opacity: 0;
-      animation: appearSocials 2s ease-in-out forwards;
+      animation: appearSocials 2s ease-in-out 7.5s forwards;
       transform: translateY(5rem) translateX(-50%);
     }
   }

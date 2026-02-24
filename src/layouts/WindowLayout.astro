@@ -1,5 +1,5 @@
 ---
-import Heading from "../components/heading.astro";
+import Header from "../components/header.astro";
 import Socials from "../components/socials.astro";
 
 const ifAnimate = Astro.url.pathname == "/";
@@ -10,7 +10,7 @@ const ifAnimate = Astro.url.pathname == "/";
   transition:name="window"
   transition:animate="fade"
 >
-  <Heading />
+  <Header />
   <div class="scrollable">
     <slot />
   </div>

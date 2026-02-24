@@ -4,15 +4,16 @@ import { Icon } from "astro-icon/components";
 const pages = [
   { name: "Home", icon: "mdi:home", href: "/home", alt: "/" },
   { name: "Music", icon: "mdi:music-note-eighth", href: "/music" },
+  { name: "Projects", icon: "mdi:hammer-wrench", href: "/projects" },
 ];
 
 const { pathname } = Astro.url;
 ---
 
-<div class="container">
+<div class=`container ${pathname == "/" ? "animate" : ""}`>
   {
     pages.map((page, i) => {
-      const ifActive = pathname == page.href || pathname == page.alt ;
+      const ifActive = pathname == page.href || pathname == page.alt;
 
       return (
         <>
@@ -22,7 +23,7 @@ const { pathname } = Astro.url;
               <h1>{page.name}</h1>
             </div>
           </a>
-          <div class="divider" />
+          {i < pages.length - 1 && <div class="divider" />}
         </>
       );
     })
@@ -38,6 +39,11 @@ const { pathname } = Astro.url;
     height: 2.75rem;
     background-color: var(--inner-bg);
     border-bottom: 0.5rem var(--color-bg) solid;
+
+    &.animate {
+      transform: translateY(-5rem);
+      animation: slideDownHeader 2s ease-in-out 7.5s forwards;
+    }
   }
 
   .inner {
@@ -86,6 +92,12 @@ const { pathname } = Astro.url;
         vline to calc(100% - var(--tabGirth)),
         curve to 100% 100% with calc(100% - var(--tabGirth)) 100%
       );
+    }
+  }
+
+  @keyframes slideDownHeader {
+    to {
+      transform: translateY(0);
     }
   }
 </style>
