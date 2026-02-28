@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 
 const pages = [
-  { name: "Home", icon: "mdi:home", href: "/home", alt: "/" },
+  { name: "Main", icon: "mdi:home", href: "/main", alt: "/" },
   { name: "Music", icon: "mdi:music-note-eighth", href: "/music" },
   { name: "Projects", icon: "mdi:hammer-wrench", href: "/projects" },
 ];
@@ -98,6 +98,13 @@ const { pathname } = Astro.url;
   @keyframes slideDownHeader {
     to {
       transform: translateY(0);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .outlineLink {
+      height: 1.875rem;
+      width: 10rem;
     }
   }
 </style>

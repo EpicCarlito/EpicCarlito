@@ -35,7 +35,7 @@ export default function Spotify() {
   const playlist = state.playlist;
 
   return (
-    <>
+    <div className={styles.container}>
       {track?.is_playing && song ? (
         <a
           data-tap="1.025"
@@ -74,7 +74,7 @@ export default function Spotify() {
         </div>
       )}
 
-      {playlist && (
+      {playlist ? (
         <div className={styles.songContainer}>
           <div className={styles.songInner}>
             <h1 className={styles.songName}>current playlist</h1>
@@ -85,7 +85,17 @@ export default function Spotify() {
             </div>
           </div>
         </div>
+      ) : (
+          <div className={styles.songContainer}>
+          <div className={styles.songInner}>
+            <h1 className={styles.songName}>current playlist:</h1>
+            <div className={styles.songInfo}>
+              <p className={styles.artist}>the spotify api has been ratelimited !!!</p>
+              <p className={styles.artist}>gosh dude, so rude</p>
+            </div>
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }

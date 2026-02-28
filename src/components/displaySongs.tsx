@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import songs from "../songs.json";
 import styles from "../styles/_songs.module.scss";
 import MoveImage from "./moveImage";

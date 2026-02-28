@@ -1,18 +1,30 @@
 ---
 import { Icon } from "astro-icon/components";
 // discord instagram github starva
-const ifAnimate = Astro.url.pathname == "/";
+const { pathname } = Astro.url;
 ---
 
-<div class={`socialsContainer ${ifAnimate ? "animate" : ""}`}>
+<div id="socialsContainer" class=`${pathname == "/" ? "animateSocials" : ""}`>
   <div class="container">
-    <a class="link" href="https://www.instagram.com/epiccarlito/">
+    <a
+      class="link scaleUp"
+      data-tap={1.1}
+      href="https://www.instagram.com/epiccarlito/"
+    >
       <Icon id="icon" name="mdi:instagram" />
     </a>
-    <a class="link" href="https://github.com/epiccarlito">
+    <a
+      class="link scaleUp"
+      data-tap={1.1}
+      href="https://github.com/epiccarlito"
+    >
       <Icon id="icon" name="mdi:github" />
     </a>
-    <a class="link" href="https://www.strava.com/athletes/126999343">
+    <a
+      class="link scaleUp"
+      data-tap={1.1}
+      href="https://www.strava.com/athletes/126999343"
+    >
       <Icon id="icon" name="starva" />
     </a>
   </div>
@@ -20,11 +32,10 @@ const ifAnimate = Astro.url.pathname == "/";
 
 <style>
   [data-icon] {
-    font-size: 2rem;
-    color: var(--white-but-not);
+    font-size: 2.5rem;
   }
 
-  .socialsContainer {
+  #socialsContainer {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -38,7 +49,7 @@ const ifAnimate = Astro.url.pathname == "/";
     border-top: 2px var(--white-but-not) solid;
     transform: translateX(-50%);
 
-    &.animate {
+    &.animateSocials {
       opacity: 0;
       animation: appearSocials 2s ease-in-out 7.5s forwards;
       transform: translateY(5rem) translateX(-50%);
@@ -70,12 +81,6 @@ const ifAnimate = Astro.url.pathname == "/";
     to {
       opacity: 1;
       transform: translateY(0) translateX(-50%);
-    }
-  }
-
-  @media (width >= 48rem) {
-    [data-icon] {
-      font-size: 2.5rem;
     }
   }
 </style>

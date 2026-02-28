@@ -1,15 +1,91 @@
 ---
-import Spotify from "../components/spotify";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import WindowLayout from "../layouts/WindowLayout.astro";
-import DisplaySongs from "../components/displaySongs.tsx";
-import Waves from "../components/waves";
+
+const projects = [
+  {
+    title: "FTC - Into The Deep",
+    desc: "Contributed to Bronx Science's FTC team code. Helped provide the autonomous and player-controllable modes.",
+    href: "https://github.com/BxSciFTC/IntoTheDeep-24",
+    date: "September 2024 - March 2025",
+  },
+  {
+    title: "FloorIsLava",
+    desc: "A Minecraft plugin that is a simple survival game where lava gradually rises over time.",
+    href: "https://github.com/EpicCarlito/FloorIsLava",
+    date: "July - August 2024",
+  },
+  {
+    title: "discordjs-template",
+    desc: "A bare-bones Discord.js v14 template that lets you create a basic Discord bot with a command, event, button, and modal handler.",
+    href: "https://github.com/EpicCarlito/discordjs-template",
+    date: "April 2024",
+  },
+  {
+    title: "EmailChecker",
+    desc: "A simple way to check if an email exists! Created to be used for a discord bot to check emails.",
+    href: "https://github.com/EpicCarlito/EmailChecker",
+    date: "July - August 2023",
+  },
+];
 ---
 
 <Layout>
   <div class="innerContainer">
     <WindowLayout>
+      <div class="projects">
+        {
+          projects.map((project, i) => (
+            <a
+              href={project.href}
+              data-tap={project?.href ? 1.1 : 1}
+              class={`projectContainer ${project?.href ? "miniScaleUp" : ""}`}
+            >
+              <h1>{project.title}</h1>
+              <p>{project.desc}</p>
+              <b>From: {project.date}</b>
+              {project?.href && (
+                <div class="sourceContainer">
+                  <Icon name="mdi:github" />
+                  <p>source on github</p>
+                </div>
+              )}
+            </a>
+          ))
+        }
+      </div>
     </WindowLayout>
   </div>
-  <Waves client:load />
 </Layout>
+
+<style>
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .projectContainer {
+    background-color: var(--inner-bg);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    filter: drop-shadow(3px 3px 5px #000);
+    cursor: pointer;
+  }
+
+  .sourceContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  [data-icon] {
+    font-size: var(--text-3xl);
+  }
+
+  @media (width >= 48rem) {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

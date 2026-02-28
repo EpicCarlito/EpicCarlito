@@ -119,8 +119,34 @@ button:focus {
   overflow-y: hidden;
 }
 
+.dropShadow {
+  filter: drop-shadow(3px 3px 5px #000);
+}
+
 [data-tap].tap {
   animation: scaleUp 500ms ease;
+}
+
+[data-icon] {
+  color: var(--white-but-not);
+}
+
+.scaleUp {
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.miniScaleUp {
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.025);
+  }
 }
 
 @media (width >= 48rem) {

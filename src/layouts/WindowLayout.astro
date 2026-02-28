@@ -2,23 +2,20 @@
 import Header from "../components/header.astro";
 import Socials from "../components/socials.astro";
 
-const ifAnimate = Astro.url.pathname == "/";
+const { pathname } = Astro.url;
 ---
 
-<div
-  class={`windowContainer ${ifAnimate ? "appear" : ""}`}
-  transition:name="window"
-  transition:animate="fade"
->
+<div id="windowContainer" class=`${pathname == "/" ? "appearWindow" : ""}` transition:name="window" transition:animate="fade">
   <Header />
-  <div class="scrollable">
+  <div id="scrollable" class=`${pathname == "/" ? "appearScrollable" : "forceAppear"}`>
     <slot />
   </div>
   <Socials />
 </div>
 
+
 <style>
-  .windowContainer {
+  #windowContainer {
     position: relative;
     display: flex;
     visibility: visible;
@@ -35,30 +32,44 @@ const ifAnimate = Astro.url.pathname == "/";
     opacity: 1;
     animation: scanlines 55s linear 2s infinite;
 
-    &.appear {
+    &.appearWindow {
       visibility: hidden;
       height: 0;
       opacity: 0;
-      animation: appear 2s ease-in-out 1.3s forwards;
+      animation: appearWindow 2s ease-in-out 1.3s forwards;
     }
   }
 
-  .scrollable {
+  #scrollable {
     display: flex;
     flex: 1;
     flex-direction: column;
     min-height: 0;
     padding: 1rem;
     padding-bottom: 4rem;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden scroll;
     overscroll-behavior: none;
+    opacity: 0;
+
+    &.appearScrollable {
+      animation: appearScroll 2s ease-in-out 8.5s forwards;
+    }
+
+    &.forceAppear {
+      opacity: 1;
+    }
   }
 
-  @keyframes appear {
+  @keyframes appearWindow {
     to {
       visibility: visible;
       flex-grow: 1;
+      opacity: 1;
+    }
+  }
+
+  @keyframes appearScroll {
+    to {
       opacity: 1;
     }
   }

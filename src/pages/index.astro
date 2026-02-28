@@ -1,9 +1,101 @@
 ---
+import AboutMe from "../components/aboutMe.astro";
+import Name from "../components/name.astro";
 import Layout from "../layouts/Layout.astro";
-import "../styles/_base.scss";
-import Home from "./home.astro";
+import WindowLayout from "../layouts/WindowLayout.astro";
+
+const { pathname } = Astro.url;
 ---
 
 <Layout>
-  <Home />
+  <div id="homeContainer" class="innerContainer">
+    <div
+      id="expandContent"
+      class=`expandContainer ${pathname == "/" ? "expand" : ""}`
+    >
+      <Name />
+      <WindowLayout>
+        <AboutMe />
+      </WindowLayout>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .expandContainer {
+    display: inline-flex;
+    flex-direction: column;
+    width: var(--target-width);
+    height: var(--target-height);
+    padding: 0;
+
+    &.expand {
+      width: var(--start-width);
+      height: var(--start-height);
+      background-color: var(--inner-bg);
+      border: 2px solid var(--white-but-not);
+      animation:
+        expandWindow 2s ease-in-out 1.5s forwards,
+        disappearWindow 1s ease-in-out 7.5s forwards;
+    }
+
+    &.forceFull {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @keyframes expandWindow {
+    to {
+      overflow: hidden;
+      width: var(--target-width);
+      height: var(--target-height);
+    }
+  }
+
+  @keyframes disappearWindow {
+    to {
+      background-color: transparent;
+      border: 0;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .expandContainer {
+      padding: 1.5rem 2.5rem;
+    }
+  }
+</style>
+
+<script type="module">
+  setSize();
+
+  document.addEventListener("astro:page-load", setSize);
+  function setSize() {
+    const container = document.getElementById("homeContainer");
+    const expand = document.getElementById("expandContent");
+
+    const containerStyles = getComputedStyle(container);
+    let paddingX =
+      parseFloat(containerStyles.paddingLeft) +
+      parseFloat(containerStyles.paddingRight);
+    let paddingY =
+      parseFloat(containerStyles.paddingTop) +
+      parseFloat(containerStyles.paddingBottom);
+    const targetWidth = container.clientWidth - paddingX + "px";
+    const targetHeight = container.clientHeight - paddingY + "px";
+
+    const expandStyles = getComputedStyle(expand);
+    paddingX =
+      parseFloat(expandStyles.paddingLeft) +
+      parseFloat(expandStyles.paddingRight);
+
+    const startWidth = expand.clientWidth - paddingX + "px";
+    const startHeight = expand.clientHeight + "px";
+
+    expand.style.setProperty("--start-width", startWidth);
+    expand.style.setProperty("--start-height", startHeight);
+    expand.style.setProperty("--target-width", targetWidth);
+    expand.style.setProperty("--target-height", targetHeight);
+  }
+</script>

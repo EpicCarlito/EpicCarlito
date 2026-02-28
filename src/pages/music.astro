@@ -3,7 +3,6 @@ import Spotify from "../components/spotify";
 import Layout from "../layouts/Layout.astro";
 import WindowLayout from "../layouts/WindowLayout.astro";
 import DisplaySongs from "../components/displaySongs.tsx";
-import Waves from "../components/waves";
 ---
 
 <Layout>
@@ -11,8 +10,15 @@ import Waves from "../components/waves";
     <WindowLayout>
       <Spotify client:load />
       <h1>song recs</h1>
-      <DisplaySongs client:load />
+      <DisplaySongs transition:persist client:load />
     </WindowLayout>
   </div>
-  <Waves client:load />
 </Layout>
+
+<style>
+  .innerContainer {
+    h1 {
+      text-align: center;
+    }
+  }
+</style>

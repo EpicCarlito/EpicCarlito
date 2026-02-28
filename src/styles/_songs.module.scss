@@ -10,8 +10,8 @@ img,
 .container {
   display: grid;
   width: calc(100% + 2rem);
-  margin-left: -1rem;
   min-height: 12rem;
+  margin-left: -1rem;
   overflow-x: clip;
   perspective: 31.25rem;
   pointer-events: none;
@@ -22,7 +22,7 @@ img,
   --offsetX: calc(var(--offset) * 3rem);
   --rotateY: 25deg;
   --translateZ: 5rem;
-  --opacity: 0.65;
+  --opacity: 0.75;
 
   display: inline-flex;
   transition:
@@ -38,7 +38,7 @@ img,
     opacity: var(--opacity);
     cursor: pointer;
     transform: translateX(var(--offsetX)) rotateY(calc(var(--rotateY) * -0.5))
-      translateZ(calc(var(--translateZ) * -1));
+      translateZ(calc(var(--translateZ) * -1)) scale(1.5);
   }
 
   &.activeImage {
@@ -114,9 +114,14 @@ img,
 }
 
 @media (width >= 48rem) {
-  img {
+  img,
+  .image {
     width: 8rem;
     height: 8rem;
+  }
+
+  .container {
+    min-height: 18rem;
   }
 
   .imageContainer {

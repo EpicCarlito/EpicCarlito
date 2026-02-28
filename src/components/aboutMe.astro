@@ -1,19 +1,88 @@
+---
+import Image from "astro/components/Image.astro";
+import ProfilePicture from ".././assets/profilePicture.webp";
+import { Icon } from "astro-icon/components";
+---
+
 <div class="container">
-  <h1>James</h1>
-  <p></p>
-  <img src="/profilePicture.webp" />
+  <div class="aboutContainer">
+    <div class="imageContainer">
+      <Image src={ProfilePicture} class="profilePicture scaleUp" alt="woah" />
+      <Icon name="epiccarlito" class="profilePicture scaleUp" />
+    </div>
+    <div class="textContainer">
+      <h1>James</h1>
+      <p>junior at bronx high school of science</p>
+      <p>frc programmer, former ftc programmer and distance runner</p>
+    </div>
+  </div>
+
+  <p class="lastUpdated dropShadow">updated: 2/28/26 (msg: i love astro ❤️ )</p>
 </div>
 
 <style>
   .container {
-    h1,
-    p {
-      font-family: var(--font-sen);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+
+    svg {
+      margin-left: -0.5rem;
+    }
+  }
+
+  .imageContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-family: var(--font-comfortaa);
+      font-size: var(--text-5xl);
     }
 
-    img {
-      width: 5rem;
-      height: auto;
+    p {
+      font-family: var(--font-sen);
+      font-size: var(--text-base);
+    }
+  }
+
+  .profilePicture {
+    filter: drop-shadow(3px 3px 5px #000);
+    border-radius: 2rem;
+    width: 8rem;
+    height: auto;
+  }
+
+  .lastUpdated {
+    padding: 0.5rem;
+    background-color: var(--inner-bg);
+    width: fit-content;
+  }
+
+  @media (width >= 48rem) {
+    .aboutContainer {
+      flex-direction: row;
+    }
+
+    .headerContainer {
+      h1 {
+        font-size: var(--text-6xl);
+      }
+
+      p {
+        font-size: var(--text-lg);
+      }
     }
   }
 </style>

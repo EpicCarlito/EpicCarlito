@@ -1,8 +1,10 @@
 ---
 const text = "EpicCarlito";
+// make name appear after /main -> /
+const { pathname } = Astro.url;
 ---
 
-<div class="container">
+<div id="nameContainer" class={pathname == "/" ? "showName" : ""}>
   <h1 class="name">
     {
       text.split("").map((letter, i) => {
@@ -25,12 +27,19 @@ const text = "EpicCarlito";
     margin-block: 0;
   }
 
-  .container {
-    display: flex;
-    justify-content: center;
-    height: calc(clamp(var(--text-5xl), 5vw, var(--text-8xl)));
-    animation: disappear 2.5s ease-in-out forwards 5s;
-    margin-block: 1rem;
+  #nameContainer {
+    visibility: hidden;
+    max-height: 0;
+
+    &.showName {
+      display: flex;
+      visibility: visible;
+      justify-content: center;
+      height: calc(clamp(var(--text-5xl), 5vw, var(--text-8xl)));
+      max-height: none;
+      animation: disappear 2.5s ease-in-out forwards 5s;
+      margin-block: 1rem;
+    }
   }
 
   .name {
@@ -97,3 +106,15 @@ const text = "EpicCarlito";
     }
   }
 </style>
+
+<script is:inline>
+  const container = document.getElementById("nameContainer");
+  document.addEventListener("astro:page-load", showName);
+
+  function showName() {
+    if (window.location.pathname == "/") {
+      container.classList.add("showName");
+    }
+  }
+
+</script>
