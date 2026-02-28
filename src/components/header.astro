@@ -41,8 +41,8 @@ const { pathname } = Astro.url;
     border-bottom: 0.5rem var(--color-bg) solid;
 
     &.animate {
-      transform: translateY(-5rem);
       animation: slideDownHeader 2s ease-in-out 7.5s forwards;
+      transform: translateY(-5rem);
     }
   }
 
@@ -79,7 +79,6 @@ const { pathname } = Astro.url;
 
     &.active {
       background-color: var(--color-bg);
-      filter: drop-shadow(3px 3px 5px #000);
       clip-path: shape(
         from bottom left,
         curve to var(--tabGirth) calc(100% - var(--tabGirth)) with
@@ -92,6 +91,7 @@ const { pathname } = Astro.url;
         vline to calc(100% - var(--tabGirth)),
         curve to 100% 100% with calc(100% - var(--tabGirth)) 100%
       );
+      filter: drop-shadow(3px 3px 5px #000);
     }
   }
 
@@ -103,8 +103,8 @@ const { pathname } = Astro.url;
 
   @media (width >= 48rem) {
     .outlineLink {
-      height: 1.875rem;
       width: 10rem;
+      height: 1.875rem;
     }
   }
 </style>

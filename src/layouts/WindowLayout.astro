@@ -42,14 +42,14 @@ const { pathname } = Astro.url;
 
   #scrollable {
     display: flex;
+    overflow: hidden scroll;
     flex: 1;
     flex-direction: column;
     min-height: 0;
     padding: 1rem;
     padding-bottom: 4rem;
-    overflow: hidden scroll;
-    overscroll-behavior: none;
     opacity: 0;
+    overscroll-behavior: none;
 
     &.appearScrollable {
       animation: appearScroll 2s ease-in-out 8.5s forwards;

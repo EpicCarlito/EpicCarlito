@@ -58,16 +58,16 @@ import { Icon } from "astro-icon/components";
   }
 
   .profilePicture {
-    filter: drop-shadow(3px 3px 5px #000);
-    border-radius: 2rem;
     width: 8rem;
     height: auto;
+    border-radius: 2rem;
+    filter: drop-shadow(3px 3px 5px #000);
   }
 
   .lastUpdated {
+    width: fit-content;
     padding: 0.5rem;
     background-color: var(--inner-bg);
-    width: fit-content;
   }
 
   @media (width >= 48rem) {
