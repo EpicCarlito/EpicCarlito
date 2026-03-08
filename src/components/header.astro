@@ -1,32 +1,24 @@
 ---
 import { Icon } from "astro-icon/components";
-
 const pages = [
   { name: "Main", icon: "mdi:home", href: "/main", alt: "/" },
   { name: "Music", icon: "mdi:music-note-eighth", href: "/music" },
   { name: "Projects", icon: "mdi:hammer-wrench", href: "/projects" },
 ];
-
-const { pathname } = Astro.url;
 ---
-
-<div class=`container ${pathname == "/" ? "animate" : ""}`>
+<div class="container" id="header">
   {
-    pages.map((page, i) => {
-      const ifActive = pathname == page.href || pathname == page.alt;
-
-      return (
-        <>
-          <a class={`outlineLink ${ifActive ? "active" : ""}`} href={page.href}>
-            <div class="inner">
-              <Icon name={page.icon} />
-              <h1>{page.name}</h1>
-            </div>
-          </a>
-          {i < pages.length - 1 && <div class="divider" />}
-        </>
-      );
-    })
+    pages.map((page, i) => (
+      <>
+        <a class="outlineLink" href={page.href} data-href={page.href} data-alt={page.alt ?? ""}>
+          <div class="inner">
+            <Icon name={page.icon} />
+            <h1>{page.name}</h1>
+          </div>
+        </a>
+        {i < pages.length - 1 && <div class="divider" />}
+      </>
+    ))
   }
 </div>
 
@@ -81,13 +73,11 @@ const { pathname } = Astro.url;
       background-color: var(--color-bg);
       clip-path: shape(
         from bottom left,
-        curve to var(--tabGirth) calc(100% - var(--tabGirth)) with
-          var(--tabGirth) 100%,
+        curve to var(--tabGirth) calc(100% - var(--tabGirth)) with var(--tabGirth) 100%,
         vline to var(--tabGirth),
         curve to calc(var(--tabGirth) * 2) 0 with var(--tabGirth) 0,
         hline to calc(100% - calc(var(--tabGirth) * 2)),
-        curve to calc(100% - var(--tabGirth)) var(--tabGirth) with
-          calc(100% - var(--tabGirth)) 0,
+        curve to calc(100% - var(--tabGirth)) var(--tabGirth) with calc(100% - var(--tabGirth)) 0,
         vline to calc(100% - var(--tabGirth)),
         curve to 100% 100% with calc(100% - var(--tabGirth)) 100%
       );
@@ -108,3 +98,29 @@ const { pathname } = Astro.url;
     }
   }
 </style>
+
+<script is:inline>
+  function initHeader() {
+    const pathname = window.location.pathname;
+    const header = document.getElementById("header");
+
+    if (pathname === "/") {
+      header.classList.add("animate");
+    } else {
+      header.classList.remove("animate");
+    }
+
+    document.querySelectorAll(".outlineLink").forEach((link) => {
+      const href = link.dataset.href;
+      const alt = link.dataset.alt;
+      if (pathname === href || (alt && pathname === alt)) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  }
+
+  initHeader();
+  document.addEventListener("astro:page-load", initHeader);
+</script>

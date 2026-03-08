@@ -1,11 +1,10 @@
 import { useState } from "react";
 import songs from "../songs.json";
 import styles from "../styles/_songs.module.scss";
-import MoveImage from "./moveImage";
 
 export default function Members() {
   const [curr, setCurr] = useState<number | null>(null);
-  
+
   return (
     <div className={styles.container}>
       {songs.map((image, i) => {
@@ -31,16 +30,12 @@ export default function Members() {
             style={{ "--offset": `${offset}` } as React.CSSProperties}
           >
             <div className={styles.gridContainer}>
-              {ifActive ? (
-                <MoveImage
-                  src={image.src}
-                  className={styles.image}
-                  onClick={() => setCurr(i)}
-                />
-              ) : (
-                <img src={image.src} onClick={() => setCurr(i)} />
-              )}
-
+              <div className={styles.innerImage} onClick={() => setCurr(i)}>
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className={styles.pos} />
+                ))}
+                <img className={styles.dragImage} src={image.src} />
+              </div>
               <div id={styles.textContainer} className={appearText}>
                 <div style={{ padding: "0.25rem 0.375rem" }}>
                   <h1 className={styles.title}>{image.title}</h1>

@@ -11,7 +11,7 @@
   padding: 1rem;
   background-image: linear-gradient(90deg, rgb(15 23 42), #1e293b);
   border-radius: 0.25rem;
-  filter: drop-shadow(3px 3px 5px #000);
+  box-shadow: 3px 3px 5px #000;
 
   h2 {
     font-size: var(--text-base);

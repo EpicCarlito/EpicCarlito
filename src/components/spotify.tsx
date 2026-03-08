@@ -38,8 +38,8 @@ export default function Spotify() {
     <div className={styles.container}>
       {track?.is_playing && song ? (
         <a
-          data-tap="1.025"
-          className={styles.songContainer}
+          data-tap="1.1"
+          className={`${styles.songContainer} miniScaleUp`}
           href={song?.external_urls.spotify}
           target="_blank"
         >
@@ -75,7 +75,7 @@ export default function Spotify() {
       )}
 
       {playlist ? (
-        <div className={styles.songContainer}>
+        <div className={`${styles.songContainer} miniScaleUp`}>
           <div className={styles.songInner}>
             <h1 className={styles.songName}>current playlist</h1>
             <img className={styles.songImage} src={playlist.images[0].url} />
@@ -86,11 +86,13 @@ export default function Spotify() {
           </div>
         </div>
       ) : (
-          <div className={styles.songContainer}>
+        <div className={styles.songContainer}>
           <div className={styles.songInner}>
             <h1 className={styles.songName}>current playlist:</h1>
             <div className={styles.songInfo}>
-              <p className={styles.artist}>the spotify api has been ratelimited !!!</p>
+              <p className={styles.artist}>
+                the spotify api has been ratelimited !!!
+              </p>
               <p className={styles.artist}>gosh dude, so rude</p>
             </div>
           </div>

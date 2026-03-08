@@ -10,7 +10,7 @@ img,
 .container {
   display: grid;
   width: calc(100% + 2rem);
-  min-height: 12rem;
+  min-height: 14rem;
   margin-left: -1rem;
   overflow-x: clip;
   perspective: 31.25rem;
@@ -19,7 +19,7 @@ img,
 }
 
 .imageContainer {
-  --offsetX: calc(var(--offset) * 3rem);
+  --offsetX: calc(var(--offset) * 3.5rem);
   --rotateY: 25deg;
   --translateZ: 5rem;
   --opacity: 0.75;
@@ -113,9 +113,101 @@ img,
   }
 }
 
+.innerImage {
+  position: relative;
+  z-index: 100;
+  width: 6rem;
+  height: 6rem;
+  transition: transform 500ms ease;
+  cursor: pointer;
+  justify-self: center;
+  pointer-events: all;
+  transform: perspective(31.25rem) rotateY(var(--rotateY))
+    rotateX(var(--rotateX));
+
+  --default-rotate: 11deg;
+  --rotateX: 5deg;
+  --rotateY: 0deg;
+}
+
+$rotate: var(--default-rotate);
+
+.innerImage:has(.pos:nth-child(1):hover) {
+  --rotateX: #{$rotate};
+  --rotateY: calc(#{$rotate} * -1);
+}
+
+.innerImage:has(.pos:nth-child(2):hover) {
+  --rotateX: #{$rotate};
+  --rotateY: 0deg;
+}
+
+.innerImage:has(.pos:nth-child(3):hover) {
+  --rotateX: #{$rotate};
+  --rotateY: #{$rotate};
+}
+
+.innerImage:has(.pos:nth-child(4):hover) {
+  --rotateX: calc(#{$rotate} * -1);
+  --rotateY: calc(#{$rotate} * -1);
+}
+
+.innerImage:has(.pos:nth-child(5):hover) {
+  --rotateX: calc(#{$rotate} * -1);
+  --rotateY: 0deg;
+}
+
+.innerImage:has(.pos:nth-child(6):hover) {
+  --rotateX: calc(#{$rotate} * -1);
+  --rotateY: #{$rotate};
+}
+
+.dragImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.pos {
+  position: absolute;
+  z-index: 100;
+  width: calc(100% / 3);
+  height: 50%;
+
+  &:nth-child(1) {
+    top: 0;
+    left: 0;
+  }
+
+  &:nth-child(2) {
+    top: 0;
+    left: calc(100% / 3);
+  }
+
+  &:nth-child(3) {
+    top: 0;
+    right: 0;
+  }
+
+  &:nth-child(4) {
+    bottom: 0;
+    left: 0;
+  }
+
+  &:nth-child(5) {
+    bottom: 0;
+    left: calc(100% / 3);
+  }
+
+  &:nth-child(6) {
+    right: 0;
+    bottom: 0;
+  }
+}
+
 @media (width >= 48rem) {
-  img,
-  .image {
+  .innerImage {
     width: 8rem;
     height: 8rem;
   }

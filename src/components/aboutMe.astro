@@ -7,7 +7,16 @@ import { Icon } from "astro-icon/components";
 <div class="container">
   <div class="aboutContainer">
     <div class="imageContainer">
-      <Image src={ProfilePicture} class="profilePicture scaleUp" alt="woah" />
+      <Image
+        src={ProfilePicture}
+        class="profilePicture scaleUp"
+        alt="woah"
+        width={128}
+        height={128}
+        loading="eager"
+        fetchpriority="high"
+        transition:persist
+      />
       <Icon name="epiccarlito" class="profilePicture scaleUp" />
     </div>
     <div class="textContainer">
@@ -17,7 +26,7 @@ import { Icon } from "astro-icon/components";
     </div>
   </div>
 
-  <p class="lastUpdated dropShadow">updated: 2/28/26 (msg: i love astro ❤️ )</p>
+  <p class="lastUpdated dropShadow">updated (3/7/26): got my vercel account back ‼️</p>
 </div>
 
 <style>
@@ -75,13 +84,13 @@ import { Icon } from "astro-icon/components";
       flex-direction: row;
     }
 
-    .headerContainer {
+    .textContainer {
       h1 {
-        font-size: var(--text-6xl);
+        font-size: var(--text-5xl);
       }
 
       p {
-        font-size: var(--text-lg);
+        font-size: var(--text-xl);
       }
     }
   }
