@@ -50,12 +50,7 @@ html {
 body {
   font-family: var(--font-comfortaa);
   font-weight: 400;
-  background: #111827;
-  background: linear-gradient(
-    0deg,
-    var(--color-bg) 75%,
-    var(--color-burple) 100%
-  );
+  background: var(--color-bg);
 }
 
 span,
@@ -158,6 +153,10 @@ button:focus {
 }
 
 @media (width >= 48rem) {
+  body {
+    background: var(--color-bg);
+  }
+
   .innerContainer {
     padding: 3rem 4rem;
   }
@@ -174,5 +173,15 @@ button:focus {
 
   100% {
     transform: scale(1);
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    background: linear-gradient(
+      0deg,
+      var(--color-bg) 99%,
+      var(--color-burple) 100%
+    );
   }
 }

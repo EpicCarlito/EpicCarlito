@@ -3,6 +3,7 @@ import styles from "../styles/_spotify.module.scss";
 import { SpotifyStorage, type SpotifyState } from "../lib/spotifyStorage";
 import type { Track } from "@spotify/web-api-ts-sdk";
 import { FaSpotify } from "react-icons/fa";
+import { decodeHtml } from "../types";
 
 export default function Spotify() {
   const [state, setState] = useState<SpotifyState>(SpotifyStorage.getState());
@@ -57,8 +58,8 @@ export default function Spotify() {
             />
 
             <div className={styles.songInfo}>
-              <h1 className={styles.songName}>{song?.name}</h1>
-              <p className={styles.artist}>{`by ${song?.artists[0].name}`}</p>
+              <h1 className={styles.songName}>{decodeHtml(song?.name)}</h1>
+              <p className={styles.artist}>{decodeHtml(`by ${song?.artists[0].name}`)}</p>
             </div>
           </div>
         </a>
@@ -80,8 +81,8 @@ export default function Spotify() {
             <h1 className={styles.songName}>current playlist</h1>
             <img className={styles.songImage} src={playlist.images[0].url} />
             <div className={styles.songInfo}>
-              <h1 className={styles.songName}>{playlist.name}</h1>
-              <p className={styles.artist}>{playlist.description}</p>
+              <h1 className={styles.songName}>{decodeHtml(playlist.name)}</h1>
+              <p className={styles.artist}>{decodeHtml(playlist.description)}</p>
             </div>
           </div>
         </div>
