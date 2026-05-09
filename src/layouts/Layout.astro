@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import Waves from "../components/waves";
 import "../styles/_base.scss";
 import { ClientRouter } from "astro:transitions";
@@ -21,9 +22,14 @@ import { ClientRouter } from "astro:transitions";
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#7289da" />
     <ClientRouter />
+    <Font cssVariable="--font-comfortaa" />
   </head>
   <body>
-    <div class="container" transition:name="container" transition:animate="fade">
+    <div
+      class="container"
+      transition:name="container"
+      transition:animate="fade"
+    >
       <slot />
       <Waves client:load />
     </div>
@@ -50,5 +56,11 @@ import { ClientRouter } from "astro:transitions";
     selected.classList.remove("tap");
     void selected.offsetWidth;
     selected.classList.add("tap");
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    document.documentElement.style.display = "none";
+    void document.documentElement.offsetHeight;
+    document.documentElement.style.display = "";
   });
 </script>

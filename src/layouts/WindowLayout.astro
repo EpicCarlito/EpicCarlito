@@ -1,12 +1,12 @@
 ---
-import Header from "../components/header.astro";
+import NavBar from "../components/navbar.astro";
 import Socials from "../components/socials.astro";
 
 const { pathname } = Astro.url;
 ---
 
 <div id="windowContainer" class=`${pathname == "/" ? "appearWindow" : ""}` transition:name="window" transition:animate="fade">
-  <Header />
+  <NavBar />
   <div id="scrollable" class=`${pathname == "/" ? "appearScrollable" : "forceAppear"}`>
     <slot />
   </div>
@@ -27,7 +27,7 @@ const { pathname } = Astro.url;
     background: linear-gradient(to top, #000, #000, #333, #333);
     background-color: gray;
     background-size: 100% 3px;
-    border: 2px var(--white-but-not) solid;
+    border: 2px white solid;
     border-radius: 0.375rem;
     opacity: 1;
     animation: scanlines 55s linear 2s infinite;

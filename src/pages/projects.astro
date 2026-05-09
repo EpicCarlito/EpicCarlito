@@ -5,31 +5,32 @@ import WindowLayout from "../layouts/WindowLayout.astro";
 
 const projects = [
   {
-    title: "FTC - Into The Deep",
-    desc: "Contributed to Bronx Science's FTC team code. Helped provide the autonomous and player-controllable modes.",
+    title: "SciBorgs Website",
+    desc: "Building website for Bronx Science's FRC Team, the Sciborgs, using Astro, React, and Sass.",
+    href: "https://github.com/SciBorgs/SciborgsWebsite/",
+    date: "December 2025 - Now",
+  },
+  {
+    title: "Apeiro - Into The Deep",
+    desc: "Wrote autonomous and teleop code for Bronx Science's FTC Team, Apeiro.",
     href: "https://github.com/BxSciFTC/IntoTheDeep-24",
     date: "September 2024 - March 2025",
   },
   {
     title: "FloorIsLava",
-    desc: "A Minecraft plugin that is a simple survival game where lava gradually rises over time.",
+    desc: "A Minecraft plugin where lava gradually rises over time, forcing people to be the last one to survive.",
     href: "https://github.com/EpicCarlito/FloorIsLava",
     date: "July - August 2024",
   },
   {
-    title: "discordjs-template",
-    desc: "A bare-bones Discord.js v14 template that lets you create a basic Discord bot with a command, event, button, and modal handler.",
-    href: "https://github.com/EpicCarlito/discordjs-template",
-    date: "April 2024",
-  },
-  {
     title: "EmailChecker",
-    desc: "A simple way to check if an email exists! Created to be used for a discord bot to check emails.",
+    desc: "A simple way to check if an email exists! Built for email verification in a discord bot.",
     href: "https://github.com/EpicCarlito/EmailChecker",
     date: "July - August 2023",
   },
 ];
 ---
+<title>Projects | EpicCarlito</title>
 
 <Layout>
   <div class="innerContainer">
@@ -40,7 +41,7 @@ const projects = [
             <a
               href={project.href}
               data-tap={project?.href ? 1.1 : 1}
-              class={`projectContainer ${project?.href ? "miniScaleUp" : ""}`}
+              class={`projectContainer dropShadow ${project?.href ? "miniScaleUp" : ""}`}
             >
               <h1>{project.title}</h1>
               <p>{project.desc}</p>
@@ -67,16 +68,31 @@ const projects = [
   }
 
   .projectContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     padding: 0.5rem;
     background-color: var(--inner-bg);
+    border: 1px solid white;
     border-radius: 0.5rem;
     cursor: pointer;
-    filter: drop-shadow(3px 3px 5px #000);
+
+    h1,
+    p {
+      margin: 0;
+      font-family: var(--font-sen);
+    }
+
+    &:hover {
+      border-color: blue;
+    }
   }
 
   .sourceContainer {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
   }
 
   [data-icon] {

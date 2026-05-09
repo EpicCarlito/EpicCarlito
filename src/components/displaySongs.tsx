@@ -2,6 +2,8 @@ import { useState } from "react";
 import songs from "../songs.json";
 import styles from "../styles/_songs.module.scss";
 
+// container can't be set height
+
 export default function Members() {
   const [curr, setCurr] = useState<number | null>(null);
 
@@ -11,7 +13,7 @@ export default function Members() {
         const middle = Math.floor(songs.length / 2);
         const offset = curr != null ? i - curr : i - middle;
 
-        const styleClass =
+        const imageStyle =
           curr != null
             ? offset == 0
               ? styles.activeImage
@@ -21,12 +23,11 @@ export default function Members() {
             : styles.default;
 
         const ifActive = offset == 0 && curr != null;
-        const appearText = ifActive ? styles.show : "";
 
         return (
           <div
             key={i}
-            className={`${styles.imageContainer} ${styleClass}`}
+            className={`${styles.imageContainer} ${imageStyle}`}
             style={{ "--offset": `${offset}` } as React.CSSProperties}
           >
             <div className={styles.gridContainer}>
@@ -34,14 +35,16 @@ export default function Members() {
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className={styles.pos} />
                 ))}
-                <img className={styles.dragImage} src={image.src} />
+                <img src={image.src} />
               </div>
-              <div id={styles.textContainer} className={appearText}>
-                <div style={{ padding: "0.25rem 0.375rem" }}>
-                  <h1 className={styles.title}>{image.title}</h1>
-                  <h1 className={styles.artist}>by {image.artist}</h1>
-                </div>
-              </div>
+              <a
+                id={styles.textContainer}
+                className={`${ifActive && styles.showText}`}
+                href={image.href}
+              >
+                <h1 className={styles.title}>{image.title}</h1>
+                <h1 className={styles.artist}>by {image.artist}</h1>
+              </a>
             </div>
           </div>
         );

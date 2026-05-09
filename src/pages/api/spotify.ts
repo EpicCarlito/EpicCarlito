@@ -1,25 +1,25 @@
 import type { AccessToken } from "@spotify/web-api-ts-sdk";
 
-// async function codeForRefresh() {
-//   const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-//   const clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_SECRET;
-//   const clientCode = process.env.NEXT_PUBLIC_SPOTIFY_CODE;
-//   const redirectUri = encodeURIComponent("http://localhost:3000/callback");
+async function codeForRefresh() {
+  const clientId = import.meta.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+  const clientSecret = import.meta.env.NEXT_PUBLIC_SPOTIFY_SECRET;
+  const clientCode = import.meta.env.NEXT_PUBLIC_SPOTIFY_CODE;
+  const redirectUri = encodeURIComponent("http://localhost:3000/callback");
 
-//   const response = await fetch("https://accounts.spotify.com/api/token", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       Authorization: `Basic ${Buffer.from(
-//         `${clientId}:${clientSecret}`
-//       ).toString("base64")}`,
-//     },
-//     body: `grant_type=authorization_code&code=${clientCode}&redirect_uri=${redirectUri}`,
-//   });
+  const response = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${Buffer.from(
+        `${clientId}:${clientSecret}`
+      ).toString("base64")}`,
+    },
+    body: `grant_type=authorization_code&code=${clientCode}&redirect_uri=${redirectUri}`,
+  });
 
-//   const data = await response.json();
-//   return data.refresh_token;
-// }
+  const data = await response.json();
+  return data.refresh_token;
+}
 
 export async function getAccessToken(
   id: string,

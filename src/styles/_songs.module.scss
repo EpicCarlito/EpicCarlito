@@ -1,18 +1,19 @@
 img,
-.image {
-  display: block;
-  width: 5rem;
-  height: 5rem;
+.innerImage {
+  width: 8rem;
+  height: 8rem;
+  transition:
+    height 500ms ease,
+    width 500ms ease;
   object-fit: cover;
-  pointer-events: auto;
 }
 
 .container {
   display: grid;
   width: calc(100% + 2rem);
-  min-height: 14rem;
+  min-height: 12rem;
   margin-left: -1rem;
-  overflow-x: clip;
+  padding-block: 1rem;
   perspective: 31.25rem;
   pointer-events: none;
   transform-style: preserve-3d;
@@ -24,27 +25,25 @@ img,
   --translateZ: 5rem;
   --opacity: 0.75;
 
-  display: inline-flex;
+  display: flex;
   transition:
-    transform 400ms ease,
-    opacity 350ms ease;
+    transform 500ms ease,
+    opacity 500ms ease;
   grid-area: 1 / 1;
   place-items: center;
   place-self: center center;
-  pointer-events: none;
 
   &.default {
     z-index: calc(100 - var(--offset));
     opacity: var(--opacity);
     cursor: pointer;
     transform: translateX(var(--offsetX)) rotateY(calc(var(--rotateY) * -0.5))
-      translateZ(calc(var(--translateZ) * -1)) scale(1.5);
+      translateZ(calc(var(--translateZ) * -1)) scale(1);
   }
 
   &.activeImage {
     z-index: 100;
     opacity: 1;
-    transform: scale(1.3);
   }
 
   &.rightImage {
@@ -52,7 +51,7 @@ img,
     opacity: calc(1 - calc(var(--offset) * 0.1));
     cursor: pointer;
     transform: translateX(var(--offsetX)) rotateY(calc(var(--rotateY) * -1))
-      translateZ(calc(var(--translateZ) * -1));
+      translateZ(calc(var(--translateZ) * -1)) scale(0.9);
   }
 
   &.leftImage {
@@ -60,65 +59,62 @@ img,
     opacity: calc(1 + calc(var(--offset) * 0.1));
     cursor: pointer;
     transform: translateX(var(--offsetX)) rotateY(calc(var(--rotateY) * 1))
-      translateZ(calc(var(--translateZ) * -1));
+      translateZ(calc(var(--translateZ) * -1)) scale(0.9);
   }
 }
 
 .gridContainer {
   display: grid;
-  grid-template-rows: auto 1fr;
-  place-items: center;
+  grid-template-rows: repeat(2, auto);
 }
 
 #textContainer {
   display: flex;
-  overflow: hidden;
   flex-direction: column;
-  align-items: flex-start;
-  max-width: 14rem;
-  max-height: 0%;
+  align-self: start;
+  max-width: 16rem;
   margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
   text-align: center;
   background-color: var(--color-bg);
+  border: 1px solid white;
   border-radius: 0.25rem;
   box-shadow: 2px 2px 10px #000;
   opacity: 0;
-  transition:
-    height 200ms ease,
-    opacity 200ms ease;
-  animation: appear ease-in-out 1000ms forwards 100ms;
+  transition: opacity 200ms ease;
+  cursor: pointer;
   grid-row: 2;
 
-  &.show {
-    max-height: 10rem;
-    border: 1px solid var(--white-but-not);
+  &.showText {
     opacity: 1;
+  }
+
+  &:hover {
+    border-color: blue;
   }
 }
 
 .title {
+  overflow: hidden;
   width: 100%;
-  font-size: var(--text-xs);
+  font-size: var(--text-2xl);
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .artist {
   width: 100%;
-  font-size: var(--text-xxs);
+  font-size: var(--text-sm);
   overflow-wrap: break-word;
-}
-
-@keyframes appear {
-  to {
-    opacity: 1;
-  }
 }
 
 .innerImage {
   position: relative;
   z-index: 100;
-  width: 6rem;
-  height: 6rem;
-  transition: transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    height 500ms ease,
+    width 500ms ease;
   cursor: pointer;
   justify-self: center;
   pointer-events: all;
@@ -162,13 +158,6 @@ $rotate: var(--default-rotate);
   --rotateY: #{$rotate};
 }
 
-.dragImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-
 .pos {
   position: absolute;
   z-index: 100;
@@ -207,21 +196,13 @@ $rotate: var(--default-rotate);
 }
 
 @media (width >= 48rem) {
+  img,
   .innerImage {
-    width: 8rem;
-    height: 8rem;
-  }
-
-  .container {
-    min-height: 18rem;
+    width: 10rem;
+    height: 10rem;
   }
 
   .imageContainer {
     --offsetX: calc(var(--offset) * 5rem);
-
-    transition:
-      transform 400ms ease,
-      scale 500ms ease,
-      opacity 350ms ease;
   }
 }

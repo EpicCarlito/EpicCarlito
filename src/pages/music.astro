@@ -1,24 +1,33 @@
 ---
-import Spotify from "../components/spotify";
 import Layout from "../layouts/Layout.astro";
 import WindowLayout from "../layouts/WindowLayout.astro";
 import DisplaySongs from "../components/displaySongs.tsx";
 ---
+<title>Music | EpicCarlito</title>
 
 <Layout>
   <div class="innerContainer">
-    <WindowLayout>
-      <Spotify client:load />
-      <h1>song recs</h1>
+    <WindowLayout>  
+      <!-- <Spotify client:load /> -->
+      <p class="textContainer dropShadow">Since Spotify restricted their API to Premium users, this looks very empty because i'm too broke 🥀</p>
+
+      <h1 class="dropShadow">i like these songs:</h1>
       <DisplaySongs transition:persist client:load />
     </WindowLayout>
   </div>
 </Layout>
 
 <style>
-  .innerContainer {
-    h1 {
-      text-align: center;
-    }
+  h1 {
+    text-align: center;
+  }
+
+  .textContainer {
+    align-self: center;
+    width: fit-content;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: var(--inner-bg);
   }
 </style>

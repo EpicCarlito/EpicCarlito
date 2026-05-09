@@ -6,6 +6,8 @@ import WindowLayout from "../layouts/WindowLayout.astro";
 
 const { pathname } = Astro.url;
 ---
+<title>Home | EpicCarlito</title>
+
 
 <Layout>
   <div id="homeContainer" class="innerContainer">
@@ -33,7 +35,7 @@ const { pathname } = Astro.url;
       width: var(--start-width);
       height: var(--start-height);
       background-color: var(--inner-bg);
-      border: 2px solid var(--white-but-not);
+      border: 2px solid white;
       animation:
         expandWindow 2s ease-in-out 1.5s forwards,
         disappearWindow 1.5s ease 5.5s forwards;

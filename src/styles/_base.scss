@@ -3,6 +3,7 @@
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
+  --text-md: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
@@ -18,15 +19,7 @@
   --color-yellow: #ffd769;
   --color-mix: #b6b2d8;
   --color-burple: #7289da;
-  --white-but-not: #d6d3d1; /* text-stone-300 */
-  --font-comfortaa: "Comfortaa", sans-serif;
   --font-sen: "Sen", sans-serif;
-  --font-poppins: "Poppins", sans-serif;
-}
-
-@font-face {
-  font-family: Comfortaa;
-  src: url("/fonts/Comfortaa.ttf") format("truetype");
 }
 
 @font-face {
@@ -49,16 +42,16 @@ html {
 
 body {
   font-family: var(--font-comfortaa);
-  font-weight: 400;
   background: var(--color-bg);
 }
 
 span,
+a,
 p,
 h1,
 h2,
 h3 {
-  color: var(--white-but-not);
+  color: white;
 }
 
 img {
@@ -67,7 +60,6 @@ img {
 
 a {
   text-decoration: none;
-  color: var(--white-but-not);
   pointer-events: auto;
 }
 
@@ -113,6 +105,16 @@ button:focus {
   box-sizing: inherit;
 }
 
+.group {
+  display: flex;
+  flex-direction: row;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
 .innerContainer {
   display: flex;
   justify-content: center;
@@ -134,27 +136,27 @@ button:focus {
   color: var(--white-but-not);
 }
 
-.scaleUp {
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
-.miniScaleUp {
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.025);
-  }
-}
-
 @media (width >= 48rem) {
-  body {
-    background: var(--color-bg);
+  [data-tap].tap {
+    animation: none;
+  }
+
+  .scaleUp {
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .miniScaleUp {
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.025);
+    }
   }
 
   .innerContainer {
