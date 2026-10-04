@@ -11,7 +11,7 @@ img,
 .container {
   display: grid;
   width: calc(100% + 2rem);
-  min-height: 12rem;
+  min-height: 16rem;
   margin-left: -1rem;
   padding-block: 1rem;
   perspective: 31.25rem;
@@ -72,7 +72,7 @@ img,
   display: flex;
   flex-direction: column;
   align-self: start;
-  max-width: 16rem;
+  max-width: 20rem;
   margin-top: 0.5rem;
   padding: 0.25rem 0.5rem;
   text-align: center;
@@ -88,16 +88,12 @@ img,
   &.showText {
     opacity: 1;
   }
-
-  &:hover {
-    border-color: blue;
-  }
 }
 
 .title {
   overflow: hidden;
   width: 100%;
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -196,6 +192,10 @@ $rotate: var(--default-rotate);
 }
 
 @media (width >= 48rem) {
+  .container {
+    min-height: 12rem;
+  }
+
   img,
   .innerImage {
     width: 10rem;

@@ -2,22 +2,72 @@
 import Layout from "../layouts/Layout.astro";
 import WindowLayout from "../layouts/WindowLayout.astro";
 import DisplaySongs from "../components/displaySongs.tsx";
+import Image from "astro/components/Image.astro";
+import Spotify from "../components/spotify";
+
+const playlistPhoto =
+  "https://image-cdn-ak.spotifycdn.com/image/ab67706c000097acd93e325dea7c95dc20704b13";
+const playlistUrl =
+  "https://open.spotify.com/playlist/3rdWte6h4B086Vu00M370I?si=uuSmaappRs-b2LUXMpBjTw&utm_source=copy_link";
 ---
+
 <title>Music | EpicCarlito</title>
 
 <Layout>
   <div class="innerContainer">
-    <WindowLayout>  
+    <WindowLayout>
       <!-- <Spotify client:load /> -->
-      <p class="textContainer dropShadow">Since Spotify restricted their API to Premium users, this looks very empty because i'm too broke 🥀</p>
+      <!-- <p class="textContainer dropShadow">Since Spotify restricted their API to premium users, this looks very empty because i'm too broke to pay for premium 🥀</p> -->
 
-      <h1 class="dropShadow">i like these songs:</h1>
+      <a
+        href={playlistUrl}
+        class="playlistContainer dropShadow miniScaleUp"
+        data-tap={1.05}
+      >
+        <Image
+          src={playlistPhoto}
+          class="profilePicture"
+          alt="woah"
+          width={128}
+          height={128}
+          loading="eager"
+          fetchpriority="high"
+          transition:persist
+        />
+        <div>
+          <h1>September 2026</h1>
+          <p>a repetition everyday to live a life so true.</p>
+        </div>
+      </a>
+
+      <h1 class="dropShadow">i like these songs (vocaloid & indie pop):</h1>
       <DisplaySongs transition:persist client:load />
     </WindowLayout>
   </div>
 </Layout>
 
 <style>
+  .playlistContainer {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+    width: fit-content;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: var(--inner-bg);
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+
+    h1,
+    p {
+      text-align: left;
+    }
+  }
+
   h1 {
     text-align: center;
   }

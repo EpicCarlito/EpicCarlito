@@ -5,26 +5,26 @@ import WindowLayout from "../layouts/WindowLayout.astro";
 
 const projects = [
   {
-    title: "SciBorgs Website",
-    desc: "Building website for Bronx Science's FRC Team, the Sciborgs, using Astro, React, and Sass.",
+    title: "Sciborgs Website",
+    desc: "Built the Bronx Science FRC Team, the Sciborgs, website using Astro, React, and Sass.",
     href: "https://github.com/SciBorgs/SciborgsWebsite/",
     date: "December 2025 - Now",
   },
   {
     title: "Apeiro - Into The Deep",
-    desc: "Wrote autonomous and teleop code for Bronx Science's FTC Team, Apeiro.",
+    desc: "Developed autonomous and teleoperated code for Bronx Science’s FTC team, Apeiro.",
     href: "https://github.com/BxSciFTC/IntoTheDeep-24",
     date: "September 2024 - March 2025",
   },
   {
     title: "FloorIsLava",
-    desc: "A Minecraft plugin where lava gradually rises over time, forcing people to be the last one to survive.",
+    desc: "A Minecraft plugin where lava gradually rises over time, forcing players to be the last one to survive",
     href: "https://github.com/EpicCarlito/FloorIsLava",
     date: "July - August 2024",
   },
   {
     title: "EmailChecker",
-    desc: "A simple way to check if an email exists! Built for email verification in a discord bot.",
+    desc: "A simple way to check whether an email address exists, built for email verification in a Discord bot.",
     href: "https://github.com/EpicCarlito/EmailChecker",
     date: "July - August 2023",
   },
@@ -40,7 +40,7 @@ const projects = [
           projects.map((project, i) => (
             <a
               href={project.href}
-              data-tap={project?.href ? 1.1 : 1}
+              data-tap={project?.href ? 1.05 : 1}
               class={`projectContainer dropShadow ${project?.href ? "miniScaleUp" : ""}`}
             >
               <h1>{project.title}</h1>
@@ -81,10 +81,6 @@ const projects = [
     p {
       margin: 0;
       font-family: var(--font-sen);
-    }
-
-    &:hover {
-      border-color: blue;
     }
   }
 
